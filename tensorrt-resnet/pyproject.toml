@@ -1,0 +1,17 @@
+[project]
+name = "tensorrt-resnet"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Topaz_wei", email = "17776791005@163.com" }
+]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+tensorrt-resnet = "tensorrt_resnet:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
