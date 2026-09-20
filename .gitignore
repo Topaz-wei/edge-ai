@@ -67,3 +67,51 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local caches
+cache/
+
+# Models / datasets
+models/
+datasets/
+wheels/
+
+# Build outputs
+build/
+dist/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+*.o
+*.so
+*.a
+
+# TensorRT / ONNX generated artifacts
+*.engine
+*.plan
+*.trt
+*.onnx.data
+
+# Benchmark / runtime outputs
+*.log
+logs/
+outputs/
+results/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp
+*~
