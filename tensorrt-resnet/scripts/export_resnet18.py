@@ -145,14 +145,30 @@ def main():
 
     x = torch.randn(1, 3, 224, 224)
 
-    with torch.no_grad():
-        y = model(x)
+    # -------------------------
+    # CUDA golden reference
+    # -------------------------
 
-    print("Input shape :", tuple(x.shape))
-    print("Output shape:", tuple(y.shape))
+    model = model.cuda()
+    x_cuda = x.cuda()
+
+    with torch.no_grad():
+        y = model(x_cuda).cpu()
+
+    assert torch.isfinite(y).all()
+
+    print("Input shape    :", tuple(x.shape))
+    print("Output shape   :", tuple(y.shape))
+    print("Reference      : PyTorch CUDA FP32")
 
     np.save("data/input.npy", x.numpy())
     np.save("data/pytorch_output.npy", y.numpy())
+
+    # -------------------------
+    # ONNX export
+    # -------------------------
+
+    model = model.cpu()
 
     onnx_path = "models/resnet18.onnx"
 
