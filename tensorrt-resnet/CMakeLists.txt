@@ -98,3 +98,21 @@ target_link_libraries(
         ${TENSORRT_LIBRARY}
         CUDA::cudart
 )
+
+add_executable(
+    trt_benchmark
+    apps/benchmark_dynamic.cpp
+)
+
+target_include_directories(
+    trt_benchmark
+    PRIVATE
+        ${TENSORRT_INCLUDE_DIR}
+)
+
+target_link_libraries(
+    trt_benchmark
+    PRIVATE
+        ${TENSORRT_LIBRARY}
+        CUDA::cudart
+)
