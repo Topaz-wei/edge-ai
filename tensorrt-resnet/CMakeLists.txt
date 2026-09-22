@@ -25,6 +25,17 @@ find_library(
         /usr/lib/aarch64-linux-gnu
 )
 
+find_library(
+    TENSORRT_ONNX_PARSER_LIBRARY
+    nvonnxparser
+    HINTS
+        /usr/lib/aarch64-linux-gnu
+)
+
+if(NOT TENSORRT_ONNX_PARSER_LIBRARY)
+    message(FATAL_ERROR "TensorRT ONNX parser not found")
+endif()
+
 if(NOT TENSORRT_INCLUDE_DIR)
     message(FATAL_ERROR "TensorRT headers not found")
 endif()
@@ -48,5 +59,24 @@ target_link_libraries(
     trt_infer
     PRIVATE
         ${TENSORRT_LIBRARY}
+        CUDA::cudart
+)
+
+add_executable(
+    trt_build
+    apps/build_engine.cpp
+)
+
+target_include_directories(
+    trt_build
+    PRIVATE
+        ${TENSORRT_INCLUDE_DIR}
+)
+
+target_link_libraries(
+    trt_build
+    PRIVATE
+        ${TENSORRT_LIBRARY}
+        ${TENSORRT_ONNX_PARSER_LIBRARY}
         CUDA::cudart
 )
