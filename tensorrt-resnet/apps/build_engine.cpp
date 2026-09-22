@@ -216,6 +216,83 @@ int main(int argc, char** argv) {
         workspaceSize
     );
 
+    // ------------------------------------------------
+    // Dynamic shape optimization profile
+    // ------------------------------------------------
+
+    auto* inputTensor = network->getInput(0);
+    const auto inputDims = inputTensor->getDimensions();
+
+    bool dynamicInput = false;
+
+    for (int i = 0; i < inputDims.nbDims; ++i) {
+        if (inputDims.d[i] == -1) {
+            dynamicInput = true;
+            break;
+        }
+    }
+
+    if (dynamicInput) {
+        std::cout << "\nDynamic input detected\n";
+
+        auto* profile =
+            builder->createOptimizationProfile();
+
+        if (!profile) {
+            throw std::runtime_error(
+                "Failed to create optimization profile"
+            );
+        }
+
+        // Batch range:
+        //
+        // MIN = 1
+        // OPT = 4
+        // MAX = 8
+
+        const bool minOk =
+            profile->setDimensions(
+                inputTensor->getName(),
+                nvinfer1::OptProfileSelector::kMIN,
+                nvinfer1::Dims4{1, 3, 224, 224}
+            );
+
+        const bool optOk =
+            profile->setDimensions(
+                inputTensor->getName(),
+                nvinfer1::OptProfileSelector::kOPT,
+                nvinfer1::Dims4{4, 3, 224, 224}
+            );
+
+        const bool maxOk =
+            profile->setDimensions(
+                inputTensor->getName(),
+                nvinfer1::OptProfileSelector::kMAX,
+                nvinfer1::Dims4{8, 3, 224, 224}
+            );
+
+        if (!minOk || !optOk || !maxOk) {
+            throw std::runtime_error(
+                "Failed to configure optimization profile"
+            );
+        }
+
+        const int profileIndex =
+            config->addOptimizationProfile(profile);
+
+        if (profileIndex < 0) {
+            throw std::runtime_error(
+                "Failed to add optimization profile"
+            );
+        }
+
+        std::cout
+            << "Optimization profile:\n"
+            << "  MIN = [1x3x224x224]\n"
+            << "  OPT = [4x3x224x224]\n"
+            << "  MAX = [8x3x224x224]\n";
+    }
+
     if (precision == "fp16") {
         if (!builder->platformHasFastFp16()) {
             std::cerr
