@@ -80,3 +80,21 @@ target_link_libraries(
         ${TENSORRT_ONNX_PARSER_LIBRARY}
         CUDA::cudart
 )
+
+add_executable(
+    trt_infer_dynamic
+    apps/infer_dynamic.cpp
+)
+
+target_include_directories(
+    trt_infer_dynamic
+    PRIVATE
+        ${TENSORRT_INCLUDE_DIR}
+)
+
+target_link_libraries(
+    trt_infer_dynamic
+    PRIVATE
+        ${TENSORRT_LIBRARY}
+        CUDA::cudart
+)

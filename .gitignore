@@ -68,7 +68,9 @@ vcpkg_installed/
 Testing/
 .cache/
 
+# =========================
 # Python / uv
+# =========================
 .venv/
 __pycache__/
 *.py[cod]
@@ -76,42 +78,84 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
-# Local caches
+# uv / Python local caches
 cache/
+*.egg-info/
 
-# Models / datasets
+# =========================
+# Models / datasets / wheels
+# =========================
 models/
 datasets/
 wheels/
 
-# Build outputs
-build/
-dist/
-cmake-build-*/
-CMakeFiles/
-CMakeCache.txt
-*.o
-*.so
-*.a
-
-# TensorRT / ONNX generated artifacts
+# =========================
+# Generated inference artifacts
+# =========================
+engines/
 *.engine
 *.plan
 *.trt
+
+# ONNX generated models
+*.onnx
 *.onnx.data
 
-# Benchmark / runtime outputs
-*.log
-logs/
-outputs/
-results/
+# =========================
+# Generated test/reference data
+# =========================
+data/
+*.bin
+*.npy
+*.npz
 
-# Editors / OS
+# =========================
+# Build outputs
+# =========================
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.dll
+*.dylib
+
+# =========================
+# Benchmark / logs
+# =========================
+logs/
+results/
+outputs/
+
+*.log
+*.json
+
+# =========================
+# CUDA / profiling outputs
+# =========================
+*.nsys-rep
+*.qdrep
+*.sqlite
+*.nvvp
+
+# =========================
+# Editors / IDE
+# =========================
 .vscode/
 .idea/
-.DS_Store
 
-# Temporary files
-*.tmp
+# =========================
+# OS / temporary files
+# =========================
+.DS_Store
 *.swp
+*.swo
 *~
+*.tmp
