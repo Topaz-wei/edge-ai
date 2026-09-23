@@ -102,6 +102,11 @@ engines/
 *.onnx.data
 
 # =========================
+# Calibration
+# =========================
+calibration/
+
+# =========================
 # Generated test/reference data
 # =========================
 data/

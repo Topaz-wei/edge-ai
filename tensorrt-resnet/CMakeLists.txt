@@ -116,3 +116,24 @@ target_link_libraries(
         ${TENSORRT_LIBRARY}
         CUDA::cudart
 )
+
+add_executable(
+    trt_build_int8
+    apps/build_int8.cpp
+    src/int8_calibrator.cpp
+)
+
+target_include_directories(
+    trt_build_int8
+    PRIVATE
+        ${TENSORRT_INCLUDE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(
+    trt_build_int8
+    PRIVATE
+        ${TENSORRT_LIBRARY}
+        ${TENSORRT_ONNX_PARSER_LIBRARY}
+        CUDA::cudart
+)
