@@ -137,3 +137,21 @@ target_link_libraries(
         ${TENSORRT_ONNX_PARSER_LIBRARY}
         CUDA::cudart
 )
+
+add_executable(
+    trt_inspect
+    apps/inspect_engine.cpp
+)
+
+target_include_directories(
+    trt_inspect
+    PRIVATE
+        ${TENSORRT_INCLUDE_DIR}
+)
+
+target_link_libraries(
+    trt_inspect
+    PRIVATE
+        ${TENSORRT_LIBRARY}
+        CUDA::cudart
+)

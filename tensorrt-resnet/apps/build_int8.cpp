@@ -151,6 +151,10 @@ int main(int argc, char** argv) {
         auto* config =
             builder->createBuilderConfig();
 
+        config->setProfilingVerbosity(
+            nvinfer1::ProfilingVerbosity::kDETAILED
+        );
+
         constexpr std::size_t workspace =
             2ULL << 30;
 
