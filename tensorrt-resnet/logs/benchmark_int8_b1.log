@@ -1,0 +1,28 @@
+[TensorRT] Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+Engine type : Static
+
+====================================
+TensorRT C++ Benchmark
+====================================
+Batch       : 1
+Warmup      : 100
+Iterations  : 1000
+Input elems : 150528
+Output elems: 1000
+
+----- Compute only -----
+GPU Compute        mean=0.641331  ms p50=0.618992  p95=0.783941  p99=0.814373
+Inference/s : 1559.26
+Samples/s   : 1559.26
+
+----- End-to-end -----
+H2D                mean=0.0323511 ms p50=0.031776  p95=0.0345296 p99=0.0405773
+GPU Compute        mean=0.811909  ms p50=0.60976   p95=2.06229   p99=2.54954
+D2H                mean=0.00607642 ms p50=0.00608   p95=0.009376  p99=0.0104323
+Total              mean=0.850337  ms p50=0.648064  p95=2.09969   p99=2.58822
+
+Host wall time : 0.85992 s
+Inference/s    : 1162.9
+Samples/s      : 1162.9
+
+Engine Size: 12.7MB

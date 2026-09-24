@@ -244,42 +244,76 @@ int main(int argc, char** argv) {
             "cudaStreamCreate"
         );
 
-        // We currently only have profile 0.
-        constexpr int profileIndex = 0;
-
-        if (!context->setOptimizationProfileAsync(
-                profileIndex,
-                stream)) {
-
-            throw std::runtime_error(
-                "Failed to select profile"
-            );
-        }
-
         // ---------------------------------
         // Runtime input shape
         // ---------------------------------
 
-        const nvinfer1::Dims4 inputDims{
-            batch,
-            3,
-            224,
-            224
-        };
+        const auto engineInputDims =
+            engine->getBindingDimensions(inputIndex);
 
-        if (!context->setBindingDimensions(
-                inputIndex,
-                inputDims)) {
+        bool isDynamic = false;
 
-            throw std::runtime_error(
-                "setBindingDimensions failed"
-            );
+        for (int i = 0; i < engineInputDims.nbDims; ++i) {
+            if (engineInputDims.d[i] == -1) {
+                isDynamic = true;
+                break;
+            }
         }
 
-        if (!context->allInputDimensionsSpecified()) {
-            throw std::runtime_error(
-                "Dynamic dimensions unresolved"
-            );
+        if (isDynamic) {
+            std::cout
+                << "Engine type : Dynamic\n";
+
+            // We currently only have profile 0.
+            constexpr int profileIndex = 0;
+
+            if (!context->setOptimizationProfileAsync(
+                    profileIndex,
+                    stream)) {
+
+                throw std::runtime_error(
+                    "Failed to select optimization profile"
+                );
+            }
+
+            const nvinfer1::Dims4 inputDims{
+                batch,
+                3,
+                224,
+                224
+            };
+
+            if (!context->setBindingDimensions(
+                    inputIndex,
+                    inputDims)) {
+
+                throw std::runtime_error(
+                    "setBindingDimensions failed"
+                );
+            }
+
+            if (!context->allInputDimensionsSpecified()) {
+                throw std::runtime_error(
+                    "Dynamic dimensions unresolved"
+                );
+            }
+
+        } else {
+
+            std::cout
+                << "Engine type : Static\n";
+
+            if (engineInputDims.nbDims != 4) {
+                throw std::runtime_error(
+                    "Unexpected input dimensions"
+                );
+            }
+
+            if (engineInputDims.d[0] != batch) {
+                throw std::runtime_error(
+                    "Requested batch does not match static engine batch"
+                );
+            }
         }
 
         const auto actualInputDims =
