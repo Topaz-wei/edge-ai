@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <memory>
 
 
 class Logger : public nvinfer1::ILogger {
@@ -59,10 +60,9 @@ int main(int argc, char** argv) {
         // Builder
         // --------------------------------
 
-        auto* builder =
-            nvinfer1::createInferBuilder(
-                gLogger
-            );
+        std::unique_ptr<nvinfer1::IBuilder> builder{
+            nvinfer1::createInferBuilder(gLogger)
+        };
 
         if (!builder) {
             throw std::runtime_error(
@@ -83,16 +83,34 @@ int main(int argc, char** argv) {
                 kEXPLICIT_BATCH
             );
 
-        auto* network =
+        std::unique_ptr<nvinfer1::INetworkDefinition> network{
             builder->createNetworkV2(
                 explicitBatch
-            );
+            )
+        };
 
-        auto* parser =
+        if (!network) {
+            throw std::runtime_error(
+                "Failed to create TensorRT network"
+            );
+        }
+
+        // --------------------------------
+        // Parse before inspecting inputs; keep parser alive through build.
+        // --------------------------------
+
+        std::unique_ptr<nvonnxparser::IParser> parser{
             nvonnxparser::createParser(
                 *network,
                 gLogger
+            )
+        };
+
+        if (!parser) {
+            throw std::runtime_error(
+                "Failed to create ONNX parser"
             );
+        }
 
         if (!parser->parseFromFile(
                 onnxPath.c_str(),
@@ -111,8 +129,20 @@ int main(int argc, char** argv) {
         // Verify static input
         // --------------------------------
 
+        if (network->getNbInputs() != 1) {
+            throw std::runtime_error(
+                "This INT8 example expects exactly one input"
+            );
+        }
+
         auto* input =
             network->getInput(0);
+
+        if (!input) {
+            throw std::runtime_error(
+                "Failed to get network input"
+            );
+        }
 
         const auto dims =
             input->getDimensions();
@@ -148,8 +178,15 @@ int main(int argc, char** argv) {
         // Builder config
         // --------------------------------
 
-        auto* config =
-            builder->createBuilderConfig();
+        std::unique_ptr<nvinfer1::IBuilderConfig> config{
+            builder->createBuilderConfig()
+        };
+
+        if (!config) {
+            throw std::runtime_error(
+                "Failed to create builder config"
+            );
+        }
 
         config->setProfilingVerbosity(
             nvinfer1::ProfilingVerbosity::kDETAILED
@@ -176,15 +213,17 @@ int main(int argc, char** argv) {
         std::cout
             << "Building INT8 engine...\n";
 
+
         // --------------------------------
         // Build
         // --------------------------------
 
-        auto* serialized =
+        std::unique_ptr<nvinfer1::IHostMemory> serialized{
             builder->buildSerializedNetwork(
                 *network,
                 *config
-            );
+            )
+        };
 
         if (!serialized) {
             throw std::runtime_error(
@@ -220,12 +259,6 @@ int main(int argc, char** argv) {
             << serialized->size()
                 / (1024.0 * 1024.0)
             << " MiB\n";
-
-        serialized->destroy();
-        config->destroy();
-        parser->destroy();
-        network->destroy();
-        builder->destroy();
 
     } catch (const std::exception& e) {
         std::cerr

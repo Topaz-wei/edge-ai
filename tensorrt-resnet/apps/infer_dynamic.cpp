@@ -8,6 +8,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <memory>
 
 
 class Logger : public nvinfer1::ILogger {
@@ -159,10 +160,9 @@ int main(int argc, char** argv) {
         auto engineData =
             loadEngineFile(enginePath);
 
-        auto* runtime =
-            nvinfer1::createInferRuntime(
-                gLogger
-            );
+        std::unique_ptr<nvinfer1::IRuntime> runtime{
+            nvinfer1::createInferRuntime(gLogger)
+        };
 
         if (!runtime) {
             throw std::runtime_error(
@@ -170,11 +170,9 @@ int main(int argc, char** argv) {
             );
         }
 
-        auto* engine =
-            runtime->deserializeCudaEngine(
-                engineData.data(),
-                engineData.size()
-            );
+        std::unique_ptr<nvinfer1::ICudaEngine> engine{
+            runtime->deserializeCudaEngine(engineData.data(), engineData.size())
+        };
 
         if (!engine) {
             throw std::runtime_error(
@@ -182,8 +180,9 @@ int main(int argc, char** argv) {
             );
         }
 
-        auto* context =
-            engine->createExecutionContext();
+        std::unique_ptr<nvinfer1::IExecutionContext> context{
+            engine->createExecutionContext()
+        };
 
         if (!context) {
             throw std::runtime_error(
@@ -647,10 +646,6 @@ int main(int argc, char** argv) {
         cudaFree(deviceOutput);
 
         cudaStreamDestroy(stream);
-
-        context->destroy();
-        engine->destroy();
-        runtime->destroy();
 
     } catch (const std::exception& e) {
         std::cerr

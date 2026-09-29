@@ -11,3 +11,6 @@ export PYTHONNOUSERSITE=1
 export CUDA_HOME=/usr/local/cuda-11.4
 export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
+
+export NSIGHT_COMPUTE_HOME=/opt/nvidia/nsight-compute/2022.2.1
+export PATH="$NSIGHT_COMPUTE_HOME:$PATH"

@@ -90,10 +90,9 @@ int main(int argc, char** argv) {
         // Runtime
         // -----------------------------
 
-        auto* runtime =
-            nvinfer1::createInferRuntime(
-                gLogger
-            );
+        std::unique_ptr<nvinfer1::IRuntime> runtime{
+            nvinfer1::createInferRuntime(gLogger)
+        };
 
         if (!runtime) {
             throw std::runtime_error(
@@ -101,11 +100,9 @@ int main(int argc, char** argv) {
             );
         }
 
-        auto* engine =
-            runtime->deserializeCudaEngine(
-                engineData.data(),
-                engineData.size()
-            );
+        std::unique_ptr<nvinfer1::ICudaEngine> engine{
+            runtime->deserializeCudaEngine(engineData.data(), engineData.size())
+        };
 
         if (!engine) {
             throw std::runtime_error(
@@ -147,10 +144,6 @@ int main(int argc, char** argv) {
             std::cout << info << '\n';
 
         } // inspector 在这里自动销毁
-
-        // TensorRT 8.x legacy cleanup
-        engine->destroy();
-        runtime->destroy();
 
     } catch (const std::exception& e) {
         std::cerr

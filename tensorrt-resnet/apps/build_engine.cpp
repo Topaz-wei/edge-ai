@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <memory>
 
 
 class Logger : public nvinfer1::ILogger {
@@ -61,8 +62,9 @@ int main(int argc, char** argv) {
     // 1. Create TensorRT builder
     // ------------------------------------------------
 
-    nvinfer1::IBuilder* builder =
-        nvinfer1::createInferBuilder(gLogger);
+    std::unique_ptr<nvinfer1::IBuilder> builder{
+        nvinfer1::createInferBuilder(gLogger)
+    };
 
     if (!builder) {
         throw std::runtime_error(
@@ -80,8 +82,9 @@ int main(int argc, char** argv) {
     // 2. Create TensorRT network
     // ------------------------------------------------
 
-    nvinfer1::INetworkDefinition* network =
-        builder->createNetworkV2(explicitBatch);
+    std::unique_ptr<nvinfer1::INetworkDefinition> network{
+        builder->createNetworkV2(explicitBatch)
+    };
 
     if (!network) {
         throw std::runtime_error(
@@ -90,14 +93,36 @@ int main(int argc, char** argv) {
     }
 
     // ------------------------------------------------
-    // 3. Create ONNX parser
+    // 3. Builder configuration
     // ------------------------------------------------
 
-    nvonnxparser::IParser* parser =
+    std::unique_ptr<nvinfer1::IBuilderConfig> config{
+        builder->createBuilderConfig()
+    };
+
+    if (!config) {
+        throw std::runtime_error(
+            "Failed to create builder config"
+        );
+    }
+
+    constexpr std::size_t workspaceSize =
+        2ULL << 30;  // 2 GiB
+
+    config->setMaxWorkspaceSize(
+        workspaceSize
+    );
+
+    // ------------------------------------------------
+    // 4. Create ONNX parser
+    // ------------------------------------------------
+
+    std::unique_ptr<nvonnxparser::IParser> parser{
         nvonnxparser::createParser(
             *network,
             gLogger
-        );
+        )
+    };
 
     if (!parser) {
         throw std::runtime_error(
@@ -134,7 +159,7 @@ int main(int argc, char** argv) {
     }
 
     // ------------------------------------------------
-    // 4. Inspect network
+    // 5. Inspect network
     // ------------------------------------------------
 
     std::cout << "\n=== Network ===\n";
@@ -195,26 +220,6 @@ int main(int argc, char** argv) {
 
         std::cout << '\n';
     }
-
-    // ------------------------------------------------
-    // 5. Builder configuration
-    // ------------------------------------------------
-
-    nvinfer1::IBuilderConfig* config =
-        builder->createBuilderConfig();
-
-    if (!config) {
-        throw std::runtime_error(
-            "Failed to create builder config"
-        );
-    }
-
-    constexpr std::size_t workspaceSize =
-        2ULL << 30;  // 2 GiB
-
-    config->setMaxWorkspaceSize(
-        workspaceSize
-    );
 
     // ------------------------------------------------
     // Dynamic shape optimization profile
@@ -317,11 +322,12 @@ int main(int argc, char** argv) {
 
     std::cout << "\nBuilding engine...\n";
 
-    nvinfer1::IHostMemory* serializedEngine =
+    std::unique_ptr<nvinfer1::IHostMemory> serializedEngine{
         builder->buildSerializedNetwork(
             *network,
             *config
-        );
+        )
+    };
 
     if (!serializedEngine) {
         throw std::runtime_error(
@@ -363,16 +369,6 @@ int main(int argc, char** argv) {
         << serializedEngine->size()
             / (1024.0 * 1024.0)
         << " MiB\n";
-
-    // ------------------------------------------------
-    // Cleanup
-    // ------------------------------------------------
-
-    serializedEngine->destroy();
-    config->destroy();
-    parser->destroy();
-    network->destroy();
-    builder->destroy();
 
     return 0;
 }
