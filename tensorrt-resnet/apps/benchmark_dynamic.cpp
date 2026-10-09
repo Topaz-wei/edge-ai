@@ -215,26 +215,36 @@ int main(int argc, char** argv) {
         }
 
         // ---------------------------------
-        // Find bindings
+        // Find input/output
         // ---------------------------------
 
-        int inputIndex = -1;
-        int outputIndex = -1;
+        const int nbIOTensors =
+            engine->getNbIOTensors();
 
-        const int nbBindings =
-            engine->getNbBindings();
+        const char* inputName = nullptr;
+        const char* outputName = nullptr;
 
-        for (int i = 0; i < nbBindings; ++i) {
-            if (engine->bindingIsInput(i)) {
-                inputIndex = i;
-            } else {
-                outputIndex = i;
+        for (int i = 0; i < nbIOTensors; ++i) {
+            const char* name =
+                engine->getIOTensorName(i);
+
+            const auto mode =
+                engine->getTensorIOMode(name);
+
+            if (mode ==
+                nvinfer1::TensorIOMode::kINPUT) {
+                inputName = name;
+            }
+            else if (
+                mode ==
+                nvinfer1::TensorIOMode::kOUTPUT) {
+                outputName = name;
             }
         }
 
-        if (inputIndex < 0 || outputIndex < 0) {
+        if (!inputName || !outputName) {
             throw std::runtime_error(
-                "Bindings not found"
+                "Failed to find input/output tensors"
             );
         }
 
@@ -254,7 +264,7 @@ int main(int argc, char** argv) {
         // ---------------------------------
 
         const auto engineInputDims =
-            engine->getBindingDimensions(inputIndex);
+            engine->getTensorShape(inputName);
 
         bool isDynamic = false;
 
@@ -288,16 +298,17 @@ int main(int argc, char** argv) {
                 224
             };
 
-            if (!context->setBindingDimensions(
-                    inputIndex,
+            
+            if (!context->setInputShape(
+                    inputName,
                     inputDims)) {
 
                 throw std::runtime_error(
-                    "setBindingDimensions failed"
+                    "setInputShape failed"
                 );
             }
 
-            if (!context->allInputDimensionsSpecified()) {
+            if (!context->allInputShapesSpecified()) {
                 throw std::runtime_error(
                     "Dynamic dimensions unresolved"
                 );
@@ -322,14 +333,10 @@ int main(int argc, char** argv) {
         }
 
         const auto actualInputDims =
-            context->getBindingDimensions(
-                inputIndex
-            );
+            context->getTensorShape(inputName);
 
         const auto outputDims =
-            context->getBindingDimensions(
-                outputIndex
-            );
+            context->getTensorShape(outputName);
 
         const std::size_t inputElements =
             volume(actualInputDims);
@@ -400,16 +407,22 @@ int main(int argc, char** argv) {
             "cudaMalloc output"
         );
 
-        std::vector<void*> bindings(
-            nbBindings,
-            nullptr
-        );
+        // 设置 tensor → address 映射
+        if (!context->setTensorAddress(
+                inputName,
+                deviceInput)) {
+            throw std::runtime_error(
+                "setTensorAddress failed for input"
+            );
+        }
 
-        bindings[inputIndex] =
-            deviceInput;
-
-        bindings[outputIndex] =
-            deviceOutput;
+        if (!context->setTensorAddress(
+                outputName,
+                deviceOutput)) {
+            throw std::runtime_error(
+                "setTensorAddress failed for output"
+            );
+        }
 
         // ---------------------------------
         // Warmup
@@ -427,11 +440,7 @@ int main(int argc, char** argv) {
         );
 
         for (int i = 0; i < warmup; ++i) {
-            if (!context->enqueueV2(
-                    bindings.data(),
-                    stream,
-                    nullptr)) {
-
+            if (!context->enqueueV3(stream)) {
                 throw std::runtime_error(
                     "Warmup enqueue failed"
                 );
@@ -472,13 +481,9 @@ int main(int argc, char** argv) {
                 stream
             );
 
-            if (!context->enqueueV2(
-                    bindings.data(),
-                    stream,
-                    nullptr)) {
-
+            if (!context->enqueueV3(stream)) {
                 throw std::runtime_error(
-                    "enqueueV2 failed"
+                    "enqueueV3 failed"
                 );
             }
 
@@ -552,13 +557,9 @@ int main(int argc, char** argv) {
                 stream
             );
 
-            if (!context->enqueueV2(
-                    bindings.data(),
-                    stream,
-                    nullptr)) {
-
+            if (!context->enqueueV3(stream)) {
                 throw std::runtime_error(
-                    "enqueueV2 failed"
+                    "enqueueV3 failed"
                 );
             }
 

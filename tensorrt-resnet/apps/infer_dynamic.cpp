@@ -190,29 +190,37 @@ int main(int argc, char** argv) {
             );
         }
 
-        // --------------------------------
-        // Find bindings
-        // --------------------------------
+        // -------------------------
+        // Find input/output
+        // -------------------------
 
-        const int nbBindings =
-            engine->getNbBindings();
+        const int nbIOTensors = engine->getNbIOTensors();
 
-        int inputIndex = -1;
-        int outputIndex = -1;
+        const char* inputName = nullptr;
+        const char* outputName = nullptr;
 
-        for (int i = 0; i < nbBindings; ++i) {
-            if (engine->bindingIsInput(i)) {
-                inputIndex = i;
-            } else {
-                outputIndex = i;
+        for(int i = 0; i < nbIOTensors; ++i)
+        {
+            const char* name =
+                engine->getIOTensorName(i);
+
+            const auto mode =
+                engine->getTensorIOMode(name);
+
+            if (mode ==
+                nvinfer1::TensorIOMode::kINPUT) {
+                inputName = name;
+            }
+            else if (
+                mode ==
+                nvinfer1::TensorIOMode::kOUTPUT) {
+                outputName = name;
             }
         }
 
-        if (inputIndex < 0 ||
-            outputIndex < 0) {
-
+        if (!inputName || !outputName) {
             throw std::runtime_error(
-                "Input/output binding not found"
+                "Failed to find input/output tensors"
             );
         }
 
@@ -220,9 +228,7 @@ int main(int argc, char** argv) {
             << "Engine input shape : ";
 
         printDims(
-            engine->getBindingDimensions(
-                inputIndex
-            )
+            engine->getTensorShape(inputName)
         );
 
         std::cout << '\n';
@@ -234,22 +240,22 @@ int main(int argc, char** argv) {
         const int profileIndex = 0;
 
         const auto minDims =
-            engine->getProfileDimensions(
-                inputIndex,
+            engine->getProfileShape(
+                inputName,
                 profileIndex,
                 nvinfer1::OptProfileSelector::kMIN
             );
 
         const auto optDims =
-            engine->getProfileDimensions(
-                inputIndex,
+            engine->getProfileShape(
+                inputName,
                 profileIndex,
                 nvinfer1::OptProfileSelector::kOPT
             );
 
         const auto maxDims =
-            engine->getProfileDimensions(
-                inputIndex,
+            engine->getProfileShape(
+                inputName,
                 profileIndex,
                 nvinfer1::OptProfileSelector::kMAX
             );
@@ -311,16 +317,16 @@ int main(int argc, char** argv) {
             224
         };
 
-        if (!context->setBindingDimensions(
-                inputIndex,
-                actualInputDims)) {
-
+        if(!context->setInputShape(
+            inputName,
+            actualInputDims
+        )){
             throw std::runtime_error(
-                "setBindingDimensions failed"
+                "setInputShape failed"
             );
         }
 
-        if (!context->allInputDimensionsSpecified()) {
+        if (!context->allInputShapesSpecified()) {
             throw std::runtime_error(
                 "Not all dynamic dimensions "
                 "were specified"
@@ -330,15 +336,9 @@ int main(int argc, char** argv) {
         // IMPORTANT:
         // Runtime dimensions must come from
         // IExecutionContext, not ICudaEngine.
-        const auto inputDims =
-            context->getBindingDimensions(
-                inputIndex
-            );
+        const auto inputDims = context->getTensorShape(inputName);
 
-        const auto outputDims =
-            context->getBindingDimensions(
-                outputIndex
-            );
+        const auto outputDims = context->getTensorShape(outputName);
 
         std::cout
             << "\nRuntime input shape : ";
@@ -357,9 +357,9 @@ int main(int argc, char** argv) {
         // --------------------------------
 
         if (
-            engine->getBindingDataType(inputIndex)
+            engine->getTensorDataType(inputName)
                 != nvinfer1::DataType::kFLOAT ||
-            engine->getBindingDataType(outputIndex)
+            engine->getTensorDataType(outputName)
                 != nvinfer1::DataType::kFLOAT
         ) {
             throw std::runtime_error(
@@ -448,16 +448,22 @@ int main(int argc, char** argv) {
             "cudaMalloc output"
         );
 
-        std::vector<void*> bindings(
-            nbBindings,
-            nullptr
-        );
+        // 设置 tensor → address 映射
+        if (!context->setTensorAddress(
+                inputName,
+                deviceInput)) {
+            throw std::runtime_error(
+                "setTensorAddress failed for input"
+            );
+        }
 
-        bindings[inputIndex] =
-            deviceInput;
-
-        bindings[outputIndex] =
-            deviceOutput;
+        if (!context->setTensorAddress(
+                outputName,
+                deviceOutput)) {
+            throw std::runtime_error(
+                "setTensorAddress failed for output"
+            );
+        }
 
         // --------------------------------
         // H2D
@@ -478,13 +484,9 @@ int main(int argc, char** argv) {
         // TensorRT inference
         // --------------------------------
 
-        if (!context->enqueueV2(
-                bindings.data(),
-                stream,
-                nullptr)) {
-
+        if(!context->enqueueV3(stream)){
             throw std::runtime_error(
-                "enqueueV2 failed"
+                "enqueueV3 failed"
             );
         }
 

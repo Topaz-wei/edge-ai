@@ -161,32 +161,42 @@ int main(int argc, char** argv) {
         // Find input/output
         // -------------------------
 
-        const int nbBindings =
-            engine->getNbBindings();
+        const int nbIOTensors =
+            engine->getNbIOTensors();
 
-        int inputIndex = -1;
-        int outputIndex = -1;
+        const char* inputName = nullptr;
+        const char* outputName = nullptr;
 
-        for (int i = 0; i < nbBindings; ++i) {
-            if (engine->bindingIsInput(i)) {
-                inputIndex = i;
-            } else {
-                outputIndex = i;
+        for (int i = 0; i < nbIOTensors; ++i) {
+            const char* name =
+                engine->getIOTensorName(i);
+
+            const auto mode =
+                engine->getTensorIOMode(name);
+
+            if (mode ==
+                nvinfer1::TensorIOMode::kINPUT) {
+                inputName = name;
+            }
+            else if (
+                mode ==
+                nvinfer1::TensorIOMode::kOUTPUT) {
+                outputName = name;
             }
         }
 
-        if (inputIndex < 0 || outputIndex < 0) {
+        if (!inputName || !outputName) {
             throw std::runtime_error(
-                "Input/output bindings not found"
+                "Failed to find input/output tensors"
             );
         }
 
-        const auto inputDims =
-            engine->getBindingDimensions(inputIndex);
+        auto inputDims =
+            engine->getTensorShape(inputName);
 
-        const auto outputDims =
-            engine->getBindingDimensions(outputIndex);
-
+        auto outputDims =
+            engine->getTensorShape(outputName);
+        
         const std::size_t inputElements =
             volume(inputDims);
 
@@ -195,10 +205,8 @@ int main(int argc, char** argv) {
 
         // Our current engines expose FP32 I/O.
         if (
-            engine->getBindingDataType(inputIndex)
-                != nvinfer1::DataType::kFLOAT ||
-            engine->getBindingDataType(outputIndex)
-                != nvinfer1::DataType::kFLOAT
+            engine->getTensorDataType(inputName) != nvinfer1::DataType::kFLOAT ||
+            engine->getTensorDataType(outputName) != nvinfer1::DataType::kFLOAT
         ) {
             throw std::runtime_error(
                 "This example expects FP32 engine I/O"
@@ -260,10 +268,22 @@ int main(int argc, char** argv) {
             "cudaMalloc output"
         );
 
-        std::vector<void*> bindings(nbBindings);
+        // 设置 tensor → address 映射
+        if (!context->setTensorAddress(
+                inputName,
+                deviceInput)) {
+            throw std::runtime_error(
+                "setTensorAddress failed for input"
+            );
+        }
 
-        bindings[inputIndex] = deviceInput;
-        bindings[outputIndex] = deviceOutput;
+        if (!context->setTensorAddress(
+                outputName,
+                deviceOutput)) {
+            throw std::runtime_error(
+                "setTensorAddress failed for output"
+            );
+        }
 
         cudaStream_t stream;
 
@@ -291,13 +311,9 @@ int main(int argc, char** argv) {
         // TensorRT inference
         // -------------------------
 
-        if (!context->enqueueV2(
-                bindings.data(),
-                stream,
-                nullptr)) {
-
+        if (!context->enqueueV3(stream)) {
             throw std::runtime_error(
-                "TensorRT enqueueV2 failed"
+                "TensorRT enqueueV3 failed"
             );
         }
 
