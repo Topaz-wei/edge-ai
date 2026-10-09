@@ -1,0 +1,25 @@
+Engine type : Static
+
+====================================
+TensorRT C++ Benchmark
+====================================
+Batch       : 1
+Warmup      : 100
+Iterations  : 1000
+Input elems : 150528
+Output elems: 1000
+
+----- Compute only -----
+GPU Compute        mean=1.41322   ms p50=1.41208   p95=1.41917   p99=1.42259
+Inference/s : 707.605
+Samples/s   : 707.605
+
+----- End-to-end -----
+H2D                mean=0.0362033 ms p50=0.035872  p95=0.037056  p99=0.0465312
+GPU Compute        mean=1.39905   ms p50=1.39866   p95=1.40323   p99=1.40544
+D2H                mean=0.00720941 ms p50=0.00736   p95=0.010368  p99=0.01056
+Total              mean=1.44246   ms p50=1.44198   p95=1.44845   p99=1.45459
+
+Host wall time : 1.45489 s
+Inference/s    : 687.338
+Samples/s      : 687.338
