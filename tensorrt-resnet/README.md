@@ -81,6 +81,16 @@ sudo jetson_clocks
 
 否则不同时间进行的 benchmark 绝对 latency 可能存在一定差异。
 
+编译方法:
+
+```text
+rm -rf build
+
+cmake -S . -B build
+
+cmake --build build -j$(nproc)
+```
+
 ---
 
 # 2. Project Structure
