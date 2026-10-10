@@ -49,6 +49,19 @@ def compare(name, reference, actual):
         cls_diff.max(),
     )
 
+    bbox_max = bbox_diff.max()
+    cls_max = cls_diff.max()
+
+    assert bbox_max < 0.05, (
+        f"BBox mismatch too large: {bbox_max}"
+    )
+
+    assert cls_max < 1e-4, (
+        f"Class score mismatch too large: {cls_max}"
+    )
+
+    print("\nTensorRT FP32 validation: PASS")
+
 
 compare(
     "TensorRT vs PyTorch",

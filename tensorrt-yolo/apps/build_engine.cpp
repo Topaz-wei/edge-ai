@@ -113,8 +113,6 @@ int main(int argc, char** argv) {
         workspaceSize
     );
 
-    config->clearFlag(nvinfer1::BuilderFlag::kTF32);
-
     // ------------------------------------------------
     // 4. Create ONNX parser
     // ------------------------------------------------
@@ -236,9 +234,20 @@ int main(int argc, char** argv) {
 
         std::cout
             << "Precision: FP16 enabled\n";
-    } else {
+    } 
+    
+    if (precision == "fp32") {
+        config->clearFlag(
+            nvinfer1::BuilderFlag::kTF32
+        );
+
         std::cout
-            << "Precision: FP32 / TF32 default\n";
+            << "Precision: FP32\n"
+            << "TF32 enabled: "
+            << (config->getFlag(
+                    nvinfer1::BuilderFlag::kTF32
+                ) ? "YES" : "NO")
+            << "\n";
     }
 
     // ------------------------------------------------
