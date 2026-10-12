@@ -11,6 +11,8 @@
 #include <vector>
 #include <memory>
 
+#include "include/infer_raw.hpp"
+
 
 class Logger : public nvinfer1::ILogger {
 public:

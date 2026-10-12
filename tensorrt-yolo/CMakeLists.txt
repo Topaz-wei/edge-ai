@@ -81,3 +81,14 @@ target_link_libraries(
         ${TENSORRT_ONNX_PARSER_LIBRARY}
         CUDA::cudart
 )
+
+add_executable(
+    yolo_postprocess_raw
+    apps/postprocess_raw.cpp
+)
+
+target_include_directories(
+    yolo_postprocess_raw
+    PRIVATE
+        ${PROJECT_INCLUDE_DIR}
+)
