@@ -35,25 +35,7 @@ constexpr float PAD_X = 140.0F;
 constexpr float PAD_Y = 0.0F;
 
 
-struct Box {
-    float x1;
-    float y1;
-    float x2;
-    float y2;
-};
-
-
-struct Detection {
-    int candidate;
-    int classId;
-    float confidence;
-
-    Box modelBox;
-    Box businessBox;
-};
-
-
-std::vector<float> loadFloatFile(
+static std::vector<float> loadFloatFile(
     const std::string& path)
 {
     std::ifstream file(
@@ -527,6 +509,7 @@ void printDetections(
 }
 
 
+#ifndef YOLO_NO_MAIN
 int main(
     int argc,
     char** argv)
@@ -580,3 +563,4 @@ int main(
 
     return 0;
 }
+#endif

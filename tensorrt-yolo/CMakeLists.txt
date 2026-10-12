@@ -71,6 +71,7 @@ add_executable(
 target_include_directories(
     yolo_infer_raw
     PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
         ${TENSORRT_INCLUDE_DIR}
 )
 
@@ -90,5 +91,30 @@ add_executable(
 target_include_directories(
     yolo_postprocess_raw
     PRIVATE
-        ${PROJECT_INCLUDE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+# Compile the existing implementations without their standalone entry points.
+add_executable(
+    yolo_infer
+    apps/yolo_infer.cpp
+    apps/infer_raw.cpp
+    apps/postprocess_raw.cpp
+)
+
+# 确保宏 YOLO_NO_MAIN 仅在yolo_infer.cpp中使用
+target_compile_definitions(yolo_infer PRIVATE YOLO_NO_MAIN)
+
+target_include_directories(
+    yolo_infer
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${TENSORRT_INCLUDE_DIR}
+)
+
+target_link_libraries(
+    yolo_infer
+    PRIVATE
+        ${TENSORRT_LIBRARY}
+        CUDA::cudart
 )

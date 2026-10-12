@@ -158,23 +158,10 @@ void saveFloatBinary(
 }
 
 
-int main(int argc, char** argv) {
-    if (argc != 4) {
-        std::cerr
-            << "Usage:\n  "
-            << argv[0]
-            << " <engine.plan>"
-            << " <input.bin>"
-            << " <output.bin>";
-
-        return 1;
-    }
-
-    try {
-        const std::string enginePath = argv[1];
-        const std::string inputPath = argv[2];
-        const std::string outputPath = argv[3];
-
+std::vector<float> inferRaw(
+    const std::string& enginePath,
+    const std::string& inputPath)
+{
         // -------------------------
         // Load TensorRT engine
         // -------------------------
@@ -411,16 +398,6 @@ int main(int argc, char** argv) {
             "cudaStreamSynchronize"
         );
 
-        saveFloatBinary(
-            outputPath,
-            hostOutput
-        );
-
-        std::cout
-            << "Output saved to: "
-            << outputPath
-            << "\n";
-
         // -------------------------
         // Cleanup
         // -------------------------
@@ -430,14 +407,25 @@ int main(int argc, char** argv) {
         cudaFree(deviceInput);
         cudaFree(deviceOutput);
 
-    } catch (const std::exception& e) {
-        std::cerr
-            << "ERROR: "
-            << e.what()
-            << '\n';
+        return hostOutput;
+}
 
+#ifndef YOLO_NO_MAIN
+int main(int argc, char** argv) {
+    if (argc != 4) {
+        std::cerr << "Usage:\n  " << argv[0]
+                  << " <engine.plan> <input.bin> <output.bin>\n";
         return 1;
     }
 
+    try {
+        const auto output = inferRaw(argv[1], argv[2]);
+        saveFloatBinary(argv[3], output);
+        std::cout << "Output saved to: " << argv[3] << "\n";
+    } catch (const std::exception& e) {
+        std::cerr << "ERROR: " << e.what() << '\n';
+        return 1;
+    }
     return 0;
 }
+#endif
