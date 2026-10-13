@@ -162,6 +162,14 @@ std::vector<float> inferRaw(
     const std::string& enginePath,
     const std::string& inputPath)
 {
+    return inferRaw(enginePath, loadFloatFile(inputPath));
+}
+
+
+std::vector<float> inferRaw(
+    const std::string& enginePath,
+    const std::vector<float>& hostInput)
+{
         // -------------------------
         // Load TensorRT engine
         // -------------------------
@@ -286,9 +294,6 @@ std::vector<float> inferRaw(
         // -------------------------
         // Load reference data
         // -------------------------
-
-        std::vector<float> hostInput =
-            loadFloatFile(inputPath);
 
         if (hostInput.size() != inputElements) {
             throw std::runtime_error(

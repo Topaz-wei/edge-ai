@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(CUDAToolkit REQUIRED)
+find_package(OpenCV REQUIRED COMPONENTS core imgcodecs imgproc)
 
 find_path(
     TENSORRT_INCLUDE_DIR
@@ -98,16 +99,18 @@ target_include_directories(
 add_executable(
     yolo_infer
     apps/yolo_infer.cpp
+    apps/yolo_preprocess.cpp
     apps/infer_raw.cpp
     apps/postprocess_raw.cpp
 )
 
-# 确保宏 YOLO_NO_MAIN 仅在yolo_infer.cpp中使用
+# 仅对 yolo_infer 目标定义宏，禁用其共用源文件中的独立 main
 target_compile_definitions(yolo_infer PRIVATE YOLO_NO_MAIN)
 
 target_include_directories(
     yolo_infer
     PRIVATE
+        ${OpenCV_INCLUDE_DIRS}
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${TENSORRT_INCLUDE_DIR}
 )
@@ -115,6 +118,11 @@ target_include_directories(
 target_link_libraries(
     yolo_infer
     PRIVATE
+        ${OpenCV_LIBS}
         ${TENSORRT_LIBRARY}
         CUDA::cudart
 )
+
+add_executable(yolo_preprocess apps/yolo_preprocess.cpp)
+target_include_directories(yolo_preprocess PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(yolo_preprocess PRIVATE ${OpenCV_LIBS})

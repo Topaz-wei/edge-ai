@@ -15,4 +15,7 @@ void saveFloatBinary(const std::string& path, const std::vector<float>& data);
 // Runs the existing inference path and returns host output for postprocessing.
 std::vector<float> inferRaw(const std::string& enginePath, const std::string& inputPath);
 
+// Accept preprocessed input directly, without an intermediate binary file.
+std::vector<float> inferRaw(const std::string& enginePath, const std::vector<float>& hostInput);
+
 #endif
