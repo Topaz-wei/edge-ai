@@ -236,7 +236,8 @@ Box restoreLetterbox(
 
 
 std::vector<Detection> postprocess(
-    const std::vector<float>& output)
+    const std::vector<float>& output,
+    bool verbose)
 {
     const std::size_t expectedElements =
         static_cast<std::size_t>(
@@ -365,10 +366,12 @@ std::vector<Detection> postprocess(
         candidates.push_back(det);
     }
 
-    std::cout
-        << "Candidates before NMS: "
-        << candidates.size()
-        << "\n";
+    if (verbose) {
+        std::cout
+            << "Candidates before NMS: "
+            << candidates.size()
+            << "\n";
+    }
 
     // --------------------------------------------------
     // 按 confidence 从高到低排序

@@ -45,6 +45,10 @@ if(NOT TENSORRT_LIBRARY)
     message(FATAL_ERROR "TensorRT library not found")
 endif()
 
+add_library(trt_runner STATIC src/trt_runner.cpp)
+target_include_directories(trt_runner PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TENSORRT_INCLUDE_DIR})
+target_link_libraries(trt_runner PUBLIC ${TENSORRT_LIBRARY} CUDA::cudart)
+
 add_executable(
     yolo_build
     apps/build_engine.cpp
@@ -79,6 +83,7 @@ target_include_directories(
 target_link_libraries(
     yolo_infer_raw
     PRIVATE
+        trt_runner
         ${TENSORRT_LIBRARY}
         ${TENSORRT_ONNX_PARSER_LIBRARY}
         CUDA::cudart
@@ -100,7 +105,6 @@ add_executable(
     yolo_infer
     apps/yolo_infer.cpp
     apps/yolo_preprocess.cpp
-    apps/infer_raw.cpp
     apps/postprocess_raw.cpp
 )
 
@@ -118,6 +122,7 @@ target_include_directories(
 target_link_libraries(
     yolo_infer
     PRIVATE
+        trt_runner
         ${OpenCV_LIBS}
         ${TENSORRT_LIBRARY}
         CUDA::cudart
@@ -126,3 +131,29 @@ target_link_libraries(
 add_executable(yolo_preprocess apps/yolo_preprocess.cpp)
 target_include_directories(yolo_preprocess PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(yolo_preprocess PRIVATE ${OpenCV_LIBS})
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(test_preprocess_cpp tests/test_preprocess_cpp.cpp apps/yolo_preprocess.cpp)
+    target_compile_definitions(test_preprocess_cpp PRIVATE YOLO_NO_MAIN)
+    target_include_directories(test_preprocess_cpp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(test_preprocess_cpp PRIVATE ${OpenCV_LIBS})
+    add_test(NAME preprocess_cpp COMMAND test_preprocess_cpp ${CMAKE_CURRENT_SOURCE_DIR}/data/images/test.jpg)
+endif()
+
+if(BUILD_TESTING)
+    # Run explicitly with a locally captured pre-refactor raw output as baseline.
+    add_executable(test_trt_runner tests/test_trt_runner.cpp apps/yolo_preprocess.cpp apps/postprocess_raw.cpp)
+    target_compile_definitions(test_trt_runner PRIVATE YOLO_NO_MAIN)
+    target_include_directories(test_trt_runner PRIVATE ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(test_trt_runner PRIVATE trt_runner ${OpenCV_LIBS})
+endif()
+
+add_executable(benchmark_yolo
+    apps/benchmark_yolo.cpp
+    apps/yolo_preprocess.cpp
+    apps/postprocess_raw.cpp
+)
+target_compile_definitions(benchmark_yolo PRIVATE YOLO_NO_MAIN)
+target_include_directories(benchmark_yolo PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(benchmark_yolo PRIVATE trt_runner ${OpenCV_LIBS})

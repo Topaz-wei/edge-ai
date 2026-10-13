@@ -28,12 +28,16 @@ std::vector<float> preprocess(const std::string& imagePath) {
     if (bgr.empty()) {
         throw std::runtime_error("Cannot decode image: " + imagePath);
     }
-    if (bgr.rows != 640 || bgr.cols != 360 || bgr.type() != CV_8UC3) {
+    return preprocess(bgr);
+}
+
+std::vector<float> preprocess(const cv::Mat& businessImage) {
+    if (businessImage.rows != 640 || businessImage.cols != 360 || businessImage.type() != CV_8UC3) {
         throw std::runtime_error("Expected business BGR image: width=360, height=640");
     }
 
-    cv::Mat rgb;
-    cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
+    cv::Mat rgb, bgr;
+    cv::cvtColor(businessImage, rgb, cv::COLOR_BGR2RGB);
     meanRegionMask(rgb, {{240, 0}, {360, 0}, {360, 200}, {300, 100}});
     meanRegionMask(rgb, {{0, 150}, {65, 106}, {95, 237}, {6, 327}});
     cv::cvtColor(rgb, bgr, cv::COLOR_RGB2BGR);

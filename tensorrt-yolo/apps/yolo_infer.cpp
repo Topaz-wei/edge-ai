@@ -1,4 +1,4 @@
-#include "include/infer_raw.hpp"
+#include "include/trt_runner.hpp"
 #include "include/yolo_preprocess.hpp"
 #include "include/postprocess_raw.hpp"
 
@@ -143,6 +143,8 @@ int main(
         const std::string outputPath =
             argv[3];
 
+        TrtRunner runner(enginePath);
+
         // --------------------------------
         // 1. Preprocess
         // --------------------------------
@@ -155,17 +157,15 @@ int main(
         // 2. TensorRT inference
         // --------------------------------
         const auto output =
-            inferRaw(
-                enginePath,
-                input
-            );
+            runner.infer(input);
 
         // --------------------------------
         // 3. YOLO postprocess
         // --------------------------------
         const auto detections =
             postprocess(
-                output
+                output,
+                true
             );
 
         std::cout
