@@ -384,10 +384,9 @@ std::vector<Detection> postprocess(
             const Detection& a,
             const Detection& b)
         {
-            return (
-                a.confidence >
-                b.confidence
-            );
+            return a.confidence != b.confidence
+                ? a.confidence > b.confidence
+                : a.candidate < b.candidate;
         }
     );
 

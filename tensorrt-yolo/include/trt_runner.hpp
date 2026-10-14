@@ -18,16 +18,49 @@ struct TrtTimings {
 class TrtRunner {
 public:
     explicit TrtRunner(const std::string& enginePath);
+
     ~TrtRunner();
+
     TrtRunner(const TrtRunner&) = delete;
     TrtRunner& operator=(const TrtRunner&) = delete;
 
     // Optional timings use reusable CUDA events on the inference stream.
-    std::vector<float> infer(const std::vector<float>& input, TrtTimings* timings = nullptr);
-    std::size_t inputElements() const { return inputElements_; }
-    std::size_t outputElements() const { return outputElements_; }
+    std::vector<float> infer(
+        const std::vector<float>& input,
+        TrtTimings* timings = nullptr
+    );
+
+    std::size_t inputElements() const {
+        return inputElements_;
+    }
+
+    std::size_t outputElements() const {
+        return outputElements_;
+    }
+
+    // Device API: caller supplies preprocessed input on this stream, and may consume
+    // output on the same stream. No copies/synchronization in enqueueDevice().
+    float* deviceInput() const {
+        return static_cast<float*>(deviceInput_);
+    }
+
+    const float* deviceOutput() const {
+        return static_cast<const float*>(deviceOutput_);
+    }
+
+    cudaStream_t stream() const {
+        return stream_;
+    }
+
+    void prepareGraph();
+
+    void enqueueDevice(bool useGraph = false);
+
+    bool isFixedYolo() const;
 
 private:
+    cudaGraph_t graph_{nullptr};
+    cudaGraphExec_t graphExec_{nullptr};
     void release() noexcept;
     std::unique_ptr<nvinfer1::IRuntime> runtime_;
     std::unique_ptr<nvinfer1::ICudaEngine> engine_;

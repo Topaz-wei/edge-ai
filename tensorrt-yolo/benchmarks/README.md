@@ -73,3 +73,7 @@ tensorrt-yolo/build/test_trt_runner <engine.plan> <business_image> <before_raw.b
 它在同一 Runner 上交替执行带计时/不带计时的推理共 5 次，每次与旧版 baseline 做逐字节比较，并检查错误输入拒绝后仍能正常推理。
 
 2026-10-13 本机 FP16、FP32 均通过上述 GPU 回归。FP16 检测仍为 candidate=8191、confidence=0.819824、business box=[146.375,65.875,359.375,538.875]。预处理结果与冻结的 input.bin 逐字节一致。实际测量报告另见同目录基线文件；尚未做 Nsight 定位或定向优化。
+
+## CUDA v3
+
+已新增 CUDA 预处理/后处理与 TensorRT CUDA Graph 路径。构建、测试和三路径 benchmark 见 [CUDA_PIPELINE.md](CUDA_PIPELINE.md)，本轮实测见 [2026-10-14 report](2026-10-14-cuda-pipeline.md)。

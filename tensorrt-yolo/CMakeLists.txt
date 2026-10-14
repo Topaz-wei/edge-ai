@@ -157,3 +157,87 @@ add_executable(benchmark_yolo
 target_compile_definitions(benchmark_yolo PRIVATE YOLO_NO_MAIN)
 target_include_directories(benchmark_yolo PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(benchmark_yolo PRIVATE trt_runner ${OpenCV_LIBS})
+
+# CUDA v3 is optional so CPU/reference builds remain available without nvcc.
+option(YOLO_BUILD_CUDA_PIPELINE "Build CUDA preprocessing/postprocessing and Graph pipeline" ON)
+if(YOLO_BUILD_CUDA_PIPELINE)
+    if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+        set(CMAKE_CUDA_ARCHITECTURES 87)
+    endif()
+    enable_language(CUDA)
+    set(CMAKE_CUDA_STANDARD 17)
+    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+    add_library(
+        cuda_yolo
+        STATIC
+        src/cuda_yolo.cu
+        src/cuda_pipeline.cpp
+    )
+    target_include_directories(
+        cuda_yolo
+        PUBLIC
+        ${OpenCV_INCLUDE_DIRS}
+    )
+    target_link_libraries(
+        cuda_yolo
+        PUBLIC
+        trt_runner
+        ${OpenCV_LIBS}
+    )
+    target_compile_options(
+        cuda_yolo
+        PRIVATE
+        $<$<COMPILE_LANGUAGE:CUDA>:--fmad=false>
+    )
+endif()
+if(YOLO_BUILD_CUDA_PIPELINE AND BUILD_TESTING)
+    add_executable(
+        test_cuda_yolo
+        tests/test_cuda_yolo.cpp
+        apps/yolo_preprocess.cpp
+        apps/postprocess_raw.cpp
+    )
+    target_compile_definitions(
+        test_cuda_yolo
+        PRIVATE
+        YOLO_NO_MAIN
+    )
+    target_link_libraries(
+        test_cuda_yolo
+        PRIVATE
+        cuda_yolo
+    )
+endif()
+if(YOLO_BUILD_CUDA_PIPELINE)
+    add_executable(
+        yolo_infer_cuda
+        apps/yolo_infer_cuda.cpp
+        apps/postprocess_raw.cpp
+    )
+    target_compile_definitions(
+        yolo_infer_cuda
+        PRIVATE
+        YOLO_NO_MAIN
+    )
+    target_link_libraries(
+        yolo_infer_cuda
+        PRIVATE
+        cuda_yolo
+    )
+    add_executable(
+        benchmark_yolo_cuda
+        apps/benchmark_yolo_cuda.cpp
+        apps/yolo_preprocess.cpp
+        apps/postprocess_raw.cpp
+    )
+    target_compile_definitions(
+        benchmark_yolo_cuda
+        PRIVATE
+        YOLO_NO_MAIN
+    )
+    target_link_libraries(
+        benchmark_yolo_cuda
+        PRIVATE
+        cuda_yolo
+    )
+endif()

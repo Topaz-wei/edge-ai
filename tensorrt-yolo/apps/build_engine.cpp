@@ -113,6 +113,10 @@ int main(int argc, char** argv) {
         workspaceSize
     );
 
+    config->setProfilingVerbosity(
+        nvinfer1::ProfilingVerbosity::kDETAILED
+    );
+
     // ------------------------------------------------
     // 4. Create ONNX parser
     // ------------------------------------------------
