@@ -4,6 +4,7 @@
 #include "include/trt_runner.hpp"
 
 #include <opencv2/core/mat.hpp>
+#include <nvtx3/nvToolsExt.h>
 
 #include <memory>
 

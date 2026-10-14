@@ -1,5 +1,6 @@
 #include "include/cuda_yolo.hpp"
 #include "include/infer_raw.hpp"
+#include "include/nvtx_range.hpp"
 
 #include <stdexcept>
 
@@ -47,6 +48,8 @@ std::vector<Detection> CudaYoloPipeline::infer(
     const cv::Mat& bgr,
     CudaPipelineTimings* timings
 ) {
+    const NvtxRange frameRange("YOLO Frame");
+
     const auto stream = runner_.stream();
 
     auto record = [&](int i) {
@@ -63,23 +66,45 @@ std::vector<Detection> CudaYoloPipeline::infer(
     try {
         record(0);
 
-        ops_.upload(bgr);
+        {
+            const NvtxRange range("BGR Upload");
+
+            ops_.upload(bgr);
+        }
 
         record(1);
 
-        ops_.preprocess(runner_.deviceInput());
+        {
+            const NvtxRange range("CUDA Preprocess");
+
+            ops_.preprocess(runner_.deviceInput());
+        }
 
         record(2);
 
-        runner_.enqueueDevice(graph_);
+        {
+            const NvtxRange range("TensorRT Inference");
+
+            runner_.enqueueDevice(graph_);
+        }
 
         record(3);
 
-        ops_.postprocess(runner_.deviceOutput());
+        {
+            const NvtxRange range("CUDA Postprocess");
+
+            ops_.postprocess(runner_.deviceOutput());
+        }
 
         record(4);
 
-        auto detections = ops_.download();
+        std::vector<Detection> detections;
+
+        {
+            const NvtxRange range("Results Download");
+
+            detections = ops_.download();
+        }
 
         record(5);
 

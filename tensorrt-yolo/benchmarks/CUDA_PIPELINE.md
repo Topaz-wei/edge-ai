@@ -80,3 +80,39 @@ E2E 使用 steady_clock，计入 pinned staging CPU copy、上传、预处理、
 GPU 阶段使用同一 stream 上持久 CUDA events，开启/关闭 Graph 均带同样分段计时。事件区间可能包含 CPU 提交造成的 GPU 空闲。上传区间包含 pinned staging 等待；结果下载区间包含 count 回传的主机往返及结果 vector 构造，不能解读为纯 DMA 时间。没有测量零开销的纯 kernel 时间，也没有用 Nsight 证明所有差异来源。
 
 本轮结果见 [2026-10-14 CUDA report](2026-10-14-cuda-pipeline.md)。未锁时钟、未改变功耗设置；TensorRT 提示现有 engine 跨设备型号使用。CPU/CUDA/Graph 的顺序测量也可能受时钟/温度/系统负载漂移影响，不能把 CUDA 预处理在 Graph 模式下的全部变快归因于 Graph（它并未捕获预处理）。
+
+## Nsight Systems / NVTX 准备
+
+Nsight Systems 用于检查整帧的 CPU 提交、CUDA API、GPU kernels、memcpy 和同步时间线；Nsight Compute 用于分析单个 kernel。本机 `nsys --version` 返回 2023.2.4，已经安装，无需重复安装。
+
+CUDA pipeline 已加入如下嵌套 NVTX ranges（包括 warmup 中的调用）：
+
+```text
+YOLO Frame
+  BGR Upload
+  CUDA Preprocess
+  TensorRT Inference
+  CUDA Postprocess
+  Results Download
+    Submit Count D2H
+    Wait Count Ready
+    Submit Boxes D2H
+    Wait Boxes Ready
+    Build Host Detections
+```
+
+`TensorRT Inference` 在 Graph 开启时包围 graph launch，关闭时包围 enqueueV3。上传包含 pinned staging copy；下载包含 count/检测框回传及等待。NVTX 范围表示 CPU 提交/等待的作用域，不是 GPU kernel 执行时长：GPU 实际执行应结合 CUDA stream timeline 查看。作用域对象析构时自动 pop，异常路径不会留下未关闭标记。
+
+使用 `<nvtx3/nvToolsExt.h>` 的 NVTX3 header-only API。CMake 从已找到的 CUDA Toolkit include 路径中查找头文件，通过 `${CMAKE_DL_LIBS}` 链接 Linux 动态加载依赖，不依赖旧版 `libnvToolsExt`。原先无路径提示的 `find_library(nvToolsExt)` 返回 NOTFOUND，正是此次配置失败原因。
+
+重新配置和编译：
+
+```bash
+cmake -S tensorrt-yolo -B tensorrt-yolo/build \
+  -DCMAKE_BUILD_TYPE=Release -DCMAKE_CUDA_ARCHITECTURES=87
+cmake --build tensorrt-yolo/build -j4
+```
+
+已有缓存中的 `NVTOOLSEXT_LIBRARY-NOTFOUND` 不再被使用，无需删除整个 build 目录。非标准安装可通过 `-DNVTX3_INCLUDE_DIR=/path/to/include` 指定包含 `nvtx3/nvToolsExt.h` 的目录。
+
+下载细分标记中，`Wait Count Ready` 等待同一 stream 上尚未完成的预处理、推理、后处理及 count 复制，不能全部视为 D2H 开销。`Wait Boxes Ready` 在 count 同步完成之后，主要等待检测框回传。无检测框时跳过两个 Boxes 标记。`Build Host Detections` 包含返回 vector 的构造。所有标记使用同一个 RAII 封装，异常时也自动关闭；CPU 提交/等待范围不是 GPU 实际 memcpy 时长，需与 CUDA timeline 对照。重新采集报告后才能看到新增标记，已有报告不会改变。

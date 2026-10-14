@@ -1,5 +1,6 @@
 #include "include/cuda_yolo.hpp"
 #include "include/infer_raw.hpp"
+#include "include/nvtx_range.hpp"
 
 #include <cub/cub.cuh>
 #include <opencv2/imgproc.hpp>
@@ -613,21 +614,31 @@ void CudaYoloOps::postprocess(
 
 std::vector<Detection> CudaYoloOps::download() {
     auto& p = *impl_;
-    checkCuda(
-        cudaMemcpyAsync(
-            p.hostCount,
-            p.count,
-            sizeof(int),
-            cudaMemcpyDeviceToHost,
-            p.stream
-        ),
-        "download count"
-    );
 
-    checkCuda(
-        cudaStreamSynchronize(p.stream),
-        "count sync"
-    );
+    {
+        const NvtxRange range("Submit Count D2H");
+
+        checkCuda(
+            cudaMemcpyAsync(
+                p.hostCount,
+                p.count,
+                sizeof(int),
+                cudaMemcpyDeviceToHost,
+                p.stream
+            ),
+            "download count"
+        );
+    }
+
+    {
+        // This also waits for any preceding GPU work on the same stream.
+        const NvtxRange range("Wait Count Ready");
+
+        checkCuda(
+            cudaStreamSynchronize(p.stream),
+            "count sync"
+        );
+    }
 
     const int n = *p.hostCount;
 
@@ -635,22 +646,32 @@ std::vector<Detection> CudaYoloOps::download() {
         throw std::runtime_error("Invalid CUDA detection count");
 
     if (n) {
-        checkCuda(
-            cudaMemcpyAsync(
-                p.hostKept,
-                p.kept,
-                n * sizeof(Detection),
-                cudaMemcpyDeviceToHost,
-                p.stream
-            ),
-            "download detections"
-        );
+        {
+            const NvtxRange range("Submit Boxes D2H");
 
-        checkCuda(
-            cudaStreamSynchronize(p.stream),
-            "detections sync"
-        );
+            checkCuda(
+                cudaMemcpyAsync(
+                    p.hostKept,
+                    p.kept,
+                    n * sizeof(Detection),
+                    cudaMemcpyDeviceToHost,
+                    p.stream
+                ),
+                "download detections"
+            );
+        }
+
+        {
+            const NvtxRange range("Wait Boxes Ready");
+
+            checkCuda(
+                cudaStreamSynchronize(p.stream),
+                "detections sync"
+            );
+        }
     }
+
+    const NvtxRange range("Build Host Detections");
 
     return {
         p.hostKept,

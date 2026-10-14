@@ -167,6 +167,19 @@ if(YOLO_BUILD_CUDA_PIPELINE)
     enable_language(CUDA)
     set(CMAKE_CUDA_STANDARD 17)
     set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+    # NVTX3 is header-only. Its Linux injection loader uses dlopen/dlsym.
+    find_path(
+        NVTX3_INCLUDE_DIR
+        NAMES
+            nvtx3/nvToolsExt.h
+        HINTS
+            ${CUDAToolkit_INCLUDE_DIRS}
+    )
+
+    if(NOT NVTX3_INCLUDE_DIR)
+        message(FATAL_ERROR "NVTX3 headers not found; install NVTX3 or set NVTX3_INCLUDE_DIR")
+    endif()
+
     add_library(
         cuda_yolo
         STATIC
@@ -177,12 +190,16 @@ if(YOLO_BUILD_CUDA_PIPELINE)
         cuda_yolo
         PUBLIC
         ${OpenCV_INCLUDE_DIRS}
+        PRIVATE
+        ${NVTX3_INCLUDE_DIR}
     )
     target_link_libraries(
         cuda_yolo
         PUBLIC
         trt_runner
         ${OpenCV_LIBS}
+        PRIVATE
+        ${CMAKE_DL_LIBS}
     )
     target_compile_options(
         cuda_yolo
