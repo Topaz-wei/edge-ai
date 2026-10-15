@@ -6,6 +6,11 @@
 #include <stdexcept>
 #include <string>
 #include <memory>
+#include <filesystem>
+
+#ifdef YOLO_ENABLE_INT8
+#include "include/calibrator.hpp"
+#endif
 
 
 class Logger : public nvinfer1::ILogger {
@@ -36,14 +41,15 @@ void printDims(const nvinfer1::Dims& dims) {
 }
 
 
-int main(int argc, char** argv) {
-    if (argc != 4) {
+int buildEngine(int argc, char** argv) {
+    if (argc < 4 || argc > 6) {
         std::cerr
             << "Usage:\n  "
             << argv[0]
             << " <model.onnx>"
             << " <output.plan>"
-            << " <fp32|fp16>\n";
+            << " <fp32|fp16|int8>"
+            << " [calibration_directory] [calibration.cache]\n";
 
         return 1;
     }
@@ -52,11 +58,29 @@ int main(int argc, char** argv) {
     const std::string enginePath = argv[2];
     const std::string precision = argv[3];
 
-    if (precision != "fp32" && precision != "fp16") {
+    if (precision != "fp32" && precision != "fp16" && precision != "int8") {
         std::cerr
-            << "Precision must be fp32 or fp16\n";
+            << "Precision must be fp32 or fp16 or int8\n";
         return 1;
     }
+
+    if ((precision == "int8" && argc < 5) || (precision != "int8" && argc != 4)) {
+        throw std::runtime_error(
+            "INT8 requires calibration_directory and optional cache path; FP32/FP16 require 3 arguments"
+        );
+    }
+
+    if (std::filesystem::exists(enginePath)) {
+        throw std::runtime_error(
+            "Engine already exists; choose a new output path: " + enginePath
+        );
+    }
+
+#ifndef YOLO_ENABLE_INT8
+    if (precision == "int8") {
+        throw std::runtime_error("INT8 requires YOLO_BUILD_CUDA_PIPELINE=ON");
+    }
+#endif
 
     // ------------------------------------------------
     // 1. Create TensorRT builder
@@ -254,6 +278,58 @@ int main(int argc, char** argv) {
             << "\n";
     }
 
+#ifdef YOLO_ENABLE_INT8
+    std::unique_ptr<YOLOCalibrator> calibrator;
+
+    if (precision == "int8") {
+        if (!builder->platformHasFastInt8()) {
+            std::cerr << "Fast INT8 is not supported\n";
+            return 1;
+        }
+
+        if (network->getNbInputs() != 1 || network->getNbOutputs() != 1) {
+            throw std::runtime_error("INT8 calibration requires one YOLO input/output");
+        }
+
+        const auto* input = network->getInput(0);
+        const auto* output = network->getOutput(0);
+        const auto in = input->getDimensions();
+        const auto out = output->getDimensions();
+
+        if (in.nbDims != 4 || in.d[0] != 1 || in.d[1] != 3 || in.d[2] != 640 ||
+            in.d[3] != 640 || out.nbDims != 3 || out.d[0] != 1 || out.d[1] != 84 ||
+            out.d[2] != 8400 || input->getType() != nvinfer1::DataType::kFLOAT ||
+            output->getType() != nvinfer1::DataType::kFLOAT) {
+            throw std::runtime_error("Expected fixed640 YOLO FP32 input/output");
+        }
+
+        for (int i = 0; i < network->getNbLayers(); ++i) {
+            const auto type = network->getLayer(i)->getType();
+            if (type == nvinfer1::LayerType::kQUANTIZE ||
+                type == nvinfer1::LayerType::kDEQUANTIZE) {
+                throw std::runtime_error(
+                    "This calibration path expects ONNX without explicit Q/DQ"
+                );
+            }
+        }
+
+        config->setFlag(nvinfer1::BuilderFlag::kINT8);
+        config->setFlag(nvinfer1::BuilderFlag::kFP16);
+        config->clearFlag(nvinfer1::BuilderFlag::kTF32);
+
+        const std::string cachePath = argc == 6 ? argv[5] : enginePath + ".cache";
+        calibrator = std::make_unique<YOLOCalibrator>(
+            argv[4],
+            onnxPath,
+            input->getName(),
+            cachePath
+        );
+        config->setInt8Calibrator(calibrator.get());
+
+        std::cout << "Precision: INT8 PTQ with FP16 fallback; FP32 I/O\n";
+    }
+#endif
+
     // ------------------------------------------------
     // 6. Build serialized TensorRT engine
     // ------------------------------------------------
@@ -267,6 +343,11 @@ int main(int argc, char** argv) {
         )
     };
 
+#ifdef YOLO_ENABLE_INT8
+    if (calibrator)
+        calibrator->throwIfFailed();
+#endif
+
     if (!serializedEngine) {
         throw std::runtime_error(
             "TensorRT engine build failed"
@@ -277,8 +358,20 @@ int main(int argc, char** argv) {
     // 7. Save .plan
     // ------------------------------------------------
 
+#ifdef YOLO_ENABLE_INT8
+    if (calibrator) {
+        calibrator->verifyComplete();
+        calibrator->saveCache();
+    }
+#endif
+
+    const auto parent = std::filesystem::path(enginePath).parent_path();
+    if (!parent.empty())
+        std::filesystem::create_directories(parent);
+    const auto temporaryPath = enginePath + ".tmp";
+
     std::ofstream file(
-        enginePath,
+        temporaryPath,
         std::ios::binary
     );
 
@@ -297,6 +390,13 @@ int main(int argc, char** argv) {
 
     file.close();
 
+    if (!file)
+        throw std::runtime_error("Failed to write engine: " + temporaryPath);
+    std::filesystem::rename(
+        temporaryPath,
+        enginePath
+    );
+
     std::cout
         << "\nEngine saved: "
         << enginePath
@@ -309,4 +409,19 @@ int main(int argc, char** argv) {
         << " MiB\n";
 
     return 0;
+}
+
+int main(
+    int argc,
+    char** argv
+) {
+    try {
+        return buildEngine(
+            argc,
+            argv
+        );
+    } catch (const std::exception& e) {
+        std::cerr << "ERROR: " << e.what() << '\n';
+        return 1;
+    }
 }

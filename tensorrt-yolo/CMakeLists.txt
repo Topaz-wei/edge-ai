@@ -258,3 +258,50 @@ if(YOLO_BUILD_CUDA_PIPELINE)
         cuda_yolo
     )
 endif()
+
+if(YOLO_BUILD_CUDA_PIPELINE)
+    find_package(OpenSSL REQUIRED COMPONENTS Crypto)
+
+    # Invalidate calibration caches when the actual CUDA preprocessing source changes.
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS src/cuda_yolo.cu)
+    file(SHA256 ${CMAKE_CURRENT_SOURCE_DIR}/src/cuda_yolo.cu YOLO_PREPROCESS_SHA256)
+
+    add_library(
+        yolo_calibrator
+        STATIC
+        apps/calibrator.cpp
+    )
+
+    target_compile_definitions(
+        yolo_calibrator
+        PRIVATE
+        YOLO_PREPROCESS_SHA256="${YOLO_PREPROCESS_SHA256}"
+    )
+
+    target_link_libraries(
+        yolo_calibrator
+        PUBLIC
+        cuda_yolo
+        PRIVATE
+        OpenSSL::Crypto
+    )
+
+    target_compile_definitions(yolo_build PRIVATE YOLO_ENABLE_INT8)
+    target_link_libraries(yolo_build PRIVATE yolo_calibrator)
+
+    if(BUILD_TESTING)
+        add_executable(
+            test_calibrator
+            tests/test_calibrator.cpp
+            apps/yolo_preprocess.cpp
+        )
+
+        target_compile_definitions(test_calibrator PRIVATE YOLO_NO_MAIN)
+        target_link_libraries(test_calibrator PRIVATE yolo_calibrator)
+
+        add_test(
+            NAME calibrator_cpu
+            COMMAND test_calibrator ${CMAKE_CURRENT_BINARY_DIR}/calibrator-fixture cpu
+        )
+    endif()
+endif()
