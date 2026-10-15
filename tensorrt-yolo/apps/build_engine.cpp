@@ -7,6 +7,8 @@
 #include <string>
 #include <memory>
 #include <filesystem>
+#include <algorithm>
+#include <cctype>
 
 #ifdef YOLO_ENABLE_INT8
 #include "include/calibrator.hpp"
@@ -41,6 +43,43 @@ void printDims(const nvinfer1::Dims& dims) {
 }
 
 
+int getModelIndex(const std::string& name)
+{
+    const std::string key = "/model.";
+
+    const auto begin = name.find(key);
+
+    if (begin == std::string::npos)
+        return -1;
+
+    const auto numberBegin =
+        begin + key.size();
+
+    const auto numberEnd =
+        name.find('/', numberBegin);
+
+    if (numberEnd == std::string::npos)
+        return -1;
+
+    const std::string token =
+        name.substr(
+            numberBegin,
+            numberEnd - numberBegin
+        );
+
+    if (token.empty() ||
+        !std::all_of(
+            token.begin(),
+            token.end(),
+            [](unsigned char c) {
+                return std::isdigit(c);
+            }))
+        return -1;
+
+    return std::stoi(token);
+}
+
+
 bool isFp16ComputeLayer(nvinfer1::ILayer* layer)
 {
     using LT = nvinfer1::LayerType;
@@ -50,6 +89,8 @@ bool isFp16ComputeLayer(nvinfer1::ILayer* layer)
         case LT::kACTIVATION:
         case LT::kELEMENTWISE:
         case LT::kSOFTMAX:
+        case LT::kPOOLING:
+        case LT::kRESIZE:
             break;
 
         default:
@@ -324,6 +365,8 @@ int buildEngine(int argc, char** argv) {
         }
 
         int forcedFp16Layers = 0;
+        constexpr int fp16StartModel = 9;
+        constexpr int fp16EndModel   = 22;
 
         for (int i = 0; i < network->getNbLayers(); ++i) {
             auto* layer = network->getLayer(i);
@@ -331,34 +374,42 @@ int buildEngine(int argc, char** argv) {
             const std::string name =
                 layer->getName() ? layer->getName() : "";
 
-            if (name.find("/model.22/") == std::string::npos)
-                continue;
+            const int modelIndex =
+                getModelIndex(name);
 
-            if (!isFp16ComputeLayer(layer)) {
-                std::cout
-                    << "[FP16 skip] "
+            if (modelIndex >= fp16StartModel &&
+                modelIndex <= fp16EndModel) {
+
+                if(isFp16ComputeLayer(layer)){
+                    layer->setPrecision(
+                        nvinfer1::DataType::kHALF
+                    );
+
+                    std::cout
+                    << "[FP16 constraint] "
                     << i << " : "
                     << name << '\n';
 
-                continue;
+                    ++forcedFp16Layers;
+                }
+                else{
+                    std::cout
+                        << "[FP16 skip] "
+                        << i << " : "
+                        << name << '\n';
+
+                    continue;
+                }
             }
-
-            layer->setPrecision(
-                nvinfer1::DataType::kHALF
-            );
-
-            std::cout
-                << "[FP16 constraint] "
-                << i << " : "
-                << name << '\n';
-
-            ++forcedFp16Layers;
         }
 
         if (forcedFp16Layers == 0) {
             throw std::runtime_error(
-                "No floating-point model.22 layers matched"
+                "No FP16-eligible layers matched in model.9~22"
             );
+        }
+        else{
+            std::cout << "total forcedFp16Layers:" << forcedFp16Layers << std::endl;
         }
 
         config->setFlag(
