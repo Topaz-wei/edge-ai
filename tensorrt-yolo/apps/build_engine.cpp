@@ -41,6 +41,42 @@ void printDims(const nvinfer1::Dims& dims) {
 }
 
 
+bool isFp16ComputeLayer(nvinfer1::ILayer* layer)
+{
+    using LT = nvinfer1::LayerType;
+
+    switch (layer->getType()) {
+        case LT::kCONVOLUTION:
+        case LT::kACTIVATION:
+        case LT::kELEMENTWISE:
+        case LT::kSOFTMAX:
+            break;
+
+        default:
+            return false;
+    }
+
+    // 只处理真正产生浮点执行 tensor 的层。
+    bool hasFloatOutput = false;
+
+    for (int j = 0; j < layer->getNbOutputs(); ++j) {
+        auto* output = layer->getOutput(j);
+
+        if (!output)
+            continue;
+
+        const auto type = output->getType();
+
+        if (type == nvinfer1::DataType::kFLOAT ||
+            type == nvinfer1::DataType::kHALF) {
+            hasFloatOutput = true;
+        }
+    }
+
+    return hasFloatOutput;
+}
+
+
 int buildEngine(int argc, char** argv) {
     if (argc < 4 || argc > 6) {
         std::cerr
@@ -286,6 +322,49 @@ int buildEngine(int argc, char** argv) {
             std::cerr << "Fast INT8 is not supported\n";
             return 1;
         }
+
+        int forcedFp16Layers = 0;
+
+        for (int i = 0; i < network->getNbLayers(); ++i) {
+            auto* layer = network->getLayer(i);
+
+            const std::string name =
+                layer->getName() ? layer->getName() : "";
+
+            if (name.find("/model.22/") == std::string::npos)
+                continue;
+
+            if (!isFp16ComputeLayer(layer)) {
+                std::cout
+                    << "[FP16 skip] "
+                    << i << " : "
+                    << name << '\n';
+
+                continue;
+            }
+
+            layer->setPrecision(
+                nvinfer1::DataType::kHALF
+            );
+
+            std::cout
+                << "[FP16 constraint] "
+                << i << " : "
+                << name << '\n';
+
+            ++forcedFp16Layers;
+        }
+
+        if (forcedFp16Layers == 0) {
+            throw std::runtime_error(
+                "No floating-point model.22 layers matched"
+            );
+        }
+
+        config->setFlag(
+            nvinfer1::BuilderFlag::
+                kOBEY_PRECISION_CONSTRAINTS
+        );
 
         if (network->getNbInputs() != 1 || network->getNbOutputs() != 1) {
             throw std::runtime_error("INT8 calibration requires one YOLO input/output");
