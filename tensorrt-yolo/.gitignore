@@ -1,0 +1,5 @@
+# Project-private Python tools (installed without modifying system packages)
+.deps/
+
+# Reproducible local precision experiments and GPU smoke artifacts
+debug/

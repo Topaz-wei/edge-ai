@@ -9,6 +9,8 @@
 #include <filesystem>
 #include <algorithm>
 #include <cctype>
+#include <set>
+#include "../include/precision_options.hpp"
 
 #ifdef YOLO_ENABLE_INT8
 #include "include/calibrator.hpp"
@@ -43,43 +45,6 @@ void printDims(const nvinfer1::Dims& dims) {
 }
 
 
-int getModelIndex(const std::string& name)
-{
-    const std::string key = "/model.";
-
-    const auto begin = name.find(key);
-
-    if (begin == std::string::npos)
-        return -1;
-
-    const auto numberBegin =
-        begin + key.size();
-
-    const auto numberEnd =
-        name.find('/', numberBegin);
-
-    if (numberEnd == std::string::npos)
-        return -1;
-
-    const std::string token =
-        name.substr(
-            numberBegin,
-            numberEnd - numberBegin
-        );
-
-    if (token.empty() ||
-        !std::all_of(
-            token.begin(),
-            token.end(),
-            [](unsigned char c) {
-                return std::isdigit(c);
-            }))
-        return -1;
-
-    return std::stoi(token);
-}
-
-
 bool isFp16ComputeLayer(nvinfer1::ILayer* layer)
 {
     using LT = nvinfer1::LayerType;
@@ -105,6 +70,8 @@ bool isFp16ComputeLayer(nvinfer1::ILayer* layer)
 
         if (!output)
             continue;
+        if (!output->isExecutionTensor() || output->isShapeTensor())
+            return false;
 
         const auto type = output->getType();
 
@@ -119,40 +86,20 @@ bool isFp16ComputeLayer(nvinfer1::ILayer* layer)
 
 
 int buildEngine(int argc, char** argv) {
-    if (argc < 4 || argc > 6) {
-        std::cerr
-            << "Usage:\n  "
-            << argv[0]
-            << " <model.onnx>"
-            << " <output.plan>"
-            << " <fp32|fp16|int8>"
-            << " [calibration_directory] [calibration.cache]\n";
-
+    if (argc < 4) {
+        std::cerr << "Usage: yolo_build <model.onnx> <output.plan> <fp32|fp16|int8>"
+                     " [calibration_directory] [calibration.cache] [--fp16-layers names.txt]"
+                     " [--timing-cache timing.cache] [--dump-layers network.tsv] [--inspect-only]\n";
         return 1;
     }
-
-    const std::string onnxPath = argv[1];
-    const std::string enginePath = argv[2];
-    const std::string precision = argv[3];
-
-    if (precision != "fp32" && precision != "fp16" && precision != "int8") {
-        std::cerr
-            << "Precision must be fp32 or fp16 or int8\n";
-        return 1;
-    }
-
-    if ((precision == "int8" && argc < 5) || (precision != "int8" && argc != 4)) {
-        throw std::runtime_error(
-            "INT8 requires calibration_directory and optional cache path; FP32/FP16 require 3 arguments"
-        );
-    }
-
-    if (std::filesystem::exists(enginePath)) {
-        throw std::runtime_error(
-            "Engine already exists; choose a new output path: " + enginePath
-        );
-    }
-
+    const auto options = precision::parse(std::vector<std::string>(argv+1, argv+argc));
+    const auto& onnxPath = options.model;
+    const auto& enginePath = options.engine;
+    const auto& precision = options.mode;
+    if (!options.inspect && std::filesystem::exists(enginePath))
+        throw std::runtime_error("Engine already exists: " + enginePath);
+    const auto fp16Names = options.layers.empty() ? std::vector<std::string>{}
+                                                 : precision::readNames(options.layers);
 #ifndef YOLO_ENABLE_INT8
     if (precision == "int8") {
         throw std::runtime_error("INT8 requires YOLO_BUILD_CUDA_PIPELINE=ON");
@@ -326,6 +273,38 @@ int buildEngine(int argc, char** argv) {
         std::cout << '\n';
     }
 
+    std::set<std::string> requested(fp16Names.begin(), fp16Names.end());
+    std::set<std::string> matched;
+    std::string layerTable = "index\teligible\ttype\tname\n";
+    for (int i=0;i<network->getNbLayers();++i) {
+        auto* layer=network->getLayer(i);
+        const std::string name=layer->getName()?layer->getName():"";
+        const bool eligible=isFp16ComputeLayer(layer);
+        if(name.find_first_of("\t\r\n")!=std::string::npos)
+            throw std::runtime_error("Layer name cannot be represented in TSV");
+        layerTable += std::to_string(i)+"\t"+(eligible?"1":"0")+"\t"+
+            std::to_string(static_cast<int>(layer->getType()))+"\t"+name+"\n";
+        if(requested.count(name)) {
+            if(!eligible) throw std::runtime_error("Layer is not FP16-eligible: "+name);
+            if(!matched.insert(name).second) throw std::runtime_error("Ambiguous layer name: "+name);
+            layer->setPrecision(nvinfer1::DataType::kHALF);
+            std::cout << "[FP16 constraint] " << i << " : " << name << '\n';
+        }
+    }
+    for(const auto& name:requested)
+        if(!matched.count(name)) throw std::runtime_error("Unknown layer: "+name);
+    if(!options.dump.empty()) {
+        if(std::filesystem::exists(options.dump)) throw std::runtime_error("Layer dump already exists: "+options.dump);
+        const auto parent=std::filesystem::path(options.dump).parent_path();
+        if(!parent.empty()) std::filesystem::create_directories(parent);
+        std::ofstream dump(options.dump);
+        dump << layerTable; dump.close();
+        if(!dump) throw std::runtime_error("Cannot save layer dump");
+    }
+    if(options.inspect) return 0;
+    if(!requested.empty()) config->setFlag(nvinfer1::BuilderFlag::kOBEY_PRECISION_CONSTRAINTS);
+    std::cout << "Explicit FP16 constraints: " << matched.size() << '\n';
+
     if (precision == "fp16") {
         if (!builder->platformHasFastFp16()) {
             std::cerr
@@ -364,59 +343,6 @@ int buildEngine(int argc, char** argv) {
             return 1;
         }
 
-        int forcedFp16Layers = 0;
-        constexpr int fp16StartModel = 9;
-        constexpr int fp16EndModel   = 22;
-
-        for (int i = 0; i < network->getNbLayers(); ++i) {
-            auto* layer = network->getLayer(i);
-
-            const std::string name =
-                layer->getName() ? layer->getName() : "";
-
-            const int modelIndex =
-                getModelIndex(name);
-
-            if (modelIndex >= fp16StartModel &&
-                modelIndex <= fp16EndModel) {
-
-                if(isFp16ComputeLayer(layer)){
-                    layer->setPrecision(
-                        nvinfer1::DataType::kHALF
-                    );
-
-                    std::cout
-                    << "[FP16 constraint] "
-                    << i << " : "
-                    << name << '\n';
-
-                    ++forcedFp16Layers;
-                }
-                else{
-                    std::cout
-                        << "[FP16 skip] "
-                        << i << " : "
-                        << name << '\n';
-
-                    continue;
-                }
-            }
-        }
-
-        if (forcedFp16Layers == 0) {
-            throw std::runtime_error(
-                "No FP16-eligible layers matched in model.9~22"
-            );
-        }
-        else{
-            std::cout << "total forcedFp16Layers:" << forcedFp16Layers << std::endl;
-        }
-
-        config->setFlag(
-            nvinfer1::BuilderFlag::
-                kOBEY_PRECISION_CONSTRAINTS
-        );
-
         if (network->getNbInputs() != 1 || network->getNbOutputs() != 1) {
             throw std::runtime_error("INT8 calibration requires one YOLO input/output");
         }
@@ -447,9 +373,9 @@ int buildEngine(int argc, char** argv) {
         config->setFlag(nvinfer1::BuilderFlag::kFP16);
         config->clearFlag(nvinfer1::BuilderFlag::kTF32);
 
-        const std::string cachePath = argc == 6 ? argv[5] : enginePath + ".cache";
+        const std::string cachePath = options.cache;
         calibrator = std::make_unique<YOLOCalibrator>(
-            argv[4],
+            options.calibration,
             onnxPath,
             input->getName(),
             cachePath
@@ -459,6 +385,22 @@ int buildEngine(int argc, char** argv) {
         std::cout << "Precision: INT8 PTQ with FP16 fallback; FP32 I/O\n";
     }
 #endif
+
+    // Cache must outlive its association with the config through the build.
+    std::unique_ptr<nvinfer1::ITimingCache> timingCache;
+    if(!options.timing.empty()) {
+        std::vector<char> bytes;
+        if(std::filesystem::exists(options.timing)) {
+            std::ifstream file(options.timing,std::ios::binary);
+            if(!file) throw std::runtime_error("Cannot read timing cache");
+            bytes.assign(std::istreambuf_iterator<char>(file),{});
+            if(file.bad() || bytes.empty()) throw std::runtime_error("Empty or unreadable timing cache");
+        }
+        timingCache.reset(config->createTimingCache(bytes.data(),bytes.size()));
+        if(!timingCache || !config->setTimingCache(*timingCache,false))
+            throw std::runtime_error("Incompatible timing cache");
+        std::cout << "Timing cache loaded bytes: " << bytes.size() << '\n';
+    }
 
     // ------------------------------------------------
     // 6. Build serialized TensorRT engine
@@ -482,6 +424,20 @@ int buildEngine(int argc, char** argv) {
         throw std::runtime_error(
             "TensorRT engine build failed"
         );
+    }
+
+    if(!options.timing.empty()) {
+        const auto* updated=config->getTimingCache();
+        std::unique_ptr<nvinfer1::IHostMemory> blob(updated?updated->serialize():nullptr);
+        if(!blob) throw std::runtime_error("Cannot serialize timing cache");
+        const auto parent=std::filesystem::path(options.timing).parent_path();
+        if(!parent.empty()) std::filesystem::create_directories(parent);
+        const auto temp=options.timing+".tmp";
+        std::ofstream file(temp,std::ios::binary);
+        file.write(static_cast<const char*>(blob->data()),blob->size()); file.close();
+        if(!file) throw std::runtime_error("Cannot save timing cache");
+        std::filesystem::rename(temp,options.timing);
+        std::cout << "Timing cache saved: " << options.timing << '\n';
     }
 
     // ------------------------------------------------

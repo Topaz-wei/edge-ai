@@ -165,3 +165,7 @@ PyTorch 脚本直接调用 `YOLO(...).model`，不经过 Predictor，不做第�
 仓库已有 `logs/yolov8m_build_test.log` 记录 TensorRT 8.5.2 `--buildOnly` 成功、跳过推理；`yolov8m_parse.log` 中 `--skipInference` 命令失败。前者支持“曾构建成功”，不支持“推理数值已经验证”。本次没有新增 TensorRT 引擎、C++、FP16 或 INT8 测试。
 
 当前 Git 规则忽略 `data/` 和 `models/`，数值样本已在本地落盘，未自动纳入版本控制；可追踪脚本和本节文档。真正长期共享 Golden 时需同时归档带哈希的样本、权重、环境与输出，单独提交脚本不足以固定数值基准。
+
+## 单图 INT8 精度搜索
+
+构建器支持 timing cache 和精确 FP16 层名单；Python checker、C++ 构建驱动的精筛及私有 Polygraphy 粗定位入口见 [PRECISION_SEARCH.md](docs/PRECISION_SEARCH.md)。默认只使用固定 input.bin 和冻结FP16输出，不读取 validation。

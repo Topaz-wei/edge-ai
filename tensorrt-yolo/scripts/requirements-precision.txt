@@ -1,0 +1,2 @@
+# Install using /usr/bin/python3, --no-deps, --target ../.deps/polygraphy.
+polygraphy==0.49.9
