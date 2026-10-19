@@ -1,0 +1,1640 @@
+{
+  "ultralytics": "8.3.173",
+  "script_sha256": "817ed41075625735aead76726ba5507ef7da20bfd1a4e3edfe8ebc5a6158d85a",
+  "preprocessing_sha256": "4ac89c493066874bf70deb21417f29072e8f03376bb0a202d1f079e617e51c4c",
+  "postprocessing_sha256": "e9c8d35a143a1bf2e71b7e30c946147834b78fec48eaeeb991242aafa51ff83a",
+  "infer_binary_sha256": "9b5d26ea3fa6c984d1f6c11dbb249a9dc237fdc6baea32181544c3aebb733c52",
+  "batch_runner": "/home/ssd/projects/edge-ai/tensorrt-yolo/validation/tools/infer_batch",
+  "settings": {
+    "ap_confidence": 0.001,
+    "nms_iou": 0.7,
+    "max_detections": 300,
+    "precision_recall_confidence": 0.7,
+    "precision_recall_iou": 0.5,
+    "ap_iou": "0.50:0.05:0.95",
+    "classes": "person only; existing argmax-over-80 then person filter",
+    "preprocessing": "existing business masks and 640 letterbox"
+  },
+  "samples": [
+    {
+      "sample_id": "person_1/13",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_1/13.jpg",
+      "gt": [
+        [
+          127.751373,
+          99.29940800000003,
+          358.2745038,
+          414.6344928
+        ]
+      ],
+      "image_sha256": "866d28ed92b1ee4e0d1a6cc4dcc27105070a3f6ced5fa232fcf4c865d1a2f1bf",
+      "label_sha256": "14189086f68e5b7f23142a7850e93f04d7a9c88aca53b3d54673cc1dff594802"
+    },
+    {
+      "sample_id": "person_1/14",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_1/14.jpg",
+      "gt": [
+        [
+          148.0125114,
+          77.73684800000001,
+          359.7112422,
+          413.4247136
+        ]
+      ],
+      "image_sha256": "3031201af48f85b04fb1a517c67a97d203a7f53ffc126a0e415d9eb822a651c9",
+      "label_sha256": "4f2650e7d8611c41a597be990c11eb311cf161df3ee6562fb6eafd2835a88bce"
+    },
+    {
+      "sample_id": "person_1/15",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_1/15.jpg",
+      "gt": [
+        [
+          123.97155659999999,
+          106.46962239999999,
+          359.1694314,
+          414.1118176
+        ]
+      ],
+      "image_sha256": "7c35b62494da61b6dfec0f7d495ec01a82448f913871a53d4ecda88ca1ed4adf",
+      "label_sha256": "9882ee55e500d54461b0dcd5da130c01969576b2c941a3c5b341dd6507fda924"
+    },
+    {
+      "sample_id": "person_2/55",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/55.jpg",
+      "gt": [
+        [
+          109.86285240000001,
+          68.84083520000001,
+          359.720946,
+          483.35290560000004
+        ]
+      ],
+      "image_sha256": "8f71d76bdc98f3cc70d3fdc90bb0a5a41ff4452f7a80ffa1e97a9d33971e641c",
+      "label_sha256": "6d701d3c3a56b81a351f007a0fcb3d91bde991508f240355d519c2637507846c"
+    },
+    {
+      "sample_id": "person_2/56",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/56.jpg",
+      "gt": [
+        [
+          136.59893820000002,
+          71.83772160000001,
+          360.0000018,
+          533.1536255999999
+        ]
+      ],
+      "image_sha256": "ad207ab43258654ee4d096c2361af8a88f0cb1a084e1d44bae853a7ec7fa91cb",
+      "label_sha256": "9e8a4092d331b66b21ef1de0f0e4b0a04d8f3228ec60c9e79b334389caed83c1"
+    },
+    {
+      "sample_id": "person_2/57",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/57.jpg",
+      "gt": [
+        [
+          85.430358,
+          80.99760320000001,
+          359.5995468,
+          570.0375328
+        ]
+      ],
+      "image_sha256": "4fb5b62cd6a788ab916ca0d06678a98d7fcbc1b0fdb68949d7a60536f4963c2d",
+      "label_sha256": "23efa7584e24443f367854a9d4c5ebb70fc46fb4c42b147c9814bc6abd885ed6"
+    },
+    {
+      "sample_id": "person_2/58",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/58.jpg",
+      "gt": [
+        [
+          121.32092159999998,
+          74.74041600000004,
+          360.0,
+          568.5346688
+        ]
+      ],
+      "image_sha256": "5d9f7cbf7a9e3132ae5a00b95dde83efe654ad29eda6b36ae5f1526bf453a012",
+      "label_sha256": "b106e62042b4ffc6c90783b39d661f7bc34fc788ee31cd27577941cd45e80cbd"
+    },
+    {
+      "sample_id": "person_2/59",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/59.jpg",
+      "gt": [
+        [
+          157.60644480000002,
+          90.81933439999997,
+          360.0,
+          580.7874751999999
+        ]
+      ],
+      "image_sha256": "347f11616fbf0d8abffeaa7ed4d5e221b64b7a4ece9c95513978b43cd807483e",
+      "label_sha256": "ea5ecdb933330a2a8af2159972ddd04b5b76f4327f93f032a3e0800355ff7ee3"
+    },
+    {
+      "sample_id": "person_2/60",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/60.jpg",
+      "gt": [
+        [
+          155.570283,
+          90.80084159999998,
+          360.0000018,
+          580.2768544
+        ]
+      ],
+      "image_sha256": "0e0732952620560aa3614c172e11eb018b8cd3b054914dfeda31e3e8c2750896",
+      "label_sha256": "4887ffaabf723b90fccd2570f22bfd0d3cedb61ef2675173d72010b8ce9a4f03"
+    },
+    {
+      "sample_id": "person_2/61",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/61.jpg",
+      "gt": [
+        [
+          157.64306580000002,
+          92.08488640000002,
+          359.9999982,
+          580.2669088
+        ]
+      ],
+      "image_sha256": "24f9d434246aa2e4ff08d8a82056a9bc5f20c930ed07920609244350a4cfa058",
+      "label_sha256": "11c31b218661f63e61381904d69095342f6bb1a207828ca7ac6e46afa5fd7eb2"
+    },
+    {
+      "sample_id": "person_2/62",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/62.jpg",
+      "gt": [
+        [
+          155.93475420000001,
+          107.580736,
+          360.0000018,
+          582.6935424
+        ]
+      ],
+      "image_sha256": "e12d1ae014d6e6a9105dc13c6392c82d61c255127ee4c9f769b00b52b820ed5f",
+      "label_sha256": "014492f5b37b6dc8d68dbb66c4a836b41f51414a9649917bb048fab9a296ce6c"
+    },
+    {
+      "sample_id": "person_2/63",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/63.jpg",
+      "gt": [
+        [
+          74.22052140000001,
+          77.91204800000003,
+          360.0000018,
+          580.8695072
+        ]
+      ],
+      "image_sha256": "fd015b07a80125c3b6ef447d232199b397d3f50ec66349b7bb1e8b0e39574d51",
+      "label_sha256": "37b770cd51410a44739623b3b7e7591ccf8169967a514a10fa74fda54b1c7c24"
+    },
+    {
+      "sample_id": "person_2/64",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/64.jpg",
+      "gt": [
+        [
+          157.5747072,
+          88.43223680000001,
+          360.0,
+          582.3184832000001
+        ]
+      ],
+      "image_sha256": "1cf622c3167795a32214d80ad84341d1715d08ec3bc504ae672bc2c1b0f3147f",
+      "label_sha256": "b1e57de78ca1a47c9de0cf4a11bdcea199daba696b2f23c2d10d93043877f590"
+    },
+    {
+      "sample_id": "person_2/65",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/65.jpg",
+      "gt": [
+        [
+          157.6732194,
+          140.45664639999998,
+          359.6834718,
+          580.4757056
+        ]
+      ],
+      "image_sha256": "c62a54fe09b97e5c8c31cdb2dc8c8275fe7536abdf3e857a02a302f5a91dad6a",
+      "label_sha256": "bc7cddafa0179ec4c29728788a56bb9415c6fc5355f26243d724205531663483"
+    },
+    {
+      "sample_id": "person_2/66",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_2/66.jpg",
+      "gt": [
+        [
+          153.34851239999998,
+          92.53131200000001,
+          359.71118279999996,
+          584.248656
+        ]
+      ],
+      "image_sha256": "aaef2286dfb1131721bfd497cc2d937e8ed08e2cab4d9b0fd2197c8b8e4050eb",
+      "label_sha256": "0fbb96a1126aa35d2f291f03e99de26bc9b9dd8f495b5fcef855bed4dc75ecde"
+    },
+    {
+      "sample_id": "person_3/154",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/154.jpg",
+      "gt": [
+        [
+          127.89758160000001,
+          56.00554240000001,
+          359.58349440000006,
+          557.5997952
+        ]
+      ],
+      "image_sha256": "4c6765d69858ed1be47989ca1fe3c7a222dee64e5c4f9fed75c08e7aa6e02dc7",
+      "label_sha256": "2e1f4456b03cfd90fa457c6974e978b7e1fc9cce85f6e9746cb432e6ef136b42"
+    },
+    {
+      "sample_id": "person_3/155",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/155.jpg",
+      "gt": [
+        [
+          126.96185160000002,
+          63.44151359999998,
+          359.4050892,
+          538.8161632
+        ]
+      ],
+      "image_sha256": "5533055eea1350dedd7d39e7f780233badde1c103ca12262ccf35721f5045465",
+      "label_sha256": "b26158510f5250a2e230c855f0d5732a8ebf5796757d27d2048ccb5ec0d352c4"
+    },
+    {
+      "sample_id": "person_3/156",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/156.jpg",
+      "gt": [
+        [
+          124.2106938,
+          65.3886752,
+          359.7869862,
+          542.6512479999999
+        ]
+      ],
+      "image_sha256": "f3b8a2ce7b39f2ae43f5d73bc1855d77771ec76c4441e394bbced0cce87fc56c",
+      "label_sha256": "44c89b94ca3a033c1b900f2cfcc26232af842b8fdd899870d71e435162200ece"
+    },
+    {
+      "sample_id": "person_3/157",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/157.jpg",
+      "gt": [
+        [
+          123.07025159999999,
+          63.266297599999994,
+          359.42425560000004,
+          552.5114176
+        ]
+      ],
+      "image_sha256": "25ae08dc65cb1c078fb26cc24f4c9bf41fde056018d749e5626d636d36c41ec8",
+      "label_sha256": "cc7884ca906f638b086cc856b81698f5c4d96e917c1732c8e04c086bb57079f6"
+    },
+    {
+      "sample_id": "person_3/158",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/158.jpg",
+      "gt": [
+        [
+          121.81628339999999,
+          76.23335359999999,
+          359.2733742,
+          542.4879776
+        ]
+      ],
+      "image_sha256": "1fee3b30f32ab7d2a60f01d7c8959a557c3e46beaa4d32db44b926110b233ff1",
+      "label_sha256": "716e7d571c05adcb17b01f8f61ba66ce856708263d64211516be65ffe9a59db9"
+    },
+    {
+      "sample_id": "person_3/159",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/159.jpg",
+      "gt": [
+        [
+          111.83123700000002,
+          87.3450464,
+          359.7356574,
+          529.4281632000001
+        ]
+      ],
+      "image_sha256": "29b0e2b3ed0d37b864c3c63c78f65b27ac34aed7c3147f98947b731c59d77901",
+      "label_sha256": "e40c53f97f9403e27e761843e995614e224fcf3854f3a2fc3bfe1ac932407319"
+    },
+    {
+      "sample_id": "person_3/160",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/160.jpg",
+      "gt": [
+        [
+          117.78698699999998,
+          75.989072,
+          355.8389274,
+          520.2135008
+        ]
+      ],
+      "image_sha256": "2d0005c2b2aad5855b7ec501d8e3c24114a21e62710a7d2a752fdccb02cb131c",
+      "label_sha256": "fbcf1cb61a2661ce173569c482c0a0161d3a8ae75d43f459cbd3dfa601840ea7"
+    },
+    {
+      "sample_id": "person_3/161",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/161.jpg",
+      "gt": [
+        [
+          133.2516456,
+          75.23736640000003,
+          359.5317984,
+          499.228272
+        ]
+      ],
+      "image_sha256": "bb9d07437a84bb938b30deece3a24d81408bf29da13397e909df08d22bbae181",
+      "label_sha256": "b4a3a3e0b2abea98ac9b4937e659439dcb81993bbd9d5678c1f66b63fe9d3774"
+    },
+    {
+      "sample_id": "person_3/162",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/162.jpg",
+      "gt": [
+        [
+          107.9354412,
+          77.17126400000001,
+          357.951294,
+          502.94750719999996
+        ]
+      ],
+      "image_sha256": "14a4939a22affde095e9ddf5aabed2576c2fb269981e6840d64eef696730b8ef",
+      "label_sha256": "29f3bcac019856cd86a981414521b52c48a404e13811f71ce7d70b37baf59142"
+    },
+    {
+      "sample_id": "person_3/163",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/163.jpg",
+      "gt": [
+        [
+          109.1781018,
+          76.262576,
+          356.48089739999995,
+          502.41894720000005
+        ]
+      ],
+      "image_sha256": "0904e82e3caf0051a2dcd810d9da8b73bf1d2382e6dea43a1730baaebfbfb843",
+      "label_sha256": "42a8a25399c9d0d290d0ce71971e2042ab157085a6d2b9e72964c1e976e5f1f4"
+    },
+    {
+      "sample_id": "person_3/164",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/164.jpg",
+      "gt": [
+        [
+          107.12622060000001,
+          81.62268159999999,
+          354.6745002,
+          512.85504
+        ]
+      ],
+      "image_sha256": "244b35e4f14fbbb10375c47471922bcd54b4d58c1b092523971910a9cb64e017",
+      "label_sha256": "acc362e53809d36caacd55fd752bd1a75571e209a77aab72853a7f44dab64fbd"
+    },
+    {
+      "sample_id": "person_3/165",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/165.jpg",
+      "gt": [
+        [
+          109.43035739999999,
+          87.30232000000001,
+          357.71410979999996,
+          554.9924896
+        ]
+      ],
+      "image_sha256": "0f6022cc5cc43268e64ccefffda963e525e47031fd025e687cf78ca9af803b60",
+      "label_sha256": "920022d3772348dc8800944029f590470323b8c70771bf9b559d2c3cd186129d"
+    },
+    {
+      "sample_id": "person_3/166",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/166.jpg",
+      "gt": [
+        [
+          110.6268606,
+          76.95825280000001,
+          359.0946954,
+          510.965152
+        ]
+      ],
+      "image_sha256": "d8a332ffb436ab3743c36522106e2286301e6110f0fb61728d61cce97428d931",
+      "label_sha256": "390be8614e63c792e3afdc14d9009402541d8b16910feb06090ed0647363fdba"
+    },
+    {
+      "sample_id": "person_3/167",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/167.jpg",
+      "gt": [
+        [
+          106.28685,
+          76.69823999999998,
+          358.03161719999997,
+          515.5367424
+        ]
+      ],
+      "image_sha256": "2256a7ff9ad102be59decad1abd9d3216163fa1715132dd4310074b6850ded2c",
+      "label_sha256": "6ed737869753fd5d6790974f0823e8c04f8035b5499840883f0ff62cd25f94de"
+    },
+    {
+      "sample_id": "person_3/168",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/168.jpg",
+      "gt": [
+        [
+          110.28236399999997,
+          76.99125759999998,
+          357.27502319999996,
+          514.7717888
+        ]
+      ],
+      "image_sha256": "7121d131fb73c67ac5f5b8a11b638a9b695e9c96bfd4e80f0106e26448ddeabe",
+      "label_sha256": "4529d265a6a60d9c49a7617c3e85971cb14ae33a5797290f261493d01d7eb82f"
+    },
+    {
+      "sample_id": "person_3/169",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/169.jpg",
+      "gt": [
+        [
+          114.25608899999999,
+          82.4857184,
+          358.4365254,
+          511.75219519999996
+        ]
+      ],
+      "image_sha256": "9a26376baeebcbdc7b2191d2026057daf90d42ad2c8967cde836af8670a8d92f",
+      "label_sha256": "dfaada1f0647f0c984357b26b52982604efafc6125231b844681f32f6b7a68e9"
+    },
+    {
+      "sample_id": "person_3/170",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/170.jpg",
+      "gt": [
+        [
+          117.56061000000001,
+          72.89544320000002,
+          359.3806164,
+          560.7692864
+        ]
+      ],
+      "image_sha256": "d7d7478300f40210a6e9352503fd0eed92441fbffdfe88aac5d7c2d6fce60d31",
+      "label_sha256": "22ba3f5f2a91b3d5502843ffbcd4d6229669b99840885c3ca25baa2e7d6b4931"
+    },
+    {
+      "sample_id": "person_3/171",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/171.jpg",
+      "gt": [
+        [
+          121.86065699999999,
+          65.24536,
+          359.5540158,
+          592.369872
+        ]
+      ],
+      "image_sha256": "285d7fd1248474485ca7ced2ef43d0a4f1a42b7adfcfbbb5403824515083b00f",
+      "label_sha256": "e6ad67cf14608cab32b5b19f79be9650ed379344c2b11305b2feebf7a6d80e02"
+    },
+    {
+      "sample_id": "person_3/172",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/172.jpg",
+      "gt": [
+        [
+          114.11035020000001,
+          83.133056,
+          359.6587506,
+          548.3361792000001
+        ]
+      ],
+      "image_sha256": "a5e9b77617a8142720deadee184a130adb8a3a63441bcae8148448e6b4c7695c",
+      "label_sha256": "fa721027bf51d694368acb62e565352af1297b6eb97b6269e6571804e78e879a"
+    },
+    {
+      "sample_id": "person_3/173",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/173.jpg",
+      "gt": [
+        [
+          112.75866719999998,
+          70.02520960000001,
+          359.3977056,
+          534.1761472000001
+        ]
+      ],
+      "image_sha256": "bb3e558efc1fdda78200210f4874ed36bea7131121c29a5f3eb8d89f5b0f3d55",
+      "label_sha256": "c80fd34a35f527834ed477af06313021c1773c3e351aceb31f0cce010748b799"
+    },
+    {
+      "sample_id": "person_3/174",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/174.jpg",
+      "gt": [
+        [
+          114.99119459999999,
+          84.8256096,
+          359.3603502,
+          541.157776
+        ]
+      ],
+      "image_sha256": "50fa4576b2372548a59a30f459b0a92d6e6273d3419e3a0cd7c610226c81fb50",
+      "label_sha256": "af46f4fb791fba8432eee47b7239360d7998915fbd82e037ea239825cdbf010e"
+    },
+    {
+      "sample_id": "person_3/175",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/175.jpg",
+      "gt": [
+        [
+          122.2516494,
+          84.75027839999998,
+          360.0000018,
+          473.20950400000004
+        ]
+      ],
+      "image_sha256": "e3de69958644eeab7578ae803b371d01b9a70205f3bf900ae8b6e97934c7ed4d",
+      "label_sha256": "03cda3d32f8e5141796e9671c9022e5f57299220b8be4eb2b8e5c875ea98dc34"
+    },
+    {
+      "sample_id": "person_3/176",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/176.jpg",
+      "gt": [
+        [
+          102.280473,
+          68.5832512,
+          359.3522358,
+          600.2814911999999
+        ]
+      ],
+      "image_sha256": "1d27576c99f1a7a3075cbedd2bfd6c8db9e490560638beef761ef1ff36ebd565",
+      "label_sha256": "8c15fcb9afe6d67f76c4eb528c7dbf7d298fbc92bdc82f8cf941badc354b977a"
+    },
+    {
+      "sample_id": "person_3/177",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/177.jpg",
+      "gt": [
+        [
+          124.054992,
+          74.2936096,
+          359.5504752,
+          434.57348800000005
+        ]
+      ],
+      "image_sha256": "034184ce96dda44930cbb3cafe54c551ee87e855489f0f61815213abfa1cc770",
+      "label_sha256": "879ea523b0482611811086e9170a5511835ec060626602d7d76cf5ec9d833046"
+    },
+    {
+      "sample_id": "person_3/178",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/178.jpg",
+      "gt": [
+        [
+          118.08014039999998,
+          68.3813472,
+          359.07025319999997,
+          608.0847136
+        ]
+      ],
+      "image_sha256": "7967f928358c684dd00a2ae5dde67694a22ab9604edf3cfd3b820e64f43cb963",
+      "label_sha256": "65e45c819255fd974eff084b170de1304a59c4ecbb9aee9253339093d9372c45"
+    },
+    {
+      "sample_id": "person_3/179",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/179.jpg",
+      "gt": [
+        [
+          120.27880799999998,
+          73.30911360000002,
+          359.7066648,
+          457.8505536
+        ]
+      ],
+      "image_sha256": "931f5b9c1ec15197392be90555c57e65464ffd35fe8f20b4a34c08c86de519dd",
+      "label_sha256": "bb09193dc605fcb824fb19120a7a8496fb77e8027dce53348db815d4cbc7bf3b"
+    },
+    {
+      "sample_id": "person_3/180",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/180.jpg",
+      "gt": [
+        [
+          90.95536799999999,
+          92.10095040000002,
+          359.55926639999996,
+          604.9932832000001
+        ]
+      ],
+      "image_sha256": "3b796b470c1f9be64bf152ef29d72f6eacc1dae37c8b18c792f721b7c923c064",
+      "label_sha256": "3e18709c2bbf41e84a95775ddc8cca96d64f3201329a04e911111cbb3e1a3ee1"
+    },
+    {
+      "sample_id": "person_3/181",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/181.jpg",
+      "gt": [
+        [
+          66.31956540000002,
+          73.93261760000001,
+          360.0000018,
+          594.1226784
+        ]
+      ],
+      "image_sha256": "18c53055088f9a76a51d78f98fd36ee4af255e76fa9445ac915cfd6f4fee0c52",
+      "label_sha256": "ba3dceaf15b74649e60294843477c59166966668aae1c456bc437e8fe75c8b07"
+    },
+    {
+      "sample_id": "person_3/182",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/182.jpg",
+      "gt": [
+        [
+          85.9461048,
+          76.25512960000002,
+          359.7033672,
+          604.4535552
+        ]
+      ],
+      "image_sha256": "3a8599512dae278001e08d4c5d6cfb8b49002c378b7bdaabd1b8e268eac36f3c",
+      "label_sha256": "060c7cbc0aa797fb1814dcbfdaf47d01e6f5d97893d64dcd2012e7d07bd3180d"
+    },
+    {
+      "sample_id": "person_3/183",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/183.jpg",
+      "gt": [
+        [
+          87.09848099999998,
+          87.02319360000001,
+          359.34445259999995,
+          614.0556672
+        ]
+      ],
+      "image_sha256": "9af73409ae0ece75572963235f0dd9c12d20ab2d9991ef5241dc66073bfe6e79",
+      "label_sha256": "46c175bc41f7de021d693b2edd607bded0b17413ffbb2c181599627d4c519b99"
+    },
+    {
+      "sample_id": "person_3/184",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/184.jpg",
+      "gt": [
+        [
+          87.11433360000002,
+          86.89044160000002,
+          359.2864368,
+          518.526672
+        ]
+      ],
+      "image_sha256": "edc99efc6e52f69a176160dd53947684cc5bbf0c3ed9baa77c342e4404043585",
+      "label_sha256": "55ce13edd2b03c686fdc8ffbd987785b153812f43f9fb40e380385db2a396964"
+    },
+    {
+      "sample_id": "person_3/185",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/185.jpg",
+      "gt": [
+        [
+          86.4641574,
+          85.4175424,
+          359.372133,
+          525.1503936
+        ]
+      ],
+      "image_sha256": "21380a756ea63ad1558d396b2f271f8e13fea8c485f877f432dc7bb18fe6679c",
+      "label_sha256": "a630c43b6ca9bb7f953b54543be01b5d5465ccc4b58d3f8d83d39a263f0b0214"
+    },
+    {
+      "sample_id": "person_3/186",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/186.jpg",
+      "gt": [
+        [
+          86.50201499999999,
+          82.98854079999998,
+          359.2601946,
+          496.21289279999996
+        ]
+      ],
+      "image_sha256": "89eca05e0871bea46cd01bd6d77726727de7080fcd7511822f573a7b2fcf0aee",
+      "label_sha256": "749a523eb5db77e0d0a60d9c60b575140067072f8d4cb1dfaa50f2ecd26611de"
+    },
+    {
+      "sample_id": "person_3/187",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/187.jpg",
+      "gt": [
+        [
+          90.1731708,
+          77.80468799999997,
+          359.41046040000003,
+          605.386352
+        ]
+      ],
+      "image_sha256": "6a0ae0f0a90107bbb2ac5a5df2bb14a4e348dfa9132799092f0c46a292f21c42",
+      "label_sha256": "6e3008db3958290e6b00b0f6ab43f8e056421a5e2690d872d3876a34e3679981"
+    },
+    {
+      "sample_id": "person_3/188",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/188.jpg",
+      "gt": [
+        [
+          90.490419,
+          76.5209376,
+          359.16388020000005,
+          607.263856
+        ]
+      ],
+      "image_sha256": "7bd2e36fa907233cbae5876e92d49c5d48ab9d456a57956ef2a98c4f574e0e48",
+      "label_sha256": "074f2d3d39fafa565d45d5e9ddd93f13977c13795f2ddfc3b44704065b944072"
+    },
+    {
+      "sample_id": "person_3/189",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/189.jpg",
+      "gt": [
+        [
+          121.36694400000002,
+          83.0711072,
+          359.7662376,
+          518.1613792
+        ]
+      ],
+      "image_sha256": "5741b1e3ebf61974b0142190511f739ca7d5c1bed1d73a831494f6d3763482ff",
+      "label_sha256": "4fdbdc67ab315e4d15f9e7a93b31028c5d1c72937f35f9d26ee3a31faf8bef24"
+    },
+    {
+      "sample_id": "person_3/190",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/190.jpg",
+      "gt": [
+        [
+          120.40234379999998,
+          87.49334720000004,
+          359.9964594,
+          599.6371488
+        ]
+      ],
+      "image_sha256": "c04f5ffb918f0ef494b7616c651b2c5f9e601e6b7b241d065461ab4f4801c212",
+      "label_sha256": "9e49365b7fb4e5bc12b16aa46d2167ef2f7714d5dfdda98af5639744df408609"
+    },
+    {
+      "sample_id": "person_3/191",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/191.jpg",
+      "gt": [
+        [
+          121.76403660000001,
+          90.01191999999996,
+          359.7136218,
+          595.6604639999999
+        ]
+      ],
+      "image_sha256": "b0245c473894fd846147712e1d9e08e9af1d5d96da026767f8b5e53dceda7558",
+      "label_sha256": "98542a1a9468d8d60a5d017ce4b52f644f066c0f030c925bb23229887b74c82c"
+    },
+    {
+      "sample_id": "person_3/192",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/192.jpg",
+      "gt": [
+        [
+          98.76123180000002,
+          80.59283199999999,
+          359.16961860000004,
+          600.8605952
+        ]
+      ],
+      "image_sha256": "7a41a43774fcc8ce5044fcc175e1a6691f4e3f43ae10cdc8cc9f539ba6bc7ff6",
+      "label_sha256": "13696c656e28f29e811ee988d2114c62e933531e321d83444690fdf872f29bf8"
+    },
+    {
+      "sample_id": "person_3/193",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/193.jpg",
+      "gt": [
+        [
+          102.14227439999999,
+          77.49029440000001,
+          359.68182479999996,
+          600.6411744000001
+        ]
+      ],
+      "image_sha256": "c1c97e84bea8873b7c56f4fb8bdb2d1f32b15f15675115684a45de593de2361a",
+      "label_sha256": "9e6988aace8a14eebe6c1d1cbb63ad02acb1ef88790bb46de0c494577db66690"
+    },
+    {
+      "sample_id": "person_3/194",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/194.jpg",
+      "gt": [
+        [
+          86.4248508,
+          77.18635200000001,
+          359.642394,
+          551.1846304000001
+        ]
+      ],
+      "image_sha256": "4bd5d6747073fbf162109e2d11ab8e46ec10483b3f7844f80488d1b3c217c6d9",
+      "label_sha256": "ce48ea3ab4373a814a8c13fe876eb9aa734c297ba4aaf45ba396d357a7362cb0"
+    },
+    {
+      "sample_id": "person_3/195",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/195.jpg",
+      "gt": [
+        [
+          106.4820114,
+          76.9483008,
+          359.20770300000004,
+          516.1849344
+        ]
+      ],
+      "image_sha256": "9ec4d86989af903e5eb27b66ec50af45eb4268be61fd3e4de891b156da334754",
+      "label_sha256": "6020a2f3ef96f31afbd1bd5c62c2ab18827aaa5f5089168b5990a893f87df07a"
+    },
+    {
+      "sample_id": "person_3/196",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/196.jpg",
+      "gt": [
+        [
+          123.64684919999999,
+          75.9469632,
+          359.75140200000004,
+          523.9700928000001
+        ]
+      ],
+      "image_sha256": "0b85526e74ffd3e3e4a9cdceabcf2841fc3dd1cb183891a356b83953d3abdf64",
+      "label_sha256": "3eb8d4e66bfcdeeb6a892847ed8dc6f51dc9e30b006ba10baa98d262e00777d5"
+    },
+    {
+      "sample_id": "person_3/197",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/197.jpg",
+      "gt": [
+        [
+          121.0719006,
+          78.888976,
+          359.84088180000003,
+          493.14965440000003
+        ]
+      ],
+      "image_sha256": "9b5ff8f667f46b9e257456583978fe747dc6ead0a6d7699d78cf12bb1bdce44d",
+      "label_sha256": "57cd739b1e9afc537237173a79342e5de2b4fef959cea26561c8c9f23ce8ebf8"
+    },
+    {
+      "sample_id": "person_3/198",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/198.jpg",
+      "gt": [
+        [
+          95.111937,
+          83.5792224,
+          359.3831166,
+          467.9590432
+        ]
+      ],
+      "image_sha256": "46635d3e44f3ae42040c652627b08231e7d697d4c6c93cf19aa96a8853486f76",
+      "label_sha256": "4b733b8c50fbb7bb735bff6343a344c7ae03c413e34a24c8cd846909e83e1ea1"
+    },
+    {
+      "sample_id": "person_3/199",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/199.jpg",
+      "gt": [
+        [
+          104.33441160000001,
+          83.0247168,
+          359.06109480000003,
+          472.06396159999997
+        ]
+      ],
+      "image_sha256": "f0134ccc2b997d9f66ce1a0f4e0de35282bc2cce9b61b8d156c8600eb92a9465",
+      "label_sha256": "f3b2ace96b6fa516d75ecac76d46fb9f60cc0d4403ce44b22da5da54f9f38f8d"
+    },
+    {
+      "sample_id": "person_3/200",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/200.jpg",
+      "gt": [
+        [
+          96.1936326,
+          81.12726080000002,
+          359.41030739999997,
+          475.99346879999996
+        ]
+      ],
+      "image_sha256": "320d2eb48feeadfeca50d8799bdd0a2a269e17ecdb3b43001290d32ab68326ea",
+      "label_sha256": "c15be5ae8397a674dc92364c01da601bb68f9355ed03ce0f26247bcccebf02b5"
+    },
+    {
+      "sample_id": "person_3/201",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/201.jpg",
+      "gt": [
+        [
+          96.27098040000001,
+          80.7103744,
+          359.3988036,
+          471.2352896
+        ]
+      ],
+      "image_sha256": "03d33b1b8be23bf16f08ba7d8945834b4669ec75c0934c8dd056ea0ec993b926",
+      "label_sha256": "10e2fe79400917a70ec0732838af43d3cc2f563a97740cfaddac2a89f79f2f88"
+    },
+    {
+      "sample_id": "person_3/202",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/202.jpg",
+      "gt": [
+        [
+          96.16427640000002,
+          77.8265408,
+          359.41464360000003,
+          473.1827392
+        ]
+      ],
+      "image_sha256": "a0ec4ff94c534617bf87b404afe851e6a279cfadbb68425e44a6f72fcc095d99",
+      "label_sha256": "96eed87c9dabea8db0283aaae546cc9cc5146900aef366b0aaff1c22ee8beb46"
+    },
+    {
+      "sample_id": "person_3/203",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_3/203.jpg",
+      "gt": [
+        [
+          0.0,
+          207.00000000000003,
+          360.0,
+          515.0
+        ]
+      ],
+      "image_sha256": "c8da2394b1a6685bef627c33fe1120867784e3810c2a547dd531e28343b4b051",
+      "label_sha256": "0beb3f9469d47bc4c354416bed32ec228fa6221af79f464f10b8e3427a187076"
+    },
+    {
+      "sample_id": "person_4/154",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/154.jpg",
+      "gt": [
+        [
+          116.29119779999998,
+          71.74353280000003,
+          359.9999982,
+          602.5050048
+        ]
+      ],
+      "image_sha256": "abb7cc54d0996d3c9b6c4c3dc1f2b793616a99aaab5ba68740bf20ddf7e69336",
+      "label_sha256": "4c0da43f5c8b2af19f82e45544da814b48f48e38f0043ac62666ffbfb201fa98"
+    },
+    {
+      "sample_id": "person_4/155",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/155.jpg",
+      "gt": [
+        [
+          113.98321619999999,
+          76.0598752,
+          359.6734638,
+          606.164368
+        ]
+      ],
+      "image_sha256": "9ffb7ae481f4b46cb1bee838362dc82429888208dc6239627297faea5a50dadb",
+      "label_sha256": "dbc4f41b70601daa26a3d9020b11aa79d0dfdfc88c321c46fb12c03da0a9ef48"
+    },
+    {
+      "sample_id": "person_4/156",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/156.jpg",
+      "gt": [
+        [
+          116.0359488,
+          71.87768640000002,
+          359.1556992,
+          606.1070560000001
+        ]
+      ],
+      "image_sha256": "139a2437c013510ebd23ae98a27daa44760a9dff98d5d0079a385d3af969f786",
+      "label_sha256": "9a6067e4aaecab29250b4654a047225df91620f517b7673362997028094c4628"
+    },
+    {
+      "sample_id": "person_4/157",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/157.jpg",
+      "gt": [
+        [
+          113.7777552,
+          73.4757696,
+          359.6996448,
+          605.5203264
+        ]
+      ],
+      "image_sha256": "b30eaf998052b0b44fabae5aa50f4251b9a0404ca99db10ca1792489eb133d53",
+      "label_sha256": "724805687f2866737c8d02aa867599d839000f5901661cee48c8f317ece64f0f"
+    },
+    {
+      "sample_id": "person_4/158",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/158.jpg",
+      "gt": [
+        [
+          112.2801516,
+          64.83331199999998,
+          359.2614132,
+          606.5924672
+        ]
+      ],
+      "image_sha256": "e258959ecdec3d8959457ff202652665584e26865f98c47c472c1b5b038d7cc1",
+      "label_sha256": "a98be2dab8fde7b60d7df21712961ca725d8c82b7c7580031cae89f0d0275edd"
+    },
+    {
+      "sample_id": "person_4/159",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/159.jpg",
+      "gt": [
+        [
+          55.5207048,
+          56.525881600000005,
+          360.0,
+          606.2939456
+        ]
+      ],
+      "image_sha256": "c96d4b291e0689e6c59b45dc4adf78e612207eb66e28510754e19aa3383b8e04",
+      "label_sha256": "a7a1d90f51d00d8739fcb1f503cc5317c8a092fdd3b032aa6c6e898057b51647"
+    },
+    {
+      "sample_id": "person_4/160",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/160.jpg",
+      "gt": [
+        [
+          45.428284799999986,
+          66.33099520000002,
+          358.57501199999996,
+          608.43744
+        ]
+      ],
+      "image_sha256": "1a4051e38978681a705dff627c7070c7fccc1cdd3ac425e11d901d10a2e60cb9",
+      "label_sha256": "0287de537ee78c0bfba6fe491e6436f75218ec5ea474c5c44e970c95010d8b00"
+    },
+    {
+      "sample_id": "person_4/161",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/161.jpg",
+      "gt": [
+        [
+          45.71850599999999,
+          69.93694719999996,
+          358.7215572,
+          609.6044288
+        ]
+      ],
+      "image_sha256": "2d8ed724f4e9789fb7b19a78a85e0d9fff18a7b29e73e7bf4fd2dcbfcda4e80b",
+      "label_sha256": "2cfc2f9824c82fb02fcc4c4df0fe46583d1da16f75b89640c82275091b2971ef"
+    },
+    {
+      "sample_id": "person_4/162",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/162.jpg",
+      "gt": [
+        [
+          48.08227500000002,
+          73.63867200000001,
+          359.8291026,
+          629.910768
+        ]
+      ],
+      "image_sha256": "cd8fd2d6d29247918983ad67355a416e92477a8f638758a840628b9f47e30799",
+      "label_sha256": "438dbe6fd4ba1f71e200fac440a23b8eaed6932d01ff1c194b975f56717e5eb9"
+    },
+    {
+      "sample_id": "person_4/163",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/163.jpg",
+      "gt": [
+        [
+          25.474930199999985,
+          69.26599040000002,
+          359.819397,
+          599.0670144000001
+        ]
+      ],
+      "image_sha256": "3e201de566f4696758abd1f06697df635e29303d638a2059a0ee7d3832bf11ad",
+      "label_sha256": "697cbf4dd32f7b99ff569f24c65a254ce04714c122c4fd4165bb97e31afbcf85"
+    },
+    {
+      "sample_id": "person_4/164",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/164.jpg",
+      "gt": [
+        [
+          29.56585860000002,
+          62.351014399999976,
+          359.478639,
+          590.7612928000001
+        ]
+      ],
+      "image_sha256": "f3d85c6c4cb15a1ab7efa6965f7ef7f82cb95a51dafaad51c429329d1c295162",
+      "label_sha256": "0a3451345d1f236ac61b3ebf9fa0f1be2d72fd9810d8e42822a74a0c37c174bc"
+    },
+    {
+      "sample_id": "person_4/165",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/165.jpg",
+      "gt": [
+        [
+          125.88705360000002,
+          61.254211199999986,
+          359.9163504,
+          589.0159328
+        ]
+      ],
+      "image_sha256": "a138964d85ecd133c1a5e3791ee9ebb7617d52813d61ab9f81145fdf62335374",
+      "label_sha256": "20a2dc664fab4cbe37977b33c4ca01feec618f2ff514f43aa907905885704c29"
+    },
+    {
+      "sample_id": "person_4/166",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/166.jpg",
+      "gt": [
+        [
+          15.33987359999999,
+          65.68835200000002,
+          359.7730416,
+          598.2541504000001
+        ]
+      ],
+      "image_sha256": "18c3810681eefe4eb61dc3148bde826449443e6ca51a4c4fc29ef67af651c07e",
+      "label_sha256": "4e1d25c0587883c03b9a93caca12e46121f0e71587a966d83470081acea7069b"
+    },
+    {
+      "sample_id": "person_4/167",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/167.jpg",
+      "gt": [
+        [
+          12.136993200000013,
+          69.20861760000005,
+          359.8777764,
+          601.6901856
+        ]
+      ],
+      "image_sha256": "a4688f901b3dcb118a51ba8214b5670c2dc02c7ef3bd94ccad275e491c13f699",
+      "label_sha256": "3b38fbf3f8d9d81e3dfd5b29d4a313352bcdb8908b1b7adfff39b807a7aec30c"
+    },
+    {
+      "sample_id": "person_4/168",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/168.jpg",
+      "gt": [
+        [
+          10.405625400000007,
+          58.022886400000004,
+          359.9378658,
+          573.0666496
+        ]
+      ],
+      "image_sha256": "4725cd0367b87cfe11f7f89a3c7fe43856873e990ce4e22840748e3b2175a2be",
+      "label_sha256": "0f3139dab12de0785056e466a9ee4fe31c60ab49bc5c0f949e09f5ef941b2cad"
+    },
+    {
+      "sample_id": "person_4/169",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/169.jpg",
+      "gt": [
+        [
+          11.471558399999989,
+          59.32177599999999,
+          359.57501279999997,
+          592.2315679999999
+        ]
+      ],
+      "image_sha256": "a99e04ac3604e62f018bfdb9daaaa6dfa56fba304e26477cd5fecfad05241787",
+      "label_sha256": "aecdd5d32b7b856262ce622d3e8c838758c2a559c9ba8b30fadb01b20f99559b"
+    },
+    {
+      "sample_id": "person_4/170",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/170.jpg",
+      "gt": [
+        [
+          10.986082199999995,
+          63.79565440000004,
+          359.7523794,
+          599.1184704
+        ]
+      ],
+      "image_sha256": "7c055de3e85e54b04d8efcc0f72b1758ceb7eeceaadd78ca6c21ec1b044ede9f",
+      "label_sha256": "d76d0120179151d84a9cb68169fd6eb400f16525b4b9eb5bf14b0e0a6bcaedf9"
+    },
+    {
+      "sample_id": "person_4/171",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/171.jpg",
+      "gt": [
+        [
+          121.01156639999998,
+          61.57244800000001,
+          360.0,
+          596.6137664
+        ]
+      ],
+      "image_sha256": "fd7301880e1588fea20470d63b0e3bc7954bf4bf6650c6deb60d20927e11d92e",
+      "label_sha256": "5f34a793039dd183dbd80b00c2b72eab7f67e70b13ddbd59af71c7c01f73357a"
+    },
+    {
+      "sample_id": "person_4/172",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/172.jpg",
+      "gt": [
+        [
+          25.415832599999998,
+          76.2682496,
+          358.8516234,
+          601.4381696
+        ]
+      ],
+      "image_sha256": "a03e1adf7e29bf502e1a83680bdea5c810e561208cfb6c6cf23170fbd87c2feb",
+      "label_sha256": "4972f93dcafcae1acac59f03e0ac5112b2c36c638756001e2ec570c2ab943692"
+    },
+    {
+      "sample_id": "person_4/173",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/173.jpg",
+      "gt": [
+        [
+          13.43342700000001,
+          61.219116799999966,
+          359.4091194,
+          605.8115264
+        ]
+      ],
+      "image_sha256": "f758b7401e8b2d8faaf934d19a8ff3225b74d5009eb81b821ef10f93f0d8b562",
+      "label_sha256": "c4d2a58713e9aac13c78f1adafb4cec8eac1f483ab898835037ea1b2120f9c87"
+    },
+    {
+      "sample_id": "person_4/174",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/174.jpg",
+      "gt": [
+        [
+          13.48506360000002,
+          64.43798720000004,
+          358.99273800000003,
+          600.4433568000001
+        ]
+      ],
+      "image_sha256": "3bd95ea01936723134862df51b9b64ede1c5e5ff0a8af20083b7cfad197b128c",
+      "label_sha256": "df4a0c1d3044cc8258e203f413a6c04b06d90d364fa63295e5b037d0c39aa0a7"
+    },
+    {
+      "sample_id": "person_4/175",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/175.jpg",
+      "gt": [
+        [
+          63.29585159999999,
+          72.7237856,
+          359.5066524,
+          494.64138560000004
+        ]
+      ],
+      "image_sha256": "081fbae465b8396779cf0ba5cbba11a58ab5b8e0045ff36d3f6695995fe12c25",
+      "label_sha256": "918f7bf89d97246f9ec376ad1b7eab76f56dadd5c8b5c44977e55094c28bf01c"
+    },
+    {
+      "sample_id": "person_4/176",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/176.jpg",
+      "gt": [
+        [
+          19.990600199999985,
+          66.2395008,
+          359.9999982,
+          638.8176255999999
+        ]
+      ],
+      "image_sha256": "6500d328817e716c78c57544f36ab63c332d4c92d263a90cbd35214ee0423c53",
+      "label_sha256": "3e88b9e51985a60dd3add2983f64671dac88a2011de3fba597cbba4b18b2c0a0"
+    },
+    {
+      "sample_id": "person_4/177",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/177.jpg",
+      "gt": [
+        [
+          27.3079386,
+          65.3608384,
+          354.5670798,
+          594.6557631999999
+        ]
+      ],
+      "image_sha256": "820824b0e92d27b886c68c47ec6a4b9d72b5a572ac71715b95838f2fe8c339ac",
+      "label_sha256": "f88a67468525bf5c35ed4910cf5723309a2747138809fc6393aea6bd893b5bd2"
+    },
+    {
+      "sample_id": "person_4/178",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/178.jpg",
+      "gt": [
+        [
+          1.7272025999999996,
+          57.231004799999994,
+          357.48965339999995,
+          563.6304352
+        ]
+      ],
+      "image_sha256": "3a1c134fae9d1f175ab31fa115db04a599d1406f66d07491bdead28c04c54ef5",
+      "label_sha256": "260a0ba51c3a5a18d8393b87e4b14b354c2b698ff9cd1aaa714dbc9a7d8c94ff"
+    },
+    {
+      "sample_id": "person_4/179",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/179.jpg",
+      "gt": [
+        [
+          2.3749380000000175,
+          76.81481920000003,
+          359.9860212,
+          638.7956512000001
+        ]
+      ],
+      "image_sha256": "4453a54d07d018828ae50e225d21cd36ad5a487fddd3f08826a6687d639f90e3",
+      "label_sha256": "a7775473d87cd1639f8058a82addd2c21a5780e50d1d002c76437dfb15bdf38b"
+    },
+    {
+      "sample_id": "person_4/180",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/180.jpg",
+      "gt": [
+        [
+          1.8000000090445667e-06,
+          66.36181759999997,
+          358.16278140000003,
+          595.192448
+        ]
+      ],
+      "image_sha256": "8ea155c19bd3c9ac104d27c4033abdd1e60641c8458cc549fa349dc24c3e8cfd",
+      "label_sha256": "7db7d4d61a45e46490a263fdcfc93a3d5c52585cd8dfe53f81ebdef7567b0b52"
+    },
+    {
+      "sample_id": "person_4/181",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/181.jpg",
+      "gt": [
+        [
+          24.056625599999986,
+          62.7958976,
+          356.74438319999996,
+          588.8831808
+        ]
+      ],
+      "image_sha256": "f877f4321297668f51678b30e7d65b8a5177edc9990eddf58c36e04a5792d74d",
+      "label_sha256": "621af48dc4b76ad731e037141c4e405ab2b1cd5ae7b1efce4b5c3fe5ac92dc16"
+    },
+    {
+      "sample_id": "person_4/182",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/182.jpg",
+      "gt": [
+        [
+          22.470703200000013,
+          66.8423456,
+          356.8146984,
+          584.2918112
+        ]
+      ],
+      "image_sha256": "1e4d577b0fc048344b78f7705fd8be261d070bf4ef59b62602d80ec6cc24ba2a",
+      "label_sha256": "5a8d8b02d00d11300609982388f02b4d3aded3119073cb88fd49a359a712084f"
+    },
+    {
+      "sample_id": "person_4/183",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/183.jpg",
+      "gt": [
+        [
+          25.182952200000013,
+          58.35150080000002,
+          358.8171678,
+          552.0689663999999
+        ]
+      ],
+      "image_sha256": "ef3f723afe7526ef5b5b2c0d9e2ee63cc9d4072534279e62a22c2b024eb58e4d",
+      "label_sha256": "91a42ddde38156ce9fef5ad470853e4a8e6dd6774ef2985c0b7aa9c1ec111561"
+    },
+    {
+      "sample_id": "person_4/184",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/184.jpg",
+      "gt": [
+        [
+          13.413330000000007,
+          64.68963839999998,
+          356.62481640000004,
+          603.2392576
+        ]
+      ],
+      "image_sha256": "702fffa1131caed1d7619aa6b6c5ed065167b26ab07eaea8cbed16f941e15539",
+      "label_sha256": "1c5c0310ccf535820cff7996af5317edd7d56a7e48b779726ddf792d231a6e1c"
+    },
+    {
+      "sample_id": "person_4/185",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/185.jpg",
+      "gt": [
+        [
+          15.617493000000016,
+          74.2259072,
+          357.1790166,
+          568.8943488
+        ]
+      ],
+      "image_sha256": "9a2fd2e325945964683720870c1962fc04be9dd2ff66571e9c77fc0a7e614173",
+      "label_sha256": "42cd70e430011329a479feff428ba07d9a2bc21891a696ad4a5e745b5fdda0f4"
+    },
+    {
+      "sample_id": "person_4/186",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/186.jpg",
+      "gt": [
+        [
+          17.01272519999999,
+          62.7932096,
+          356.6366892,
+          598.1961664
+        ]
+      ],
+      "image_sha256": "a743c6ed0c93a428c96ac88a441d6d946040f1398d1135b409c73568b9fb6e55",
+      "label_sha256": "eb84c95562583e1b3aa0d6af99974b3e97830c85daec0c9c3c87d24e223de4b3"
+    },
+    {
+      "sample_id": "person_4/187",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/187.jpg",
+      "gt": [
+        [
+          15.995161799999988,
+          64.98413120000002,
+          356.6560662,
+          595.3660896
+        ]
+      ],
+      "image_sha256": "696989134c9d8172f5e7d2d26871bfab0ee279a34e7a37cb1695a6ed8bc0e77e",
+      "label_sha256": "989c7f709f6d54a55041b86de21d490acbbebe19874ee267cf357d2d0bd4d8ba"
+    },
+    {
+      "sample_id": "person_4/188",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/188.jpg",
+      "gt": [
+        [
+          17.97499080000001,
+          63.743894400000016,
+          355.9229748,
+          584.2786848000001
+        ]
+      ],
+      "image_sha256": "4f9554dd69b83aa3f6d5db63715ecb41beb2ecc18302da225e5e39708679252b",
+      "label_sha256": "a47c4773990a158ab1e36c7ab66e5fb9ab5b4df52dbd68e95be82b7847dd968d"
+    },
+    {
+      "sample_id": "person_4/189",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/189.jpg",
+      "gt": [
+        [
+          17.224304399999994,
+          61.478700800000006,
+          357.273558,
+          613.8054208
+        ]
+      ],
+      "image_sha256": "5ee5a9406e3134222d59a1376d7859a7bb25855bd55283f10ba3695f297e7935",
+      "label_sha256": "2b3d075ddfab6660662d41d133139d148787c95300bde0585ede531bd7702053"
+    },
+    {
+      "sample_id": "person_4/190",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/190.jpg",
+      "gt": [
+        [
+          16.87152240000001,
+          60.719785600000016,
+          357.2304696,
+          615.6480096
+        ]
+      ],
+      "image_sha256": "dc9276f386bd5b37d877c7a36762684f241cfbd1874eff178b865a861c766580",
+      "label_sha256": "02a61885c8d861d285418fb3e8966eeeaf7a6fff497a9968d071e8dae8453699"
+    },
+    {
+      "sample_id": "person_4/191",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/191.jpg",
+      "gt": [
+        [
+          2.574646200000006,
+          58.93762559999999,
+          357.37444980000004,
+          615.0509056
+        ]
+      ],
+      "image_sha256": "7817e0344b42a91db077a43401537c27c2edc8c5d4acf6f9a2b291bf0d7af094",
+      "label_sha256": "55f9901ed56ebca2071425f0c595314efaadef75bcc36f2d66a13defbb16ea14"
+    },
+    {
+      "sample_id": "person_4/192",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/192.jpg",
+      "gt": [
+        [
+          9.09622260000001,
+          66.03002879999998,
+          356.690583,
+          615.3731072
+        ]
+      ],
+      "image_sha256": "231400bab553b2be516de2b3d695440f21097692b47cabf0d98e5314e6685445",
+      "label_sha256": "1ae4225c277a1b64b48cbad87f21873d181f104a88e0ed004665f28ee4166832"
+    },
+    {
+      "sample_id": "person_4/193",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/193.jpg",
+      "gt": [
+        [
+          7.6377725999999875,
+          65.29193280000001,
+          357.0050682,
+          609.2923616
+        ]
+      ],
+      "image_sha256": "c54d7a76b05fef8e157c7d1a8a8249a63a2520d09636f3c224d5e032c01cec63",
+      "label_sha256": "22cb86de792d7236cb7eb076006a81684bb1db2c7340210557843a86cd818250"
+    },
+    {
+      "sample_id": "person_4/194",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/194.jpg",
+      "gt": [
+        [
+          8.918517600000012,
+          57.22650240000004,
+          356.75946,
+          594.9735104
+        ]
+      ],
+      "image_sha256": "8ea7c6e84ed315adb7d56988b3ec512a5e9779a46c8dd4d41feee4eeb10e400b",
+      "label_sha256": "c5a9e9e7c41bb067f6f22b09870e1cb0925f2f3656df98fcbf7a55b9b6b11d00"
+    },
+    {
+      "sample_id": "person_4/195",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/195.jpg",
+      "gt": [
+        [
+          8.671874400000018,
+          67.58099520000002,
+          357.1256088,
+          613.8284896
+        ]
+      ],
+      "image_sha256": "d415a79cb030d17dec424b865ba89eda5d17b77aa2a29f2c49e2d90b4efd3c3e",
+      "label_sha256": "524d078bfdae1bc4f796991715c0cac8270c7c6f9075cadeabaa4d0902614a59"
+    },
+    {
+      "sample_id": "person_4/196",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/196.jpg",
+      "gt": [
+        [
+          8.694732599999986,
+          61.00964480000002,
+          356.4637146,
+          613.3021248
+        ]
+      ],
+      "image_sha256": "4a23a193891e69bc0b1eb7caaf98c396dc098708173ee2ca32089f5d9d667244",
+      "label_sha256": "64aab0f09046d100b2dd934e4d7cda736f696628418d3fa041f2e8094bc3a9a8"
+    },
+    {
+      "sample_id": "person_4/197",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/197.jpg",
+      "gt": [
+        [
+          1.4519196000000023,
+          68.4083072,
+          357.7088628,
+          566.5167232
+        ]
+      ],
+      "image_sha256": "ddbdc98784c1b6c312603d9142ca0017592957c5d7354636be14d0086e021140",
+      "label_sha256": "ee595972931ceb28b44c1990135046445eec20e934ec094effc3cbc9aaa60f83"
+    },
+    {
+      "sample_id": "person_4/198",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/198.jpg",
+      "gt": [
+        [
+          8.669404800000018,
+          80.12035839999996,
+          358.29470879999997,
+          597.1944576
+        ]
+      ],
+      "image_sha256": "b0168513f9054094def4a5180437f6dd858144d6ebe73452c365618856474f42",
+      "label_sha256": "94030625e1dc03e08c0c2900f9e09964d0f3d501c4de1410040d942223758b33"
+    },
+    {
+      "sample_id": "person_4/199",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/199.jpg",
+      "gt": [
+        [
+          7.224791400000017,
+          72.86975039999999,
+          359.485839,
+          577.8261728
+        ]
+      ],
+      "image_sha256": "0240921c9b615dbe7123d16b15a3748e5ddd86d2d09853a4b49d9c5e39f4e494",
+      "label_sha256": "78cf2e765415347dca482735e200fcd71165084c83744e05cb36b240d0e6bcb0"
+    },
+    {
+      "sample_id": "person_4/200",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/200.jpg",
+      "gt": [
+        [
+          8.6105358,
+          63.58447039999998,
+          358.3724994,
+          600.2547615999999
+        ]
+      ],
+      "image_sha256": "db32e98e4262effeced8fdd6a93744c6d364803e6fe5743fc9dccdd62cbe25d4",
+      "label_sha256": "85b95c2edb82c627e92c1ea075116f97555c822e9ea9104e14363a196349bbac"
+    },
+    {
+      "sample_id": "person_4/201",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/201.jpg",
+      "gt": [
+        [
+          9.024353999999999,
+          65.66955839999994,
+          358.1191404,
+          598.7623904
+        ]
+      ],
+      "image_sha256": "8e6d317bbe8449f17e6a292b670994d510e12eb8d89cfc1bf2aa1190678c262e",
+      "label_sha256": "17435136671bd5deefc16e4393538e55e9a8eeb8670d15b30c519eefd7f25bb8"
+    },
+    {
+      "sample_id": "person_4/202",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/202.jpg",
+      "gt": [
+        [
+          9.436094999999993,
+          64.51526080000001,
+          358.15276980000004,
+          601.5949088
+        ]
+      ],
+      "image_sha256": "883ffa5e322e17b85504e3c2de676adffe48ae7eacdbb7af1dae9e544acd3b87",
+      "label_sha256": "244ef65196b3ff528fb8f962f479700d7d97c008517c5acdb68c2f3b3801bb24"
+    },
+    {
+      "sample_id": "person_4/203",
+      "image": "/home/ssd/projects/edge-ai/tensorrt-yolo/data/annotations/validation-v1/images/person_4/203.jpg",
+      "gt": [
+        [
+          13.079741399999985,
+          69.30297919999998,
+          358.6359546,
+          596.2673375999999
+        ]
+      ],
+      "image_sha256": "5eefa3f7763bade8a1945c851911cd1e56a3a9415b0a5601e313166dcd810424",
+      "label_sha256": "ee6492f0cf3a7d85af0be6a6bbb515baab7c1029a38e98d8191dd2568c2bee88"
+    }
+  ],
+  "engines": {
+    "trial007": {
+      "path": "/home/ssd/projects/edge-ai/tensorrt-yolo/debug/refine-v1/trial-007/yolov8m_int8.plan",
+      "sha256": "93686b54ed31ae7f45ffec739fc263018eef18e9d107b31cf7315830f005a9b2"
+    },
+    "trial007_sub_model22": {
+      "path": "/home/ssd/projects/edge-ai/tensorrt-yolo/debug/trial007_sub_model22/yolov8m_int8.plan",
+      "sha256": "8353b32b5c9c03654418caab042758ea78045b505a32326c84987ab19c87b203"
+    }
+  }
+}

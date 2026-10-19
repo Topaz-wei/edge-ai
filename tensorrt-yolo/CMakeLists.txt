@@ -311,3 +311,7 @@ if(BUILD_TESTING)
     target_include_directories(test_precision_options PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME precision_options COMMAND test_precision_options)
 endif()
+
+# Reuse one engine for a manifest of validation inputs.
+add_executable(yolo_infer_batch apps/infer_batch.cpp)
+target_link_libraries(yolo_infer_batch PRIVATE trt_runner)

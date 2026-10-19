@@ -1,0 +1,28 @@
+{
+  "images_per_engine": 115,
+  "raw_outputs_per_engine": 115,
+  "reviewed_labels": 115,
+  "one_shot_batch_identical_images": 63,
+  "missed_images": {
+    "trial007": [
+      "person_2/57",
+      "person_3/163",
+      "person_3/165",
+      "person_3/166",
+      "person_3/167",
+      "person_3/168",
+      "person_3/169",
+      "person_3/203"
+    ],
+    "trial007_sub_model22": [
+      "person_2/57",
+      "person_3/163",
+      "person_3/164",
+      "person_3/165",
+      "person_3/167",
+      "person_3/168",
+      "person_3/169",
+      "person_3/203"
+    ]
+  }
+}

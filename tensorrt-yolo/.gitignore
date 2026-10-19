@@ -3,3 +3,15 @@
 
 # Reproducible local precision experiments and GPU smoke artifacts
 debug/
+
+# Local validation scratch runs, tensors and compiled tools.
+/validation/*
+!/validation/compare-v2/
+!/validation/compare-v2.log
+/validation/compare-v2/inputs/
+/validation/compare-v2/*/raw/
+/validation/compare-v2/*/infer_logs/
+/validation/compare-v2/*/batch_inputs.txt
+!/validation/compare-v2/**/*.json
+!/validation/compare-v2/*.json
+!/validation/compare-v2/**/inference.log
