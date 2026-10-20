@@ -169,3 +169,11 @@ PyTorch 脚本直接调用 `YOLO(...).model`，不经过 Predictor，不做第�
 ## 单图 INT8 精度搜索
 
 构建器支持 timing cache 和精确 FP16 层名单；Python checker、C++ 构建驱动的精筛及私有 Polygraphy 粗定位入口见 [PRECISION_SEARCH.md](docs/PRECISION_SEARCH.md)。默认只使用固定 input.bin 和冻结FP16输出，不读取 validation。
+
+## 代码阅读与技术文档
+
+从 [代码阅读指南](docs/CODE_GUIDE.md) 开始，依次阅读：
+
+- [混合精度搜索实现解析](docs/PRECISION_IMPLEMENTATION.md)
+- [Validation 预标注与审核包实现](docs/ANNOTATION_IMPLEMENTATION.md)
+- [批量验证与指标计算实现](docs/VALIDATION_IMPLEMENTATION.md)
