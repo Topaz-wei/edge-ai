@@ -177,3 +177,8 @@ PyTorch 脚本直接调用 `YOLO(...).model`，不经过 Predictor，不做第�
 - [混合精度搜索实现解析](docs/PRECISION_IMPLEMENTATION.md)
 - [Validation 预标注与审核包实现](docs/ANNOTATION_IMPLEMENTATION.md)
 - [批量验证与指标计算实现](docs/VALIDATION_IMPLEMENTATION.md)
+
+## 视频与摄像头入口
+
+新增独立程序 `yolo_video_cuda`，支持离线视频、摄像头编号、无窗口运行和 MP4 输出。
+构建、输入几何约定、计时说明及调试顺序见 [视频推理文档](docs/VIDEO_PIPELINE.md)。

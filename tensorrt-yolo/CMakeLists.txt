@@ -315,3 +315,18 @@ endif()
 # Reuse one engine for a manifest of validation inputs.
 add_executable(yolo_infer_batch apps/infer_batch.cpp)
 target_link_libraries(yolo_infer_batch PRIVATE trt_runner)
+
+# Keep video/GUI dependencies optional for existing still-image builds.
+option(YOLO_BUILD_VIDEO "Build the OpenCV video demo" ON)
+if(YOLO_BUILD_CUDA_PIPELINE AND YOLO_BUILD_VIDEO)
+    find_package(OpenCV REQUIRED COMPONENTS core imgcodecs imgproc videoio highgui)
+    add_executable(yolo_video_cuda apps/yolo_video_cuda.cpp)
+    target_link_libraries(yolo_video_cuda PRIVATE cuda_yolo ${OpenCV_LIBS})
+endif()
+
+if(BUILD_TESTING)
+    add_executable(test_video_input tests/test_video_input.cpp)
+    target_include_directories(test_video_input PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(test_video_input PRIVATE opencv_core opencv_imgproc)
+    add_test(NAME video_input COMMAND test_video_input)
+endif()
