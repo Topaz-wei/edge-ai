@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 
 project(
-    tensorrt_resnet
+    tensorrt_yolo
     LANGUAGES CXX
 )
 
@@ -45,9 +45,12 @@ if(NOT TENSORRT_LIBRARY)
     message(FATAL_ERROR "TensorRT library not found")
 endif()
 
-add_library(trt_runner STATIC src/trt_runner.cpp)
-target_include_directories(trt_runner PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TENSORRT_INCLUDE_DIR})
-target_link_libraries(trt_runner PUBLIC ${TENSORRT_LIBRARY} CUDA::cudart)
+if(NOT TARGET edge_trt_runtime)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../trt-runtime ${CMAKE_CURRENT_BINARY_DIR}/trt-runtime)
+endif()
+add_library(trt_runner INTERFACE)
+target_include_directories(trt_runner INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(trt_runner INTERFACE edge_trt_runtime)
 
 add_executable(
     yolo_build

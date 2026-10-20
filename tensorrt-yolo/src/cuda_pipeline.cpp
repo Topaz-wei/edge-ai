@@ -1,3 +1,4 @@
+#include "include/yolo_engine.hpp"
 #include "include/cuda_yolo.hpp"
 #include "include/infer_raw.hpp"
 #include "include/nvtx_range.hpp"
@@ -37,7 +38,7 @@ CudaYoloPipeline::CudaYoloPipeline(
       ops_(runner_.stream()),
       graph_(graph),
       events_(new Events) {
-    if (!runner_.isFixedYolo())
+    if (!isFixedYolo(runner_))
         throw std::runtime_error("CUDA pipeline requires [1,3,640,640] -> [1,84,8400]");
 
     if (graph_)

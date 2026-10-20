@@ -1,4 +1,4 @@
-#include "include/trt_runner.hpp"
+#include "edge/trt/runner.hpp"
 
 #include <limits>
 #include <NvInfer.h>
@@ -14,8 +14,9 @@
 #include <vector>
 #include <memory>
 
-#include "include/infer_raw.hpp"
+#include "edge/trt/tensor_io.hpp"
 
+namespace edge::trt {
 class Logger : public nvinfer1::ILogger {
 public:
     void log(
@@ -30,171 +31,7 @@ public:
 
 static Logger gLogger;
 
-void checkCuda(
-    cudaError_t error,
-    const char* operation
-) {
-    if (error != cudaSuccess) {
-        throw std::runtime_error(
-            std::string(operation) + ": " + cudaGetErrorString(error)
-        );
-    }
-}
-
-std::vector<char> loadEngineFile(
-    const std::string& path
-) {
-    std::ifstream file(
-        path,
-        std::ios::binary
-    );
-
-    if (!file) {
-        throw std::runtime_error("Failed to open engine: " + path);
-    }
-
-    file.seekg(
-        0,
-        std::ios::end
-    );
-
-    const auto end = file.tellg();
-
-    if (end <= 0)
-        throw std::runtime_error("Invalid engine size: " + path);
-
-    const std::size_t size = static_cast<std::size_t>(end);
-
-    file.seekg(
-        0,
-        std::ios::beg
-    );
-
-    std::vector<char> data(size);
-
-    file.read(
-        data.data(),
-        size
-    );
-
-    if (!file)
-        throw std::runtime_error("Failed to read engine: " + path);
-
-    return data;
-}
-
-std::vector<float> loadFloatFile(
-    const std::string& path
-) {
-    std::ifstream file(
-        path,
-        std::ios::binary
-    );
-
-    if (!file) {
-        throw std::runtime_error("Failed to open file: " + path);
-    }
-
-    file.seekg(
-        0,
-        std::ios::end
-    );
-
-    const auto end = file.tellg();
-
-    if (end <= 0)
-        throw std::runtime_error("Invalid float file size: " + path);
-
-    const std::size_t bytes = static_cast<std::size_t>(end);
-
-    if (bytes % sizeof(float) != 0) {
-        throw std::runtime_error("Invalid float binary file: " + path);
-    }
-
-    file.seekg(
-        0,
-        std::ios::beg
-    );
-
-    std::vector<float> data(bytes / sizeof(float));
-
-    file.read(
-        reinterpret_cast<char*>(data.data()),
-        bytes
-    );
-
-    if (!file)
-        throw std::runtime_error("Failed to read float file: " + path);
-
-    return data;
-}
-
-std::string dimsToString(
-    const nvinfer1::Dims& dims
-) {
-    std::string s = "[";
-
-    for (int i = 0; i < dims.nbDims; ++i) {
-        s += std::to_string(dims.d[i]);
-
-        if (i != dims.nbDims - 1) {
-            s += "x";
-        }
-    }
-
-    s += "]";
-
-    return s;
-}
-
-std::size_t getNumElements(
-    const nvinfer1::Dims& dims
-) {
-    if (dims.nbDims < 0)
-        throw std::runtime_error("Invalid tensor rank");
-
-    std::size_t elements = 1;
-
-    for (int i = 0; i < dims.nbDims; ++i) {
-        if (dims.d[i] <= 0) {
-            throw std::runtime_error("Invalid tensor dimension");
-        }
-
-        if (elements > std::numeric_limits<std::size_t>::max() /
-                           static_cast<std::size_t>(dims.d[i])) {
-            throw std::runtime_error("Tensor element count overflow");
-        }
-
-        elements *= static_cast<std::size_t>(dims.d[i]);
-    }
-
-    return elements;
-}
-
-void saveFloatBinary(
-    const std::string& path,
-    const std::vector<float>& data
-) {
-    std::ofstream file(
-        path,
-        std::ios::binary
-    );
-
-    if (!file) {
-        throw std::runtime_error("Failed to open output file: " + path);
-    }
-
-    file.write(
-        reinterpret_cast<const char*>(data.data()),
-        static_cast<std::streamsize>(data.size() * sizeof(float))
-    );
-
-    if (!file) {
-        throw std::runtime_error("Failed to write output file: " + path);
-    }
-}
-
-TrtRunner::TrtRunner(
+Runner::Runner(
     const std::string& enginePath
 ) {
     try {
@@ -237,6 +74,9 @@ TrtRunner::TrtRunner(
 
         if (!inputName_ || !outputName_)
             throw std::runtime_error("Missing input/output tensor");
+
+        inputInfo_ = {inputName_, engine_->getTensorShape(inputName_), engine_->getTensorDataType(inputName_)};
+        outputInfo_ = {outputName_, engine_->getTensorShape(outputName_), engine_->getTensorDataType(outputName_)};
 
         inputElements_ = getNumElements(engine_->getTensorShape(inputName_));
 
@@ -301,11 +141,11 @@ TrtRunner::TrtRunner(
     }
 }
 
-TrtRunner::~TrtRunner() {
+Runner::~Runner() {
     release();
 }
 
-void TrtRunner::release() noexcept {
+void Runner::release() noexcept {
     if (stream_)
         cudaStreamSynchronize(stream_);
 
@@ -340,7 +180,7 @@ void TrtRunner::release() noexcept {
     // Members then destroy context -> engine -> runtime, in that order.
 }
 
-std::vector<float> TrtRunner::infer(
+std::vector<float> Runner::infer(
     const std::vector<float>& input,
     TrtTimings* timings
 ) {
@@ -454,17 +294,7 @@ std::vector<float> TrtRunner::infer(
     return output;
 }
 
-bool TrtRunner::isFixedYolo() const {
-    const auto in = engine_->getTensorShape(inputName_);
-
-    const auto out = engine_->getTensorShape(outputName_);
-
-    return in.nbDims == 4 && in.d[0] == 1 && in.d[1] == 3 && in.d[2] == 640 &&
-           in.d[3] == 640 && out.nbDims == 3 && out.d[0] == 1 && out.d[1] == 84 &&
-           out.d[2] == 8400;
-}
-
-void TrtRunner::enqueueDevice(
+void Runner::enqueueDevice(
     bool useGraph
 ) {
     if (useGraph) {
@@ -483,7 +313,7 @@ void TrtRunner::enqueueDevice(
     }
 }
 
-void TrtRunner::prepareGraph() {
+void Runner::prepareGraph() {
     if (graphExec_)
         return;
     // Initialize input and flush TensorRT's lazy work before capture.
@@ -551,4 +381,6 @@ void TrtRunner::prepareGraph() {
 
         throw;
     }
+}
+
 }

@@ -1,3 +1,4 @@
+#include "include/yolo_engine.hpp"
 #include "include/cuda_yolo.hpp"
 #include "include/yolo_preprocess.hpp"
 
@@ -74,7 +75,7 @@ int main(
         { // Independent CPU reference; its engine is destroyed before measurement.
             TrtRunner referenceRunner(argv[1]);
 
-            if (!referenceRunner.isFixedYolo())
+            if (!isFixedYolo(referenceRunner))
                 throw std::runtime_error("Expected fixed640 YOLO engine");
 
             reference = postprocess(
