@@ -44,6 +44,10 @@ if(NOT TENSORRT_LIBRARY)
     message(FATAL_ERROR "TensorRT library not found")
 endif()
 
+if(NOT TARGET edge_trt_runtime)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../trt-runtime ${CMAKE_CURRENT_BINARY_DIR}/trt-runtime)
+endif()
+
 add_executable(
     trt_infer
     apps/infer.cpp
@@ -155,3 +159,9 @@ target_link_libraries(
         ${TENSORRT_LIBRARY}
         CUDA::cudart
 )
+target_link_libraries(trt_infer PRIVATE edge_trt_runtime)
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(test_shared_runner tests/test_shared_runner.cpp)
+    target_link_libraries(test_shared_runner PRIVATE edge_trt_runtime)
+endif()

@@ -2877,3 +2877,8 @@ Bounding Box Visualization
 ```
 
 这将作为下一阶段端侧视觉模型部署实践。
+## 公共运行库
+
+固定形状 `trt_infer` 现复用根目录 `trt-runtime`，原命令和精度比较保留。
+动态形状推理与构建/校准入口保持独立实现。`test_shared_runner ENGINE INPUT BASELINE`
+检查原始输出逐字节一致；当前参考输入是随机 Tensor，不代表已完成真实视频分类适配。
