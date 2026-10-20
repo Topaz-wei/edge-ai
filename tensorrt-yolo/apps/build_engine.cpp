@@ -92,7 +92,9 @@ int buildEngine(int argc, char** argv) {
                      " [--timing-cache timing.cache] [--dump-layers network.tsv] [--inspect-only]\n";
         return 1;
     }
-    const auto options = precision::parse(std::vector<std::string>(argv+1, argv+argc));
+    const auto options = precision::parse(
+        std::vector<std::string>(argv + 1, argv + argc)
+    );
     const auto& onnxPath = options.model;
     const auto& enginePath = options.engine;
     const auto& precision = options.mode;
@@ -273,36 +275,58 @@ int buildEngine(int argc, char** argv) {
         std::cout << '\n';
     }
 
+    // Validate exact names before building, and export the same eligibility
+    // information used by the automated search to select candidates.
     std::set<std::string> requested(fp16Names.begin(), fp16Names.end());
     std::set<std::string> matched;
     std::string layerTable = "index\teligible\ttype\tname\n";
-    for (int i=0;i<network->getNbLayers();++i) {
-        auto* layer=network->getLayer(i);
-        const std::string name=layer->getName()?layer->getName():"";
-        const bool eligible=isFp16ComputeLayer(layer);
-        if(name.find_first_of("\t\r\n")!=std::string::npos)
+
+    for (int i = 0; i < network->getNbLayers(); ++i) {
+        auto* layer = network->getLayer(i);
+        const std::string name = layer->getName() ? layer->getName() : "";
+        const bool eligible = isFp16ComputeLayer(layer);
+
+        if (name.find_first_of("\t\r\n") != std::string::npos)
             throw std::runtime_error("Layer name cannot be represented in TSV");
-        layerTable += std::to_string(i)+"\t"+(eligible?"1":"0")+"\t"+
-            std::to_string(static_cast<int>(layer->getType()))+"\t"+name+"\n";
-        if(requested.count(name)) {
-            if(!eligible) throw std::runtime_error("Layer is not FP16-eligible: "+name);
-            if(!matched.insert(name).second) throw std::runtime_error("Ambiguous layer name: "+name);
+
+        layerTable += std::to_string(i) + "\t" + (eligible ? "1" : "0") + "\t" +
+            std::to_string(static_cast<int>(layer->getType())) + "\t" + name + "\n";
+
+        if (requested.count(name)) {
+            if (!eligible)
+                throw std::runtime_error("Layer is not FP16-eligible: " + name);
+            if (!matched.insert(name).second)
+                throw std::runtime_error("Ambiguous layer name: " + name);
+
             layer->setPrecision(nvinfer1::DataType::kHALF);
             std::cout << "[FP16 constraint] " << i << " : " << name << '\n';
         }
     }
-    for(const auto& name:requested)
-        if(!matched.count(name)) throw std::runtime_error("Unknown layer: "+name);
-    if(!options.dump.empty()) {
-        if(std::filesystem::exists(options.dump)) throw std::runtime_error("Layer dump already exists: "+options.dump);
-        const auto parent=std::filesystem::path(options.dump).parent_path();
-        if(!parent.empty()) std::filesystem::create_directories(parent);
+
+    for (const auto& name : requested)
+        if (!matched.count(name))
+            throw std::runtime_error("Unknown layer: " + name);
+
+    if (!options.dump.empty()) {
+        if (std::filesystem::exists(options.dump))
+            throw std::runtime_error("Layer dump already exists: " + options.dump);
+
+        const auto parent = std::filesystem::path(options.dump).parent_path();
+        if (!parent.empty())
+            std::filesystem::create_directories(parent);
+
         std::ofstream dump(options.dump);
-        dump << layerTable; dump.close();
-        if(!dump) throw std::runtime_error("Cannot save layer dump");
+        dump << layerTable;
+        dump.close();
+        if (!dump)
+            throw std::runtime_error("Cannot save layer dump");
     }
-    if(options.inspect) return 0;
-    if(!requested.empty()) config->setFlag(nvinfer1::BuilderFlag::kOBEY_PRECISION_CONSTRAINTS);
+
+    if (options.inspect)
+        return 0;
+    if (!requested.empty())
+        config->setFlag(nvinfer1::BuilderFlag::kOBEY_PRECISION_CONSTRAINTS);
+
     std::cout << "Explicit FP16 constraints: " << matched.size() << '\n';
 
     if (precision == "fp16") {
@@ -318,8 +342,8 @@ int buildEngine(int argc, char** argv) {
 
         std::cout
             << "Precision: FP16 enabled\n";
-    } 
-    
+    }
+
     if (precision == "fp32") {
         config->clearFlag(
             nvinfer1::BuilderFlag::kTF32
@@ -388,17 +412,22 @@ int buildEngine(int argc, char** argv) {
 
     // Cache must outlive its association with the config through the build.
     std::unique_ptr<nvinfer1::ITimingCache> timingCache;
-    if(!options.timing.empty()) {
+    if (!options.timing.empty()) {
         std::vector<char> bytes;
-        if(std::filesystem::exists(options.timing)) {
-            std::ifstream file(options.timing,std::ios::binary);
-            if(!file) throw std::runtime_error("Cannot read timing cache");
-            bytes.assign(std::istreambuf_iterator<char>(file),{});
-            if(file.bad() || bytes.empty()) throw std::runtime_error("Empty or unreadable timing cache");
+        if (std::filesystem::exists(options.timing)) {
+            std::ifstream file(options.timing, std::ios::binary);
+            if (!file)
+                throw std::runtime_error("Cannot read timing cache");
+
+            bytes.assign(std::istreambuf_iterator<char>(file), {});
+            if (file.bad() || bytes.empty())
+                throw std::runtime_error("Empty or unreadable timing cache");
         }
-        timingCache.reset(config->createTimingCache(bytes.data(),bytes.size()));
-        if(!timingCache || !config->setTimingCache(*timingCache,false))
+
+        timingCache.reset(config->createTimingCache(bytes.data(), bytes.size()));
+        if (!timingCache || !config->setTimingCache(*timingCache, false))
             throw std::runtime_error("Incompatible timing cache");
+
         std::cout << "Timing cache loaded bytes: " << bytes.size() << '\n';
     }
 
@@ -426,17 +455,27 @@ int buildEngine(int argc, char** argv) {
         );
     }
 
-    if(!options.timing.empty()) {
-        const auto* updated=config->getTimingCache();
-        std::unique_ptr<nvinfer1::IHostMemory> blob(updated?updated->serialize():nullptr);
-        if(!blob) throw std::runtime_error("Cannot serialize timing cache");
-        const auto parent=std::filesystem::path(options.timing).parent_path();
-        if(!parent.empty()) std::filesystem::create_directories(parent);
-        const auto temp=options.timing+".tmp";
-        std::ofstream file(temp,std::ios::binary);
-        file.write(static_cast<const char*>(blob->data()),blob->size()); file.close();
-        if(!file) throw std::runtime_error("Cannot save timing cache");
-        std::filesystem::rename(temp,options.timing);
+    // Save the updated profiling cache only after a successful engine build.
+    if (!options.timing.empty()) {
+        const auto* updated = config->getTimingCache();
+        std::unique_ptr<nvinfer1::IHostMemory> blob(
+            updated ? updated->serialize() : nullptr
+        );
+        if (!blob)
+            throw std::runtime_error("Cannot serialize timing cache");
+
+        const auto parent = std::filesystem::path(options.timing).parent_path();
+        if (!parent.empty())
+            std::filesystem::create_directories(parent);
+
+        const auto temp = options.timing + ".tmp";
+        std::ofstream file(temp, std::ios::binary);
+        file.write(static_cast<const char*>(blob->data()), blob->size());
+        file.close();
+        if (!file)
+            throw std::runtime_error("Cannot save timing cache");
+
+        std::filesystem::rename(temp, options.timing);
         std::cout << "Timing cache saved: " << options.timing << '\n';
     }
 
