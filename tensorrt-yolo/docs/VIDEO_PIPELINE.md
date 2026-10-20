@@ -26,6 +26,7 @@ yolo_video_cuda ENGINE SOURCE business|camera
     [--max-frames N]
     [--capture-width W --capture-height H]
     [--capture-fps FPS] [--capture-fourcc MJPG]
+    [--capture-buffers N] [--timing-csv timings.csv]
 ```
 
 | 参数 | 含义 |
@@ -37,6 +38,7 @@ yolo_video_cuda ENGINE SOURCE business|camera
 | `--output` | 保存带检测框和耗时文字的 MP4，父目录自动创建；拒绝覆盖已有文件 |
 | `--no-display` | 不调用窗口 API，适合 SSH/无桌面运行 |
 | `--no-graph` | 使用常规 TensorRT enqueue，仍复用 engine/context/buffer |
+| `--capture-buffers N` | 摄像头采集缓冲数，默认 2；正整数，驱动拒绝或实际数量不符则报错 |
 | `--max-frames N` | 处理 N 帧后正常退出并关闭输出文件；N 必须是正整数 |
 
 数字文件名请写成 `./0`，否则会被解释为摄像头编号。不要把 `camera` 理解为“自动识别任意相机方向”。
@@ -73,7 +75,7 @@ build/yolo_video_cuda \
   0 camera
 ```
 
-程序默认沿用设备设置；可通过 `--capture-width/--capture-height` 成对指定分辨率，通过 `--capture-fps` 和 `--capture-fourcc` 指定帧率和格式。摄像头使用 V4L2 后端并尝试将缓冲数设为 1；仍不保证没有设备或驱动内部延迟。有桌面时按 `q` 或 Esc 退出；无桌面时用 `--max-frames` 做有限时长测试。默认显示需要正常的桌面/显示服务，SSH 环境请主动加 `--no-display`。
+程序默认沿用设备设置；可通过 `--capture-width/--capture-height` 成对指定分辨率，通过 `--capture-fps` 和 `--capture-fourcc` 指定帧率和格式。摄像头使用 V4L2 后端，默认请求 2 个缓冲，并核对实际接受数量；可用 `--capture-buffers N` 调整，仍不保证没有设备或驱动内部延迟。有桌面时按 `q` 或 Esc 退出；无桌面时用 `--max-frames` 做有限时长测试。默认显示需要正常的桌面/显示服务，SSH 环境请主动加 `--no-display`。
 
 只有 `--no-display` 而没有 `--output` 时，程序只推理和计时，不创建可视化副本，也不绘图。
 
@@ -152,6 +154,51 @@ build/yolo_video_cuda \
   --output outputs/camera_historical_check.mp4
 ```
 
-本次实际画面为办公室横屏场景；历史转置会使人物横倒，车内遮罩也不符合此场景。正式检测前必须决定是保持历史车内安装方式，还是另外实现不转置、不施加车内遮罩的普通摄像头预处理。不得通过强行拉伸或默默改变现有 CUDA 预处理来掩盖差异。
+初次接入时摄像头正常横放，历史转置会使人物横倒。随后用户旋转了摄像头安装方向，重新采帧确认现有转置后人物正立，决定继续使用1280×720 MJPG → 转置 → 等比缩放至360×640。场景与车内遮罩暂按用户要求保持原状，没有增加普通摄像头预处理。
 
 本地诊断材料保存在 `debug/camera-debug-v1/`，包含原始帧、历史转换帧、采集配置和运行日志；不会提交摄像头画面到 Git。
+
+## 8. 分阶段计时与三组比较
+
+使用 `--timing-csv outputs/timing.csv` 保存逐帧计时。路径必须不存在且不能与输出视频相同。数据先缓存在内存，在运行结束后写入 CSV，避免逐帧磁盘写入扰动测试；无限流录制大量计时会增长内存，建议搭配 `--max-frames`。
+
+| CSV 字段 | 计时边界 |
+|---|---|
+| `start_ms` / `end_ms` | 相对于处理循环开始的单调时钟时间戳 |
+| `read_ms` | `VideoCapture.read()`：包含等待、采集和 MJPG 解码，不能据此进一步分离三者 |
+| `geometry_ms` | transpose 和 resize |
+| `pipeline_ms` | 整次 `CudaYoloPipeline.infer()` 墙钟时间 |
+| `draw_ms` | 可视化复制、画框与叠加文字 |
+| `encode_ms` | `VideoWriter.write()` 调用耗时；部分工作可能由编码器缓冲 |
+| `display_ms` | `imshow()` 和 `waitKey(1)`；不是显示器完成扫描输出的时间 |
+| `total_ms` | 从该轮循环开始到处理完成的耗时 |
+| `capture_timestamp_ms` | V4L2/OpenCV 返回的驱动帧时间戳，毫秒；仅摄像头计时模式记录 |
+| `read_age_ms` | 读帧返回时的 CLOCK_MONOTONIC 减去驱动帧时间戳 |
+| `completion_age_ms` | 本帧处理完成时距驱动帧时间戳的间隔 |
+
+新增时间戳字段使用本设备的单调时钟约定，检测到非有限值、零值、未来时间或差值超过 10 秒时记为 -1。它们用于诊断旧帧积压，不是曝光到显示器发光的端到端延迟；更换后端或设备后需要重新验证时钟语义。
+
+第一帧提前读入，因此它的 `read_ms=0`。正式对比需排除启动阶段。终端额外打印整个处理循环的实际 FPS/QPS 和 writer 最终关闭耗时；前者不含 engine 初始化、最终编码 flush 或保存计时 CSV。
+
+三组对比保持 engine、Graph、采集设置不变：
+
+1. `--no-display`，不指定 output：不显示、不绘图、不编码。
+2. 不指定 `--no-display` 和 output：绘图并显示。
+3. `--no-display --output ...mp4`：绘图并编码，不显示。
+
+实测采用每组两轮，顺序为 A/B/C、C/B/A；每轮 180 帧，剔除前 30 帧。稳态吞吐量用剩余 150 帧除以 `最后 end_ms - 首个 start_ms`，因此包含这些帧之间的循环管理和日志开销。逐阶段同时统计 mean/P50/P95。
+
+一帧一次推理时，实际处理 FPS 和实际推理 QPS 数值相同。窗口组的此数值仅代表应用向窗口提交画面的速率，不能等同于显示器实际刷新率。`1000 / pipeline_ms` 仅代表 pipeline 耗时倒数，不能作为包括采集等待在内的实际 QPS。
+
+实际六轮对比结果和分析见 [USB 摄像头耗时报告](VIDEO_TIMING_RESULTS.md)。
+
+
+## 9. 采集缓冲策略修正
+
+早期版本为了减少排队将 `CAP_PROP_BUFFERSIZE` 固定为 1，实测这台 LRCP F1080P 在该策略下吞吐约15FPS。现在改为可配置参数，默认2，并在日志中打印请求/实际缓冲数。单缓冲可能使取出/解码当前帧期间采集队列没有空缓冲，不能把“越少越实时”当作无条件规则。
+
+对比时仍使用1280×720 MJPG、原有转置/缩放和相同engine，不通过降低分辨率提高数字。2/3/4缓冲的完整推理统计与驱动帧时间戳检查保存在本地 `debug/camera-buffers-v1/`。
+
+若处理长期慢于30FPS，增加缓冲不能提升推理速度，也不能保证没有旧帧；本实现仍是顺序处理，未新增丢帧线程或自动清空队列。当前选择的是该设备实测能满足吞吐需求的较小值，而不是通用最优值。
+
+默认双缓冲的完整对比、时间戳检查及显示/保存回归结果见 [缓冲修改验证报告](CAMERA_BUFFER_RESULTS.md)。

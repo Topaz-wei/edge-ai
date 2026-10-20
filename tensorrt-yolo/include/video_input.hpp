@@ -19,11 +19,13 @@ struct Options {
     std::string source;
     std::string stage;
     std::string output;
+    std::string timingCsv;
     bool camera = false;
     int cameraIndex = 0;
     int captureWidth = 0;
     int captureHeight = 0;
     int captureFps = 0;
+    int captureBuffers = 2;
     std::string captureFourcc;
     bool display = true;
     bool graph = true;
@@ -84,16 +86,20 @@ inline Options parse(const std::vector<std::string>& args) {
                     options.captureWidth = value;
                 else if (key == "--capture-height")
                     options.captureHeight = value;
+                else if (key == "--capture-buffers")
+                    options.captureBuffers = value;
                 else if (key == "--capture-fps")
                     options.captureFps = value;
                 else
                     throw std::runtime_error("Unknown option: " + key);
             }
-        } else if (key == "--output" || key == "--max-frames") {
+        } else if (key == "--output" || key == "--max-frames" || key == "--timing-csv") {
             if (++i >= args.size() || args[i].empty() || args[i].rfind("--", 0) == 0)
                 throw std::runtime_error("Missing value: " + key);
 
-            if (key == "--output") {
+            if (key == "--timing-csv") {
+                options.timingCsv = args[i];
+            } else if (key == "--output") {
                 options.output = args[i];
             } else {
                 if (!digits(args[i]))

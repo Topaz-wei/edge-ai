@@ -69,5 +69,14 @@ int main() {
     require(video::outputFps(0) == 30 && video::outputFps(25) == 25);
     require(video::outputFps(std::numeric_limits<double>::infinity()) == 30);
     require(video::fps(0) == 0);
+    auto timed = video::parse({"e", "8", "camera", "--timing-csv", "timings.csv"});
+    require(timed.timingCsv == "timings.csv");
+    rejects([] { video::parse({"e", "8", "camera", "--timing-csv"}); });
+    auto buffered = video::parse({"e", "8", "camera", "--capture-buffers", "3"});
+    require(buffered.captureBuffers == 3);
+    require(video::parse({"e", "8", "camera"}).captureBuffers == 2);
+    rejects([] { video::parse({"e", "8", "camera", "--capture-buffers", "0"}); });
+    rejects([] { video::parse({"e", "8", "camera", "--capture-buffers", "-1"}); });
+    rejects([] { video::parse({"e", "v.mp4", "camera", "--capture-buffers", "2"}); });
     std::cout << "video input tests passed\n";
 }
