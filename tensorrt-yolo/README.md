@@ -1,6 +1,6 @@
 # TensorRT 模型部署研究
 
-完整 CV 部署项目。已归档 vh3 历史模型，并建立 YOLOv8m fixed640 预处理与 PyTorch FP32 Golden；尚未实现 C++ 推理或 INT8 量化。下方模型盘点保留当时的核查边界，最新进展见「YOLO fixed640 Reference」。
+YOLOv8m fixed640 部署项目，已包含 C++/CUDA 推理、FP16/INT8 精度验证和视频入口。公共 TensorRT 运行库与视频核心已提取至 edge-ai 根目录；当前结构见文末「公共模块迁移」。下方模型盘点与 Reference 章节保留历史时间点的核查边界，不代表当前实现状态。
 
 ## 来源与复制结果
 
@@ -182,3 +182,11 @@ PyTorch 脚本直接调用 `YOLO(...).model`，不经过 Predictor，不做第�
 
 新增独立程序 `yolo_video_cuda`，支持离线视频、摄像头编号、无窗口运行和 MP4 输出。
 构建、输入几何约定、计时说明及调试顺序见 [视频推理文档](docs/VIDEO_PIPELINE.md)。
+
+## 公共模块迁移（2026-10-20）
+
+TensorRT runner 已迁至根目录 `trt-runtime/`，原 `TrtRunner` 头保留兼容别名。
+YOLO shape 检查、CUDA 预处理/后处理、校准器仍属于本目录。
+视频采集/显示/录像/调度迁至根目录 `video-pipeline/`；旧 `yolo_video_cuda` 参数保留。
+新增 `edge_video CONFIG.yaml` 支持多 engine 实例；配置和目录职责见根 README。
+已有 engine 原样复用，数值回归见 [报告](benchmarks/shared-runtime/README.md)。

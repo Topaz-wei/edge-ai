@@ -202,3 +202,14 @@ build/yolo_video_cuda \
 若处理长期慢于30FPS，增加缓冲不能提升推理速度，也不能保证没有旧帧；本实现仍是顺序处理，未新增丢帧线程或自动清空队列。当前选择的是该设备实测能满足吞吐需求的较小值，而不是通用最优值。
 
 默认双缓冲的完整对比、时间戳检查及显示/保存回归结果见 [缓冲修改验证报告](CAMERA_BUFFER_RESULTS.md)。
+
+## 公共视频模块（2026-10-20）
+
+旧入口现在是公共 `edge::video::runVideo` 的兼容适配：参数、business 画布和 CSV 列保留。
+采集、录像、显示、计时实现位于根目录 `video-pipeline/src/pipeline.cpp`；
+YOLO geometry 和模型适配位于本目录 `include/yolo_video_geometry.hpp`、`src/yolo_video_model.cpp`。
+`include/video_input.hpp` 保留旧 CLI 解析与业务几何；通用采集选项来自公共模块。
+
+新增 `build/edge_video ../configs/yolo-video.yaml` 通过配置选择 engine，可配置多个实例。
+此入口在 source 原帧显示，camera 模式的框已经逆映射；它与旧入口的业务画布不同。
+详见根目录 `video-pipeline/README.md`。原有第 4 节执行路径表描述迁移前的位置。
