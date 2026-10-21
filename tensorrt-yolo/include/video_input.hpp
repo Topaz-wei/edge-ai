@@ -1,4 +1,5 @@
 #pragma once
+#include "edge/video/capture_options.hpp"
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
@@ -14,31 +15,13 @@
 
 namespace video {
 
-struct Options {
-    std::string engine;
-    std::string source;
-    std::string stage;
-    std::string output;
-    std::string timingCsv;
-    bool camera = false;
-    int cameraIndex = 0;
-    int captureWidth = 0;
-    int captureHeight = 0;
-    int captureFps = 0;
-    int captureBuffers = 2;
-    std::string captureFourcc;
-    bool display = true;
-    bool graph = true;
-    std::size_t maxFrames = 0;  // Zero means no limit when the option is omitted.
+using edge::video::digits;
+using edge::video::fps;
+using edge::video::outputFps;
+struct Options : edge::video::CaptureOptions {
+    std::string engine, stage;
+    bool graph=true;
 };
-
-inline bool digits(const std::string& value) {
-    return !value.empty() && std::all_of(
-        value.begin(),
-        value.end(),
-        [](unsigned char c) { return std::isdigit(c); }
-    );
-}
 
 inline Options parse(const std::vector<std::string>& args) {
     if (args.size() < 3)
@@ -155,12 +138,4 @@ inline cv::Mat toBusinessFrame(
     return business;
 }
 
-inline double outputFps(double sourceFps) {
-    return std::isfinite(sourceFps) && sourceFps > 1.0 ? sourceFps : 30.0;
-}
-
-inline double fps(double milliseconds) {
-    return milliseconds > 0.0 ? 1000.0 / milliseconds : 0.0;
-}
-
-}  // namespace video
+} // namespace video

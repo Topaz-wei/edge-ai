@@ -1,0 +1,13 @@
+%YAML:1.0
+---
+schema_version: 1
+source: "0"
+display: 0
+max_frames: 300
+capture_buffers: 2
+models:
+  - id: person
+    type: yolo
+    engine: "../tensorrt-yolo/debug/trial007_sub_model22/yolov8m_int8.plan"
+    input_stage: camera
+    graph: 1

@@ -47,6 +47,9 @@ public:
         CudaPipelineTimings* timings = nullptr
     );
 
+    const edge::trt::TensorInfo& inputInfo() const { return runner_.inputInfo(); }
+    const edge::trt::TensorInfo& outputInfo() const { return runner_.outputInfo(); }
+
 private:
     TrtRunner runner_;
     CudaYoloOps ops_;
