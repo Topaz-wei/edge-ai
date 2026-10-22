@@ -20,7 +20,30 @@ def distribution(values):
         lo = int(x)
         return values[lo] + (values[min(lo + 1, len(values)-1)] - values[lo]) * (x-lo)
     return {'n': len(values), 'mean': st.mean(values), 'p50': percentile(.5),
-            'p95': percentile(.95), 'min': values[0], 'max': values[-1]}
+            'p95': percentile(.95), 'p99': percentile(.99), 'min': values[0], 'max': values[-1]}
+
+
+def model_service_ms(row):
+    # prepare moved out of infer in the double-buffer version. Comparing infer
+    # alone would falsely attribute CPU work removal to faster GPU execution.
+    return row['geometry_ms'] + row.get('prepare_ms', 0) + row['pipeline_ms']
+
+
+def long_interval(before, after):
+    consumer_work = sum(after.get(k, 0) for k in
+                        ('pipeline_ms', 'draw_ms', 'encode_ms', 'display_ms'))
+    return {'frame': int(after['frame']),
+            'interval_ms': after['end_ms'] - before['end_ms'],
+            'previous_frame': int(before['frame']),
+            'after_logged_frame': before['frame'] == 1 or before['frame'] % 30 == 0,
+            'start_minus_previous_end_ms': after['start_ms'] - before['end_ms'],
+            # Approximate infer start from measured stage durations; small host
+            # bookkeeping gaps remain. This is not a CUDA kernel timestamp.
+            'estimated_consumer_gap_ms': after['end_ms'] - consumer_work - before['end_ms'],
+            'model_service_ms': model_service_ms(after),
+            **{k: after[k] for k in ('total_ms', 'read_ms', 'geometry_ms', 'prepare_ms',
+               'pipeline_ms', 'draw_ms', 'display_ms', 'queue_wait_ms',
+               'read_age_ms', 'completion_age_ms') if k in after}}
 
 
 def analyze(out):
@@ -47,6 +70,11 @@ def analyze(out):
         assert min(intervals) > 0
         fps = len(intervals)*1000/sum(intervals)
         metrics = {k:[r[k] for r in rows] for k in ('read_ms','geometry_ms','pipeline_ms','draw_ms','display_ms','total_ms')}
+        for k in ('prepare_ms', 'queue_wait_ms'):
+            if k in rows[0]: metrics[k] = [r[k] for r in rows]
+        metrics['model_service_ms'] = [model_service_ms(r) for r in rows]
+        metrics['consumer_work_ms'] = [sum(r.get(k, 0) for k in ('pipeline_ms','draw_ms','encode_ms','display_ms')) for r in rows]
+        metrics['overlap_fraction'] = [float(b['start_ms'] < a['end_ms']) for a,b in zip(rows,rows[1:])]
         metrics['geometry_plus_pipeline_ms'] = [r['geometry_ms']+r['pipeline_ms'] for r in rows]
         for k in ('read_age_ms','completion_age_ms'):
             metrics[k] = [r[k] for r in rows if r[k] >= 0]
@@ -61,19 +89,17 @@ def analyze(out):
         groups[key]['run_fps'].append(fps)
         details.append({'name':run['name'], 'fps':fps,
             'metrics':{k:distribution(v) for k,v in metrics.items()},
+            'completion_intervals_gt50ms':sum(x>50 for x in intervals),
             'completion_intervals_gt100ms':sum(x>100 for x in intervals),
             'completion_intervals_gt200ms':sum(x>200 for x in intervals),
-            'long_intervals':[{'frame':int(rows[i+1]['frame']),'interval_ms':v,
-                'total_ms':rows[i+1]['total_ms'],'read_ms':rows[i+1]['read_ms'],
-                'geometry_plus_pipeline_ms':rows[i+1]['geometry_ms']+rows[i+1]['pipeline_ms'],
-                'display_ms':rows[i+1]['display_ms']} for i,v in enumerate(intervals) if v>100],
+            'long_intervals':[long_interval(a,b) for a,b in zip(rows,rows[1:]) if b['end_ms']-a['end_ms']>100],
             'invalid_completion_age':len(rows)-len(metrics['completion_age_ms']),
             'capture_timestamp_nonincreasing':sum(b['capture_timestamp_ms']<=a['capture_timestamp_ms'] for a,b in zip(rows,rows[1:]))})
     result = {'method':'Exclude initial warmup only; FPS per run from end timestamp differences; linear percentile on pooled frames; FPS summary is arithmetic mean of runs.',
               'runs':details, 'groups':{key:{k:distribution(v) for k,v in group.items()} for key,group in groups.items()}}
     (out/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
     for key,group in sorted(result['groups'].items()):
-        print('{} FPS={:.3f} [{:.3f},{:.3f}] compute={:.3f}ms age={:.3f}ms'.format(key,group['run_fps']['mean'],group['run_fps']['min'],group['run_fps']['max'],group['geometry_plus_pipeline_ms']['mean'],group['completion_age_ms'].get('mean',float('nan'))))
+        print('{} FPS={:.3f} [{:.3f},{:.3f}] compute={:.3f}ms age={:.3f}ms'.format(key,group['run_fps']['mean'],group['run_fps']['min'],group['run_fps']['max'],group['model_service_ms']['mean'],group['completion_age_ms'].get('mean',float('nan'))))
     print('Validated {} runs'.format(len(runs)))
     return result
 

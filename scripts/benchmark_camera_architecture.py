@@ -2,7 +2,8 @@
 """Real-camera A/B/C benchmark; runs existing binaries and never builds engines.
 
 A=pre-extraction YOLO CLI, B=target-commit compatible CLI, C=target config CLI.
-All CSV data and failure records are preserved. Run the analyzer for results.
+D=optional double-buffer config CLI. All CSV data and failure records are preserved.
+Run the analyzer for results.
 """
 import argparse
 import csv
@@ -42,6 +43,8 @@ def main():
     ap.add_argument('--output', type=Path, required=True)
     ap.add_argument('--build-before', type=Path, required=True)
     ap.add_argument('--build-after', type=Path, required=True)
+    ap.add_argument('--build-double', type=Path, help='Optional double-buffer root build directory')
+    ap.add_argument('--double-commit', help='Source commit for the supplied double-buffer binary')
     ap.add_argument('--source', default='/dev/v4l/by-id/usb-LRCP_F1080P_LRCP_F1080P_000000000001-video-index0')
     ap.add_argument('--frames', type=int, default=900)
     ap.add_argument('--warmup', type=int, default=150)
@@ -49,7 +52,13 @@ def main():
     ap.add_argument('--width', type=int, default=1920)
     ap.add_argument('--height', type=int, default=1080)
     ap.add_argument('--suite', choices=['all', 'headless', 'display'], default='all')
+    ap.add_argument('--comparison', choices=['architecture', 'double'], default='architecture',
+                    help='double: only serial C vs double-buffer D, mixed INT8')
     args = ap.parse_args()
+    if args.comparison == 'double' and not args.build_double:
+        ap.error('--comparison double requires --build-double')
+    if args.build_double and not args.double_commit:
+        ap.error('--build-double requires --double-commit for provenance')
     if args.frames <= args.warmup + 1 or args.warmup < 0 or args.rounds <= 0:
         ap.error('Need frames > warmup + 1 and positive rounds')
     out = args.output.resolve()
@@ -58,9 +67,17 @@ def main():
     bins = {'A': before / 'yolo_video_cuda',
             'B': after / 'tensorrt-yolo/yolo_video_cuda',
             'C': after / 'tensorrt-yolo/edge_video'}
+    if args.build_double:
+        bins['D'] = args.build_double.resolve() / 'tensorrt-yolo/edge_video'
     engines = {'fp16': ROOT / 'tensorrt-yolo/engines/yolov8m_fp16.plan',
                'mixed_int8': ROOT / 'tensorrt-yolo/debug/trial007_sub_model22/yolov8m_int8.plan'}
-    metadata = {'commits': COMMITS, 'started_utc': datetime.now(timezone.utc).isoformat(),
+    if args.comparison == 'double':
+        bins = {k: bins[k] for k in ('C', 'D')}
+        engines = {'mixed_int8': engines['mixed_int8']}
+    occupied = query(['fuser', args.source])
+    if occupied.get('returncode') == 0:
+        raise RuntimeError('Camera is already in use: ' + occupied['output'])
+    metadata = {'commits': dict(COMMITS), 'started_utc': datetime.now(timezone.utc).isoformat(),
                 'platform': platform.platform(), 'arguments': {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
                 'engines': {k: {'path': str(p), 'sha256': sha(p)} for k, p in engines.items()},
                 'binaries': {k: {'path': str(p), 'sha256': sha(p)} for k, p in bins.items()},
@@ -75,25 +92,38 @@ def main():
                 'clock_policy': 'Existing MAXN/DVFS; no power/frequency/exposure changes',
                 'warmup_policy': 'Exclude first warmup rows only; retain every subsequent outlier',
                 'recording': False}
+    if args.build_double:
+        metadata['commits']['double'] = args.double_commit
     dump(out / 'metadata.json', metadata)
-    # Each variant occupies each ordinal position once across three rounds.
+    # Rotate execution order; three rounds are fully position-balanced for ABC only.
     orders = {'fp16': ['ABC', 'BCA', 'CAB'],
               'mixed_int8': ['CBA', 'BAC', 'ACB'],
               'display': ['BAC', 'ACB', 'CBA']}
+    if args.build_double:
+        orders = {'fp16': ['ABCD', 'DCBA', 'BCDA', 'ADCB'],
+                  'mixed_int8': ['DCBA', 'ABCD', 'CBAD', 'DABC'],
+                  'display': ['BCDA', 'ADCB', 'DABC', 'CBAD']}
     schedule = []
     for r in range(args.rounds):
         if args.suite in ('all', 'headless'):
             precisions = ['fp16', 'mixed_int8'] if r % 2 == 0 else ['mixed_int8', 'fp16']
             for precision in precisions:
-                schedule.extend((r + 1, 'headless', precision, v) for v in orders[precision][r % 3])
+                schedule.extend((r + 1, 'headless', precision, v) for v in orders[precision][r % len(orders[precision])])
         if args.suite in ('all', 'display'):
-            schedule.extend((r + 1, 'display', 'mixed_int8', v) for v in orders['display'][r % 3])
+            schedule.extend((r + 1, 'display', 'mixed_int8', v) for v in orders['display'][r % len(orders['display'])])
+    if args.comparison == 'double':
+        schedule = []
+        for r in range(args.rounds):
+            if args.suite in ('all', 'headless'):
+                schedule.extend((r+1, 'headless', 'mixed_int8', v) for v in ('CD' if r%2 == 0 else 'DC'))
+            if args.suite in ('all', 'display'):
+                schedule.extend((r+1, 'display', 'mixed_int8', v) for v in ('DC' if r%2 == 0 else 'CD'))
     dump(out / 'schedule.json', schedule)
     results = []
     for index, (r, mode, precision, variant) in enumerate(schedule, 1):
         name = '{}-{}-{}-r{}'.format(mode, precision, variant, r)
         csv_path = out / (name + '.csv')
-        if variant == 'C':
+        if variant in ('C', 'D'):
             config = out / (name + '.yaml')
             config.write_text('''%YAML:1.0
 ---

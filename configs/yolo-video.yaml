@@ -4,8 +4,8 @@ schema_version: 1
 source: "/dev/video8"
 display: 0
 max_frames: 900
-capture_width: 1920
-capture_height: 1080
+capture_width: 1280
+capture_height: 720
 capture_fps: 30
 capture_fourcc: "MJPG"
 capture_buffers: 2
