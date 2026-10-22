@@ -54,6 +54,12 @@ models:
 - `VideoHooks` 仅用于已有应用的展示变换，不是 YAML 隐含全局预处理；第一帧验证时在主线程执行，之后在准备线程执行，返回的像素必须在消费完成前保持有效、不可覆盖。
 - YOLO 的 CPU 几何处理位于 `tensorrt-yolo/include/yolo_video_preprocess.hpp` 和 `src/yolo_video_preprocess.cpp`，保留转置及 INTER_AREA 缩放语义。
 
+CSV 的 `read_ms` 拆为 `grab_ms` 和 `retrieve_ms`，保留总计且满足两项之和等于总计（CSV 舍入误差除外）。
+两项是 OpenCV API 的 host wall time，包含少量调用边界开销，不是线程 CPU 时间。
+在本机 OpenCV 4.5.4 的 V4L2/MJPG 路径，grab 主要是等待/取出相机缓冲；retrieve 包含 JPEG 解码、输出复制和缓冲归还。
+这不是“纯等待”和“纯解码”的精确划分；其他后端（如文件的 FFmpeg）可能在 grab 内解码。
+第一帧在初始化时已经读完，因此三个读取字段均为 0。
+
 CSV 新增 `prepare_ms`（全部模型 CPU prepare）和 `queue_wait_ms`（准备好到主线程取走）。
 `geometry_ms` 为兼容入口的画布变换；新入口的 YOLO 几何处理计入 `prepare_ms`。
 `pipeline_ms` 和 `<id>_wall_ms` 为消费端 infer 的 host wall time，包含传输/等待/结果封装，不是纯 GPU kernel 时间。

@@ -41,9 +41,21 @@ def long_interval(before, after):
             # bookkeeping gaps remain. This is not a CUDA kernel timestamp.
             'estimated_consumer_gap_ms': after['end_ms'] - consumer_work - before['end_ms'],
             'model_service_ms': model_service_ms(after),
-            **{k: after[k] for k in ('total_ms', 'read_ms', 'geometry_ms', 'prepare_ms',
+            **{k: after[k] for k in ('total_ms', 'read_ms', 'grab_ms', 'retrieve_ms', 'geometry_ms', 'prepare_ms',
                'pipeline_ms', 'draw_ms', 'display_ms', 'queue_wait_ms',
                'read_age_ms', 'completion_age_ms') if k in after}}
+
+
+def validate_read_timing(row):
+    if 'grab_ms' not in row and 'retrieve_ms' not in row:
+        return  # Historical CSV has only read_ms.
+    fields = ('read_ms', 'grab_ms', 'retrieve_ms')
+    if any(k not in row or not math.isfinite(row[k]) or row[k] < 0 for k in fields):
+        raise ValueError('Missing or invalid read-stage timing')
+    if abs(row['read_ms'] - row['grab_ms'] - row['retrieve_ms']) > 0.00001:
+        raise ValueError('Read-stage timings do not sum to read_ms')
+    if row['frame'] == 1 and any(row[k] != 0 for k in fields):
+        raise ValueError('First setup read must be excluded')
 
 
 def analyze(out):
@@ -65,12 +77,14 @@ def analyze(out):
         assert len(all_rows) == meta['arguments']['frames']
         assert [r['frame'] for r in all_rows] == list(range(1,len(all_rows)+1))
         assert all(math.isfinite(v) for row in all_rows for v in row.values())
+        for row in all_rows:
+            validate_read_timing(row)
         rows = all_rows[meta['arguments']['warmup']:]
         intervals = [b['end_ms']-a['end_ms'] for a,b in zip(rows,rows[1:])]
         assert min(intervals) > 0
         fps = len(intervals)*1000/sum(intervals)
         metrics = {k:[r[k] for r in rows] for k in ('read_ms','geometry_ms','pipeline_ms','draw_ms','display_ms','total_ms')}
-        for k in ('prepare_ms', 'queue_wait_ms'):
+        for k in ('prepare_ms', 'queue_wait_ms', 'grab_ms', 'retrieve_ms'):
             if k in rows[0]: metrics[k] = [r[k] for r in rows]
         metrics['model_service_ms'] = [model_service_ms(r) for r in rows]
         metrics['consumer_work_ms'] = [sum(r.get(k, 0) for k in ('pipeline_ms','draw_ms','encode_ms','display_ms')) for r in rows]

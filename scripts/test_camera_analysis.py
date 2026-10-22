@@ -1,9 +1,22 @@
 """Regression checks for comparable service time and long-tail statistics."""
 import unittest
-from analyze_camera_architecture import distribution, model_service_ms, long_interval
+from analyze_camera_architecture import distribution, model_service_ms, long_interval, validate_read_timing
 
 
 class CameraAnalysisTests(unittest.TestCase):
+    def test_read_split_rejects_inconsistent_evidence(self):
+        valid = {'frame': 2, 'read_ms': 30, 'grab_ms': 22, 'retrieve_ms': 8}
+        validate_read_timing(valid)
+        validate_read_timing({'frame': 2, 'read_ms': 30})  # historical CSV
+        validate_read_timing({'frame': 1, 'read_ms': 0, 'grab_ms': 0, 'retrieve_ms': 0})
+        validate_read_timing(dict(valid, read_ms=30.000001))  # CSV rounding
+        for changes in ({'read_ms': 31}, {'grab_ms': -1, 'retrieve_ms': 31},
+                        {'frame': 1}, {'grab_ms': float('nan')}):
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                validate_read_timing(dict(valid, **changes))
+        with self.assertRaises(ValueError):
+            validate_read_timing({'frame': 2, 'read_ms': 30, 'grab_ms': 22})
+
     def test_p99_preserves_rare_tail(self):
         result = distribution([1, 2, 3, 4, 100])
         self.assertAlmostEqual(result['p99'], 96.16)

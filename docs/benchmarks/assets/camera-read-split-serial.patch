@@ -1,0 +1,54 @@
+--- a/video-pipeline/src/pipeline.cpp
++++ b/video-pipeline/src/pipeline.cpp
+@@ -152,7 +152,7 @@
+     // start,end,read,geometry,pipeline,draw,encode,display,total,
+     // capture timestamp, age at read return, age at completion (all milliseconds).
+     // Ages are diagnostic, not exposure-to-screen latency; -1 means unavailable.
+-    std::vector<std::array<double, 12>> timings;
++    std::vector<std::array<double, 14>> timings;
+     std::vector<std::vector<double>> modelTimings;
+     const auto runBegin = Clock::now();
+ 
+@@ -160,11 +160,22 @@
+     // call is still included; this demo is not a warmed-up benchmark.
+     while (true) {
+         const auto loopBegin = Clock::now();
+-        std::array<double, 12> timing{};
++        std::array<double, 14> timing{};
+         timing[9] = timing[10] = timing[11] = -1.0;
+         timing[0] = elapsedMs(runBegin, loopBegin);
+         const auto readBegin = Clock::now();
+-        if (count > 0 && !capture.read(frame)) {
++        bool readOk=true;
++        if(count>0) {
++            const bool grabbed=capture.grab();
++            const auto grabEnd=Clock::now();
++            readOk=grabbed && capture.retrieve(frame);
++            const auto readEnd=Clock::now();
++            timing[12]=elapsedMs(readBegin,grabEnd);
++            timing[13]=elapsedMs(grabEnd,readEnd);
++            timing[2]=elapsedMs(readBegin,readEnd);
++            readOk=readOk && !frame.empty();
++        }
++        if (!readOk) {
+             if (options.camera)
+                 throw std::runtime_error("Camera frame read failed");
+             std::cout << "Video read ended (EOF or decoder failure)\n";
+@@ -172,7 +183,7 @@
+         }
+ 
+         const auto readEnd = Clock::now();
+-        timing[2] = count == 0 ? 0.0 : elapsedMs(readBegin, readEnd);
++
+         if (options.camera && !options.timingCsv.empty()) {
+             const double timestamp = capture.get(cv::CAP_PROP_POS_MSEC);
+             const double age = monotonicMs() - timestamp;
+@@ -256,7 +267,7 @@
+         if (!parent.empty())
+             std::filesystem::create_directories(parent);
+         std::ofstream csv(options.timingCsv);
+-        csv << "frame,start_ms,end_ms,read_ms,geometry_ms,pipeline_ms,draw_ms,encode_ms,display_ms,total_ms,capture_timestamp_ms,read_age_ms,completion_age_ms";
++        csv << "frame,start_ms,end_ms,read_ms,geometry_ms,pipeline_ms,draw_ms,encode_ms,display_ms,total_ms,capture_timestamp_ms,read_age_ms,completion_age_ms,grab_ms,retrieve_ms";
+         if (!hooks.legacyPresentation)
+             for (const auto& m : options.models) csv << ',' << m.id << "_wall_ms";
+         csv << '\n';

@@ -124,13 +124,17 @@ int main() {
         if(state.prepared!=3 || state.consumed!=3)throw std::runtime_error("Speculative frames beyond limit");
         std::ifstream overlapCsv(c.timingCsv);
         std::getline(overlapCsv,line);
-        if(line.find("prepare_ms,queue_wait_ms")==std::string::npos)throw std::runtime_error("Missing timing stages");
+        if(line.find("prepare_ms,queue_wait_ms,grab_ms,retrieve_ms")==std::string::npos)throw std::runtime_error("Missing timing stages");
         std::vector<std::vector<double>> rows;
         while(std::getline(overlapCsv,line)) {
             std::istringstream row(line);std::string field;std::vector<double> values;
             while(std::getline(row,field,','))values.push_back(std::stod(field));
-            if(values.size()!=16 || std::abs(values[9]-(values[2]-values[1]))>0.00001 || values[13]<0 || values[14]<0)
+            if(values.size()!=18 || std::abs(values[9]-(values[2]-values[1]))>0.00001 || values[13]<0 || values[14]<0)
                 throw std::runtime_error("Invalid latency/timing row");
+            if(values[15]<0 || values[16]<0 || std::abs(values[3]-values[15]-values[16])>0.00001)
+                throw std::runtime_error("Read stage decomposition mismatch");
+            if(rows.empty() && (values[3]!=0 || values[15]!=0 || values[16]!=0))
+                throw std::runtime_error("First setup read must be excluded");
             rows.push_back(std::move(values));
         }
         if(rows.size()!=3 || rows[1][1]>=rows[0][2])throw std::runtime_error("Timing does not show overlapping frames");

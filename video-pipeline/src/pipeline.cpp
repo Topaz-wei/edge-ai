@@ -153,13 +153,13 @@ int runVideo(const VideoConfig& options, const ModelRegistry& registry, const Vi
     // start,end,read,geometry,pipeline,draw,encode,display,total,
     // capture timestamp, age at read return, age at completion, prepare, queue wait (ms).
     // Ages are diagnostic, not exposure-to-screen latency; -1 means unavailable.
-    std::vector<std::array<double, 14>> timings;
+    std::vector<std::array<double, 16>> timings;
     std::vector<std::vector<double>> modelTimings;
     const auto runBegin = Clock::now();
 
     struct Work {
         PreparedFrame prepared;
-        std::array<double,14> timing{};
+        std::array<double,16> timing{};
         Clock::time_point ready;
     };
     {
@@ -173,11 +173,20 @@ int runVideo(const VideoConfig& options, const ModelRegistry& registry, const Vi
             const auto readBegin=Clock::now();
             cv::Mat source;
             if(index==0)source=std::move(frame);
-            else if(!capture.read(source) || source.empty()) {
-                if(options.camera)throw std::runtime_error("Camera frame read failed");
-                return false;
+            else {
+                const bool grabbed=capture.grab();
+                const auto grabEnd=Clock::now();
+                const bool retrieved=grabbed && capture.retrieve(source);
+                const auto readEnd=Clock::now();
+                // API wall times, not pure wait/decode CPU times. Backend work varies.
+                timing[14]=elapsedMs(readBegin,grabEnd);
+                timing[15]=elapsedMs(grabEnd,readEnd);
+                timing[2]=elapsedMs(readBegin,readEnd);
+                if(!retrieved || source.empty()) {
+                    if(options.camera)throw std::runtime_error("Camera frame read failed");
+                    return false;
+                }
             }
-            timing[2]=index==0?0.0:elapsedMs(readBegin,Clock::now());
             if(options.camera && !options.timingCsv.empty()) {
                 const double timestamp=capture.get(cv::CAP_PROP_POS_MSEC);
                 const double age=monotonicMs()-timestamp;
@@ -279,7 +288,7 @@ int runVideo(const VideoConfig& options, const ModelRegistry& registry, const Vi
         if (!parent.empty())
             std::filesystem::create_directories(parent);
         std::ofstream csv(options.timingCsv);
-        csv << "frame,start_ms,end_ms,read_ms,geometry_ms,pipeline_ms,draw_ms,encode_ms,display_ms,total_ms,capture_timestamp_ms,read_age_ms,completion_age_ms,prepare_ms,queue_wait_ms";
+        csv << "frame,start_ms,end_ms,read_ms,geometry_ms,pipeline_ms,draw_ms,encode_ms,display_ms,total_ms,capture_timestamp_ms,read_age_ms,completion_age_ms,prepare_ms,queue_wait_ms,grab_ms,retrieve_ms";
         if (!hooks.legacyPresentation)
             for (const auto& m : options.models) csv << ',' << m.id << "_wall_ms";
         csv << '\n';
