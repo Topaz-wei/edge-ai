@@ -103,39 +103,4 @@ inline Options parse(const std::vector<std::string>& args) {
     return options;
 }
 
-inline cv::Mat toBusinessFrame(
-    const cv::Mat& input,
-    const std::string& stage
-) {
-    if (input.empty() || input.type() != CV_8UC3)
-        throw std::runtime_error("Expected a nonempty CV_8UC3 BGR frame");
-
-    if (stage == "business") {
-        if (input.cols != 360 || input.rows != 640)
-            throw std::runtime_error("Business input must be width=360 height=640");
-        return input;
-    }
-    if (stage != "camera")
-        throw std::runtime_error("Input stage must be business or camera");
-
-    // Match prepare_yolo_reference.py: transpose (not rotation), then resize.
-    cv::Mat transposed;
-    cv::transpose(input, transposed);
-    const double scale = 640.0 / transposed.rows;
-    const int width = static_cast<int>(transposed.cols * scale);
-    if (width != 360)
-        throw std::runtime_error("Camera geometry must produce width=360 height=640");
-
-    cv::Mat business;
-    cv::resize(
-        transposed,
-        business,
-        cv::Size(width, 640),
-        0.0,
-        0.0,
-        cv::INTER_AREA
-    );
-    return business;
-}
-
 } // namespace video

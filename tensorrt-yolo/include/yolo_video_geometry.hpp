@@ -1,5 +1,7 @@
 #pragma once
-#include "include/video_input.hpp"
+#include <opencv2/core.hpp>
+#include <string>
+#include <stdexcept>
 namespace yolo {
 inline cv::Rect2f toSourceBox(const cv::Rect2f& box,cv::Size source,const std::string& stage) {
     if(stage=="business") {

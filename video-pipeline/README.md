@@ -38,21 +38,28 @@ models:
 实际缓冲数和请求不一致时报错，不自动改变功耗模式或频率。
 
 所有模型初始化完成后才创建输出；已有输出和符号链接拒绝覆盖，CSV 与视频不能同路径。
-新入口在 source 帧绘制结果。YOLO camera 模式内部转换为业务图后推理，
+新入口在 source 帧绘制结果。YOLO camera 模式在 CPU 准备阶段转换为业务图后推理，
 再按实际缩放比例逆转置检测框；business 模式要求 360×640 BGR 帧。
 旧 YOLO 命令由适配层提供 business 画布变换，共享视频核心不硬编码业务几何。
 
 ## 接入接口
 
-- `IModel::infer(const Frame&) -> ModelResult`；输入图像借用且只读，不能修改底层像素。
-- `ModelResult` 分别存储 detection/classification，不强制所有任务返回检测框。
-- 检测框必须是传入帧坐标；分类标签和检测标签由模型适配器提供。
-- 每个配置 id 创建独立模型对象；同帧顺序执行，无后台队列、并发或隐式跳帧。
-- `ModelSet` 附加实例 id 和 host wall time。绘图在全部模型执行结束后进行。
-- `VideoHooks` 仅用于已有应用的展示变换，不是 YAML 隐含全局预处理。
+- `IModel::prepare(const Frame&) const -> unique_ptr<PreparedInput>`：只做 CPU 准备，返回逐帧独立的数据；可与同一实例的 `infer()` 并发，不能修改共享推理缓冲或输入像素。
+- `IModel::infer(const PreparedInput&) -> ModelResult`：消费准备结果，负责 GPU 提交、传输、同步和结果封装；不再执行 CPU 图像变换。同一模型的 infer 仍然串行调用。
+- `Frame` 持有 `cv::Mat` 引用计数和帧号/时间戳；`PreparedInput` 保存源帧，模型可派生自己的输入类型持有图像或张量。复制 Mat 头不复制像素，调用方必须保持底层像素只读直至消费结束。
+- `ModelResult` 分别存储 detection/classification，不强制所有任务返回检测框。检测框使用源帧坐标。
+- 每个配置 id 创建独立模型对象；同帧各模型按配置顺序 prepare、按配置顺序 infer。
+- 固定两个槽位：准备线程读帧/解码、执行 `VideoHooks::transform` 和所有模型的 prepare；主线程 infer、绘制、编码和显示。第 N+1 帧准备与第 N 帧消费交叠，槽位消费结束前不复用，不主动丢帧。
+- EOF 和准备异常按帧顺序交付；退出时通知并 join 准备线程。OpenCV 的阻塞 read 无法通用地中断，退出可能需要等待正在进行的读取完成。`max_frames` 不会额外读取或准备超过上限的帧。
+- `VideoHooks` 仅用于已有应用的展示变换，不是 YAML 隐含全局预处理；第一帧验证时在主线程执行，之后在准备线程执行，返回的像素必须在消费完成前保持有效、不可覆盖。
+- YOLO 的 CPU 几何处理位于 `tensorrt-yolo/include/yolo_video_preprocess.hpp` 和 `src/yolo_video_preprocess.cpp`，保留转置及 INTER_AREA 缩放语义。
 
-CSV 包含原有帧阶段耗时及每个实例的 `<id>_wall_ms`。新入口 pipeline_ms 包括所有
-模型适配耗时；旧入口 geometry_ms 单列业务图变换。两者口径不同，不能直接视为纯 GPU 耗时。
+CSV 新增 `prepare_ms`（全部模型 CPU prepare）和 `queue_wait_ms`（准备好到主线程取走）。
+`geometry_ms` 为兼容入口的画布变换；新入口的 YOLO 几何处理计入 `prepare_ms`。
+`pipeline_ms` 和 `<id>_wall_ms` 为消费端 infer 的 host wall time，包含传输/等待/结果封装，不是纯 GPU kernel 时间。
+`start_ms` 是准备线程开始处理该帧的时刻，`end_ms` 是消费完成时刻，`total_ms=end_ms-start_ms` 包括排队等待。
+相邻帧时间区间可以重叠，不能用 `1000/mean(total_ms)` 代表吞吐；吞吐看 actual processing FPS/QPS，Full loop EMA 是消费循环间隔。
+第一帧读取、画布变换及验证仍是初始化，排除在稳态计时外；第一次模型 prepare/infer 包含在计时内，未做 warmup。
 frame age 仅在相机时间戳通过校验时有效，否则 -1；不是曝光到显示延迟。
 计时数据在内存中累计并在结束时保存，长时间不限帧运行时请留意 CSV 内存使用。
 

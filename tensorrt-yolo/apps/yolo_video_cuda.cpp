@@ -1,3 +1,4 @@
+#include "include/yolo_video_preprocess.hpp"
 #include "include/video_input.hpp"
 #include "include/yolo_video_model.hpp"
 #include "edge/video/pipeline.hpp"

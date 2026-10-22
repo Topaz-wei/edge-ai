@@ -1,3 +1,4 @@
+#include "include/yolo_video_preprocess.hpp"
 #include "include/video_input.hpp"
 
 #include <opencv2/core.hpp>

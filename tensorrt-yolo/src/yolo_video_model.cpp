@@ -1,10 +1,16 @@
 #include "include/yolo_video_model.hpp"
+#include "include/yolo_video_preprocess.hpp"
 #include "include/yolo_video_geometry.hpp"
 #include "include/cuda_yolo.hpp"
 #include "edge/trt/tensor_io.hpp"
 #include "edge/video/engine_artifact.hpp"
 #include <iostream>
 namespace {
+struct YoloPreparedInput final : edge::video::PreparedInput {
+    cv::Mat business;
+    YoloPreparedInput(const edge::video::Frame& frame,const std::string& stage)
+        :PreparedInput(frame),business(video::toBusinessFrame(frame.bgr,stage)){}
+};
 class YoloModel final : public edge::video::IModel {
     std::string stage_;
     CudaYoloPipeline pipeline_;
@@ -32,12 +38,15 @@ public:
         for (const auto& field : info) std::cout << "  " << field.first << ": " << field.second << '\n';
     }
     void validateFrame(const cv::Mat& frame) const override {
-        video::toBusinessFrame(frame, stage_);
+        video::validateBusinessInput(frame, stage_);
     }
-    edge::video::ModelResult infer(const edge::video::Frame& frame) override {
-        const auto business=video::toBusinessFrame(frame.bgr,stage_);
-        // Preserve original video inference sync behavior: timing is measured by host scheduler.
-        auto detections=pipeline_.infer(business);
+    std::unique_ptr<edge::video::PreparedInput> prepare(const edge::video::Frame& frame) const override {
+        return std::make_unique<YoloPreparedInput>(frame,stage_);
+    }
+    edge::video::ModelResult infer(const edge::video::PreparedInput& input) override {
+        const auto& prepared=dynamic_cast<const YoloPreparedInput&>(input);
+        const auto& frame=prepared.source;
+        auto detections=pipeline_.infer(prepared.business);
         edge::video::ModelResult result;
         for(const auto& d:detections) {
             const auto& b=d.businessBox;

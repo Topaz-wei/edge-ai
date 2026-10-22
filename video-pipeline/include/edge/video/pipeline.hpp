@@ -3,6 +3,8 @@
 namespace edge::video {
 // Optional compatibility presentation transform, supplied by a model application.
 // New config-driven entry points leave this empty and display source coordinates.
+// Called on the main thread for first-frame validation, then on the producer.
+// Returned pixels must remain immutable/alive until that frame is consumed.
 struct VideoHooks {
     std::function<cv::Mat(const cv::Mat&)> transform;
     bool legacyPresentation=false;

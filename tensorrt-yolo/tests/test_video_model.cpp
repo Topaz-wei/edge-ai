@@ -16,7 +16,8 @@ int main(int argc,char** argv) {
                 if(stage=="business")frame=original.clone();else cv::transpose(original,frame);
                 auto before=frame.clone();
                 auto model=makeYoloModel({"test","yolo",argv[1],stage,graph});
-                auto result=model->infer({frame,1,0});
+                auto prepared=model->prepare({frame,1,0});
+                auto result=model->infer(*prepared);
                 if(cv::norm(before,frame,cv::NORM_INF)!=0 || result.detections.size()!=expected.size())
                     throw std::runtime_error("Input or detection count differs");
                 for(std::size_t i=0;i<expected.size();++i) {

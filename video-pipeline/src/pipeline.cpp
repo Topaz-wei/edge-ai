@@ -1,4 +1,5 @@
 #include "edge/video/pipeline.hpp"
+#include "edge/video/double_buffer.hpp"
 
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
@@ -126,7 +127,7 @@ int runVideo(const VideoConfig& options, const ModelRegistry& registry, const Vi
     if (options.captureWidth &&
         (frame.cols != options.captureWidth || frame.rows != options.captureHeight))
         throw std::runtime_error("Actual camera dimensions differ from requested dimensions");
-    const auto firstView = hooks.transform ? hooks.transform(frame) : frame;
+    auto firstView = hooks.transform ? hooks.transform(frame) : frame;
     models.validateFrame(firstView);
     const auto viewSize = firstView.size();
     cv::VideoWriter writer;
@@ -150,97 +151,119 @@ int runVideo(const VideoConfig& options, const ModelRegistry& registry, const Vi
     constexpr double alpha = 0.1;
     // Retain measurements in memory; write CSV after capture to avoid per-frame disk I/O.
     // start,end,read,geometry,pipeline,draw,encode,display,total,
-    // capture timestamp, age at read return, age at completion (all milliseconds).
+    // capture timestamp, age at read return, age at completion, prepare, queue wait (ms).
     // Ages are diagnostic, not exposure-to-screen latency; -1 means unavailable.
-    std::vector<std::array<double, 12>> timings;
+    std::vector<std::array<double, 14>> timings;
     std::vector<std::vector<double>> modelTimings;
     const auto runBegin = Clock::now();
 
-    // First-frame setup is excluded from steady-loop timing. The first pipeline
-    // call is still included; this demo is not a warmed-up benchmark.
-    while (true) {
-        const auto loopBegin = Clock::now();
-        std::array<double, 12> timing{};
-        timing[9] = timing[10] = timing[11] = -1.0;
-        timing[0] = elapsedMs(runBegin, loopBegin);
-        const auto readBegin = Clock::now();
-        if (count > 0 && !capture.read(frame)) {
-            if (options.camera)
-                throw std::runtime_error("Camera frame read failed");
-            std::cout << "Video read ended (EOF or decoder failure)\n";
-            break;
-        }
-
-        const auto readEnd = Clock::now();
-        timing[2] = count == 0 ? 0.0 : elapsedMs(readBegin, readEnd);
-        if (options.camera && !options.timingCsv.empty()) {
-            const double timestamp = capture.get(cv::CAP_PROP_POS_MSEC);
-            const double age = monotonicMs() - timestamp;
-            // Reject unsupported/foreign-clock values instead of reporting fake latency.
-            if (std::isfinite(timestamp) && timestamp > 0.0 && age >= 0.0 && age < 10000.0) {
-                timing[9] = timestamp;
-                timing[10] = age;
+    struct Work {
+        PreparedFrame prepared;
+        std::array<double,14> timing{};
+        Clock::time_point ready;
+    };
+    {
+        // Capture is used exclusively by the producer after first-frame validation.
+        // GPU execution and GUI calls stay on the calling thread.
+        DoubleBuffer<Work> frames([&](Work& work,std::size_t index) {
+            if(options.maxFrames && index>=options.maxFrames)return false;
+            auto& timing=work.timing;
+            timing[9]=timing[10]=timing[11]=-1.0;
+            timing[0]=elapsedMs(runBegin,Clock::now());
+            const auto readBegin=Clock::now();
+            cv::Mat source;
+            if(index==0)source=std::move(frame);
+            else if(!capture.read(source) || source.empty()) {
+                if(options.camera)throw std::runtime_error("Camera frame read failed");
+                return false;
             }
-        }
-        const auto geometryBegin = Clock::now();
-        cv::Mat business = hooks.transform ? hooks.transform(frame) : frame;
-        if (business.size() != viewSize) throw std::runtime_error("Video dimensions changed");
-        timing[3] = elapsedMs(geometryBegin, Clock::now());
-        const auto inferBegin = Clock::now();
-        const auto results = models.infer({business, count + 1, timing[9]});
-        std::size_t detectionCount = 0;
-        for (const auto& r : results) detectionCount += r.result.detections.size();
-        const double pipelineMs = elapsedMs(inferBegin, Clock::now());
-        timing[4] = pipelineMs;
-        pipelineEma = count == 0 ? pipelineMs : alpha * pipelineMs + (1.0 - alpha) * pipelineEma;
-
-        bool quit = false;
-        if (options.display || writer.isOpened()) {
-            // Keep annotations out of subsequent preprocessing/inference.
-            const auto drawBegin = Clock::now();
-            cv::Mat visualization = business.clone();
-            renderResults(visualization, results, hooks.legacyPresentation);
-            drawTiming(visualization, "Pipeline EMA", pipelineEma, 24);
-            if (count > 0)
-                drawTiming(visualization, "Loop EMA (prev)", loopEma, 44);
-
-            timing[5] = elapsedMs(drawBegin, Clock::now());
-            if (writer.isOpened()) {
-                const auto encodeBegin = Clock::now();
-                writer.write(visualization);
-                timing[6] = elapsedMs(encodeBegin, Clock::now());
+            timing[2]=index==0?0.0:elapsedMs(readBegin,Clock::now());
+            if(options.camera && !options.timingCsv.empty()) {
+                const double timestamp=capture.get(cv::CAP_PROP_POS_MSEC);
+                const double age=monotonicMs()-timestamp;
+                if(std::isfinite(timestamp) && timestamp>0.0 && age>=0.0 && age<10000.0) {
+                    timing[9]=timestamp;
+                    timing[10]=age;
+                }
             }
-            if (options.display) {
-                const auto displayBegin = Clock::now();
-                cv::imshow(hooks.legacyPresentation ? "YOLO TensorRT" : "edge-ai", visualization);
-                const int key = cv::waitKey(1);
-                quit = key == 27 || key == 'q';
-                timing[7] = elapsedMs(displayBegin, Clock::now());
+            const auto geometryBegin=Clock::now();
+            cv::Mat business=index==0?std::move(firstView):(hooks.transform?hooks.transform(source):source);
+            if(business.size()!=viewSize)throw std::runtime_error("Video dimensions changed");
+            timing[3]=index==0?0.0:elapsedMs(geometryBegin,Clock::now());
+            const auto prepareBegin=Clock::now();
+            work.prepared=models.prepare({business,index+1,timing[9]});
+            timing[12]=elapsedMs(prepareBegin,Clock::now());
+            work.ready=Clock::now();
+            return true;
+        });
+        while (true) {
+            const auto loopBegin=Clock::now();
+            auto* work=frames.acquire();
+            if(!work) {
+                std::cout << "Video read ended (EOF or decoder failure)\n";
+                break;
             }
+            auto& timing=work->timing;
+            timing[13]=elapsedMs(work->ready,Clock::now());
+            const auto& business=work->prepared.source.bgr;
+            const auto inferBegin=Clock::now();
+            const auto results=models.infer(work->prepared);
+            std::size_t detectionCount = 0;
+            for (const auto& r : results) detectionCount += r.result.detections.size();
+            const double pipelineMs = elapsedMs(inferBegin, Clock::now());
+            timing[4] = pipelineMs;
+            pipelineEma = count == 0 ? pipelineMs : alpha * pipelineMs + (1.0 - alpha) * pipelineEma;
+
+            bool quit = false;
+            if (options.display || writer.isOpened()) {
+                // Keep annotations out of subsequent preprocessing/inference.
+                const auto drawBegin = Clock::now();
+                cv::Mat visualization = business.clone();
+                renderResults(visualization, results, hooks.legacyPresentation);
+                drawTiming(visualization, "Pipeline EMA", pipelineEma, 24);
+                if (count > 0)
+                    drawTiming(visualization, "Loop EMA (prev)", loopEma, 44);
+
+                timing[5] = elapsedMs(drawBegin, Clock::now());
+                if (writer.isOpened()) {
+                    const auto encodeBegin = Clock::now();
+                    writer.write(visualization);
+                    timing[6] = elapsedMs(encodeBegin, Clock::now());
+                }
+                if (options.display) {
+                    const auto displayBegin = Clock::now();
+                    cv::imshow(hooks.legacyPresentation ? "YOLO TensorRT" : "edge-ai", visualization);
+                    const int key = cv::waitKey(1);
+                    quit = key == 27 || key == 'q';
+                    timing[7] = elapsedMs(displayBegin, Clock::now());
+                }
+            }
+
+            const auto loopEnd = Clock::now();
+            const double loopMs = elapsedMs(loopBegin, loopEnd);
+            timing[1] = elapsedMs(runBegin, loopEnd);
+            timing[8] = timing[1] - timing[0];
+            if (timing[9] >= 0.0)
+                timing[11] = monotonicMs() - timing[9];
+            if (!options.timingCsv.empty()) {
+                timings.push_back(timing);
+                std::vector<double> modelRow;
+                for (const auto& r : results) modelRow.push_back(r.wallMs);
+                modelTimings.push_back(std::move(modelRow));
+            }
+            loopEma = count == 0 ? loopMs : alpha * loopMs + (1.0 - alpha) * loopEma;
+            ++count;  // Count the processed frame even when q/Esc was pressed.
+
+            if (count == 1 || count % 30 == 0)
+                std::cout << "Frame " << count << ": detections=" << detectionCount
+                          << ", pipeline_ms=" << pipelineMs << std::endl;
+
+            frames.release();
+            if (quit || (options.maxFrames && count >= options.maxFrames))
+                break;
         }
 
-        const auto loopEnd = Clock::now();
-        const double loopMs = elapsedMs(loopBegin, loopEnd);
-        timing[1] = elapsedMs(runBegin, loopEnd);
-        timing[8] = loopMs;
-        if (timing[9] >= 0.0)
-            timing[11] = monotonicMs() - timing[9];
-        if (!options.timingCsv.empty()) {
-            timings.push_back(timing);
-            std::vector<double> modelRow;
-            for (const auto& r : results) modelRow.push_back(r.wallMs);
-            modelTimings.push_back(std::move(modelRow));
-        }
-        loopEma = count == 0 ? loopMs : alpha * loopMs + (1.0 - alpha) * loopEma;
-        ++count;  // Count the processed frame even when q/Esc was pressed.
-
-        if (count == 1 || count % 30 == 0)
-            std::cout << "Frame " << count << ": detections=" << detectionCount
-                      << ", pipeline_ms=" << pipelineMs << std::endl;
-
-        if (quit || (options.maxFrames && count >= options.maxFrames))
-            break;
-    }
+    } // Join the producer before releasing capture/model resources.
 
     const double runMs = elapsedMs(runBegin, Clock::now());
     const auto flushBegin = Clock::now();
@@ -256,7 +279,7 @@ int runVideo(const VideoConfig& options, const ModelRegistry& registry, const Vi
         if (!parent.empty())
             std::filesystem::create_directories(parent);
         std::ofstream csv(options.timingCsv);
-        csv << "frame,start_ms,end_ms,read_ms,geometry_ms,pipeline_ms,draw_ms,encode_ms,display_ms,total_ms,capture_timestamp_ms,read_age_ms,completion_age_ms";
+        csv << "frame,start_ms,end_ms,read_ms,geometry_ms,pipeline_ms,draw_ms,encode_ms,display_ms,total_ms,capture_timestamp_ms,read_age_ms,completion_age_ms,prepare_ms,queue_wait_ms";
         if (!hooks.legacyPresentation)
             for (const auto& m : options.models) csv << ',' << m.id << "_wall_ms";
         csv << '\n';
