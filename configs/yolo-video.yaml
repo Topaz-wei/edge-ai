@@ -1,10 +1,15 @@
 %YAML:1.0
 ---
 schema_version: 1
-source: "0"
+source: "/dev/video8"
 display: 0
-max_frames: 300
+max_frames: 900
+capture_width: 1920
+capture_height: 1080
+capture_fps: 30
+capture_fourcc: "MJPG"
 capture_buffers: 2
+timing_csv: "../outputs/yolo-video-headless.csv"
 models:
   - id: person
     type: yolo
