@@ -21,6 +21,7 @@
 - [总览报告](../calibration/overview.html)：校准集、开发集裁剪总览，以及零检测图片和重叠框记录。
 - [逐帧审核记录](../calibration/frame_review.csv)、[逐手审核记录](../calibration/hand_review.csv)：已按用户意见更新，无需重复审核。
 - [认可记录](../calibration/approval.json)：认可范围、漏检和重叠框处理策略。
+- [覆盖度报告](../calibration/coverage.json)：以 352 个校准张量为主体，单列开发集，记录每图框数、框尺寸分位数、来源比例和位置/亮度代理指标。遮挡、左右手和真实漏检等未标注属性保持未知；详细口径及复现命令见 `calibration/README.md`。
 
 HTML 为静态本地报告，可直接用浏览器打开。绿色/橙色框仅表示生成时的自动提示，不表示拒绝。原图坐标使用像素 xyxy（左、上、右、下），手框编号未因目录整理而改变。
 
@@ -51,6 +52,7 @@ calibration/
 ├── calibration_tensor_order.txt
 ├── development_tensor_order.txt
 ├── summary.json
+├── coverage.json
 └── verification.json
 ```
 

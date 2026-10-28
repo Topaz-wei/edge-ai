@@ -7,7 +7,7 @@
 | 阶段 | 当前状态 | 已有证据与剩余工作 |
 | --- | --- | --- |
 | Stage 1 环境与模型核验 | 部分完成，模型导入完成 | 两个原始 ONNX 已导入，SHA-256 与来源一致；已有 ONNX 检查和 ORT batch=1 零输入实跑记录。Python/ORT/rtmlib 版本及源码哈希已记录；头文件中可找到所需具名 API。实际 TensorRT 链接库、动态 batch 实跑和 reference 契约仍需核验 |
-| Stage 2 数据冻结 | 划分、手框及裁剪已认可，覆盖度报告待补 | 352 个校准张量、55 个开发张量已分目录保存；全部已检出手框保留，零检测不补框。尚未生成 `calibration/coverage.json`；人物/采集场次独立性不作额外保证 |
+| Stage 2 数据冻结 | 校准/开发数据划分、手框及裁剪已认可，覆盖度报告已生成 | 352 个校准张量、55 个开发张量已分目录保存；全部已检出手框保留，零检测不补框。`calibration/coverage.json` 已记录几何和亮度代理指标，未标注语义保持未知；validation 手框未准备，人物/采集场次独立性不作额外保证 |
 | Stage 3 Reference Freeze | 未完成 | 已有按本地 rtmlib 预处理的单手张量；尚无冻结的 reference config、真实手部输入的完整 ORT 输出/解码/可视化基线 |
 | Stage 4 Runtime vNext | 尚未扩展 | 现有 runtime 已使用具名 Tensor API 和 `enqueueV3()`，但仍限制固定 shape、单输入/单输出和 FP32 线性设备 I/O；动态 shape、多个输入/输出、profile 与容量管理待实现 |
 | Stage 5 TRT FP32 / FP16 | 未开始 | 未生成本模块 engine，也未做动态 batch 和后端一致性验证 |
@@ -22,7 +22,7 @@
 - [手框与张量清单](../calibration/hand_boxes.jsonl)、[校准顺序表](../calibration/calibration_tensor_order.txt)、[开发集顺序表](../calibration/development_tensor_order.txt)。
 - [逐帧报告](../calibration/index.html)、[总览报告](../calibration/overview.html)、[最近一次完整性检查](../calibration/verification.json)。
 
-这些数据无需重新导入或重新人工审核。下一步先补 Stage 1 的剩余核验和 Stage 2 的 crop coverage，再完成 Stage 3 的参考契约与真实样本基线。当前数据认可不等同于预处理配置或量化精度已验收；若后续核验需要修正预处理，保留已认可的原图划分和手框，重建张量及其哈希。
+这些数据无需重新导入或重新人工审核。Stage 2 的 crop coverage 已生成，下一步补 Stage 1 的剩余核验，再完成 Stage 3 的参考契约与真实样本基线。当前数据认可不等同于预处理配置或量化精度已验收；若后续核验需要修正预处理，保留已认可的原图划分和手框，重建张量、覆盖度报告及相关哈希。
 
 v2 相比 v1 的技术范围变化仍按本文件执行：部署采用原始动态 batch ONNX、初始 profile 1/2/4、公共 runtime 动态及多 Tensor 扩展，不再以固定 batch=1 派生模型为正式路线。现有 `[1,3,256,256]` 单手张量可保留，后续按 batch 维组装动态输入，不需要仅因开放动态 batch 重做手部裁剪。
 
@@ -321,11 +321,13 @@ RTMPose input tensors
 [1,3,256,256] FP32 hand tensors
 ```
 
-仍需额外生成（当前尚不存在）：
+已生成（以现有认可数据为输入）：
 
 ```text
 calibration/coverage.json
 ```
+
+报告分别统计 calibration/development，记录输入清单和脚本哈希，保留逐手测量值。校准集 285 张来源原图中有 242 张贡献 352 个张量；每图保留框数 0/1/2+ 为 43/134/108。开发集 46 张来源原图贡献 55 个张量，0/1/2+ 为 1/35/10。几何边缘按框与四周 5% 边缘带相交定义，低亮度按排除仿射填充后的裁剪平均亮度小于 60 定义；两者均是代理指标，不取代人工语义标注。详见 [覆盖度报告](../calibration/coverage.json) 和 [统计口径](../calibration/README.md)。
 
 至少统计：
 
@@ -1637,7 +1639,7 @@ tensorrt-rtmpose-hand/
 │   ├── index.html
 │   ├── overview.html
 │   ├── README.md
-│   ├── coverage.json                # 待生成
+│   ├── coverage.json                # 已生成，校准/开发分别统计
 │   ├── rtmpose_hand_int8.cache       # 待执行 INT8 校准后生成
 │   └── rtmpose_hand_int8.cache.meta.json
 │
@@ -1735,7 +1737,7 @@ finite values
 
 ## Stage 2 — 数据冻结
 
-当前：校准/开发原图已检测，划分、手框和裁剪已经用户认可；352/55 个张量已隔离保存。近似重复候选有记录，按用户意见保留相似裁剪和重叠框。剩余交付为覆盖度报告及未知属性说明，不能把零检测图片直接标成确定漏检，也不重新要求用户审核已认可的裁剪。validation 目前仅冻结原图归属，其手框与输入仍待准备。
+当前：校准/开发原图已检测，划分、手框和裁剪已经用户认可；352/55 个张量已隔离保存。近似重复候选有记录，按用户意见保留相似裁剪和重叠框。覆盖度报告及未知属性说明已生成，不能把零检测图片直接标成确定漏检，也不重新要求用户审核已认可的裁剪。validation 目前仅冻结原图归属，其手框与输入仍待准备。
 
 ```text
 raw images

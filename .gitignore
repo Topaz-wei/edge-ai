@@ -173,3 +173,9 @@ outputs/
 !**/calibration/README.md
 !**/calibration/*.yaml
 !**/calibration/*.yml
+
+# 仅跟踪 RTMPose 覆盖度报告和生成脚本，保留其他本地数据资产的忽略规则。
+!tensorrt-rtmpose-hand/calibration/coverage.json
+!tensorrt-rtmpose-hand/calibration/provenance/
+tensorrt-rtmpose-hand/calibration/provenance/*
+!tensorrt-rtmpose-hand/calibration/provenance/generate_coverage.py
