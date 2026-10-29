@@ -179,3 +179,8 @@ outputs/
 !tensorrt-rtmpose-hand/calibration/provenance/
 tensorrt-rtmpose-hand/calibration/provenance/*
 !tensorrt-rtmpose-hand/calibration/provenance/generate_coverage.py
+
+# RTMPose 参考契约与精简核验结果；图片和逐样本输出留在本地。
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_reference.json
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_reference.verification.json
+tensorrt-rtmpose-hand/validation/reference-freeze/

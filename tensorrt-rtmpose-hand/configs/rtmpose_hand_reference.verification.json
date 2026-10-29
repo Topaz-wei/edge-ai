@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "reference_config_sha256": "3036459e1f6bc230c9059f34ea260070928669f54f9b1bfef3e031279aef0aec",
+  "model_sha256": "39e858936bca0f94c09847d4e70b68a51d6c0adac61f36b457fcadb54621cd29",
+  "verification_script_sha256": "28dc282143191d92eb86b61426a38a917e067722eda541f16eb683a9c5f415cf",
+  "onnx_check": "passed",
+  "input_metadata": {
+    "name": "input",
+    "shape": [
+      "batch",
+      3,
+      256,
+      256
+    ]
+  },
+  "onnx_input_directly_feeds_conv": true,
+  "color_evidence_checks": "passed",
+  "locked_rtmlib_source_hashes": "passed",
+  "decoder_synthetic_checks": {
+    "average_peak_score": true,
+    "argmax_first_tie": true,
+    "zero_and_negative_invalid": true,
+    "invalid_source_coordinate_not_minus_one": true
+  },
+  "rgb_preprocess_recomputed_count": 407,
+  "rgb_from_source_equals_rgb_from_saved_crop_count": 407,
+  "current_dataset_tensors_matching_rgb_contract": 407,
+  "development_real_inference_count": 55,
+  "final_validation_images_used": 0,
+  "outputs": {
+    "simcc_x": [
+      1,
+      21,
+      512
+    ],
+    "simcc_y": [
+      1,
+      21,
+      512
+    ]
+  },
+  "all_real_outputs_finite": true,
+  "max_inverse_affine_vs_reference_source_error_px": 3.90075147151947e-05,
+  "ort_batch_checks": [
+    {
+      "batch": 1,
+      "hand_ids": [
+        "F0001-D000"
+      ],
+      "max_simcc_absolute_error": 0.0,
+      "max_input_coordinate_error_px": 0.0
+    },
+    {
+      "batch": 2,
+      "hand_ids": [
+        "F0001-D000",
+        "F0002-D000"
+      ],
+      "max_simcc_absolute_error": 0.0,
+      "max_input_coordinate_error_px": 0.0
+    },
+    {
+      "batch": 3,
+      "hand_ids": [
+        "F0001-D000",
+        "F0002-D000",
+        "F0003-D000"
+      ],
+      "max_simcc_absolute_error": 0.0,
+      "max_input_coordinate_error_px": 0.0
+    },
+    {
+      "batch": 4,
+      "hand_ids": [
+        "F0001-D000",
+        "F0002-D000",
+        "F0003-D000",
+        "F0004-D000"
+      ],
+      "max_simcc_absolute_error": 0.0,
+      "max_input_coordinate_error_px": 0.0
+    }
+  ],
+  "selected_visualization_hand_ids": [
+    "F0009-D001",
+    "F0045-D000",
+    "F0022-D000",
+    "F0012-D000",
+    "F0018-D001",
+    "F0018-D000",
+    "F0007-D000",
+    "F0007-D001",
+    "F0001-D000",
+    "F0002-D000"
+  ],
+  "rgb_vs_legacy_bgr_input_coordinate_displacement_px": {
+    "mean": 3.467328176353917,
+    "p95": 9.94730186462402,
+    "max": 192.0162811279297,
+    "interpretation": "仅说明通道变更影响，不是 RGB 更准确的量化证明，也不是 GT 精度。"
+  },
+  "environment": {
+    "python": "3.8.20",
+    "numpy": "1.24.4",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.19.2",
+    "opencv": "4.13.0",
+    "provider": "CPUExecutionProvider",
+    "intra_op_threads": 2,
+    "inter_op_threads": 1
+  },
+  "input_manifest_sha256": {
+    "split.json": "9a550d03d31aff3d62e0f421eef752d47db3bc890e34e68cffe81d63e641b193",
+    "hand_boxes.jsonl": "c7156b34c77b7f4a65cdc3c39febe70aee6dfc362212088cfeaf7a8e68e3d9ed",
+    "frames.jsonl": "3b25f933a31f4b458875c1d288bbd0dc3aaf0cb5af827092206d910c34293393",
+    "development_tensor_order.txt": "bfa5c9cbe26f315ad1c55acc35feb04101c06caa5ead69a3af26ad53a64abcdd"
+  },
+  "visual_review": "agent inspected 10 crop comparisons and F0012-D000 original overlay; no global mirror/systematic shift seen; not GT accuracy",
+  "human_visual_review": "approved",
+  "scope_limit": "Reference config 核验；不是 TensorRT 一致性、量化精度或完整最终验证。",
+  "migration_integrity_checks": {
+    "all_407_backup_and_current_tensor_hashes_verified": true,
+    "all_crop_hashes_unchanged": true,
+    "all_hand_fields_except_tensor_sha256_unchanged": true,
+    "split_frames_and_both_orders_byte_identical": true,
+    "coverage_aggregates_and_non_tensor_sample_metrics_unchanged": true
+  },
+  "human_visual_review_basis": "用户明确确认：评审通过了。范围为本次 reference 可视化，不代表人工 GT 精度或 TensorRT/INT8 验收。"
+}

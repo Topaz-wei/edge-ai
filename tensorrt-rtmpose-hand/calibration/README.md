@@ -92,8 +92,10 @@ development_tensor_order.txt → development_set/tensors/F0001-D000.npy  # 开�
 - `migration_binary_sha256.json`：上一次移除 `review-v1/` 时的 1,491 个二进制文件哈希，其中裁剪和张量仍使用混放时的旧路径。
 - `before-set-separation/`：本次分目录前的清单、文档及报告快照，仅用于追溯。
 - `set-separation-path-map.json`：本次移动的 814 个文件的旧路径到新路径映射，路径均相对本目录。
-- `set-separation-binary-sha256.json`：使用当前路径的 1,491 个二进制文件哈希，确认本次分目录没有改变文件内容。
+- `set-separation-binary-sha256.json`：使用当前路径的 1,491 个二进制文件哈希，确认当时分目录没有改变文件内容；其中张量哈希已被后续 RGB 重建取代。
 - `build_calibration_review_v1.py`、`check_calibration_review_v1.py`：保留当时源码及哈希的一次性脚本，包含旧目录和旧状态断言，仅供追溯；不要直接重跑覆盖当前状态。
+- `before-rgb-reference/`：RGB 修正前的全部 407 个旧张量和清单备份，仅用于追溯，不作为校准输入。
+- `rgb-reference-migration.json`：RGB 修正的旧/新张量哈希与未变裁剪哈希；现用契约为 [rtmpose_hand_reference.json](../configs/rtmpose_hand_reference.json)。
 - `generate_coverage.py`：当前布局适用的覆盖度统计脚本，只读取已认可的数据并生成 `coverage.json`；可按下节命令重新生成。
 
 ## 覆盖度报告
@@ -146,9 +148,9 @@ development_tensor_order.txt → development_set/tensors/F0001-D000.npy  # 开�
 
 每个 `.npy` 保存一个 FP32 数组，形状为 `[1,3,256,256]`，即 batch=1、3 个通道、256×256。文件含 NumPy 格式头部，应使用 NumPy 读取或兼容的 NPY 读取器，不能当作无头部的原始浮点二进制文件。数组已完成当前预处理，读取后**不再归一化、不再除以 255、不再做通道交换或图像裁剪**。
 
-当前预处理采用本地 rtmlib 0.0.15：OpenCV BGR 输入、不反转通道；手框扩展 1.25 倍并调整为正方形；双线性仿射、越界零填充；均值 `(123.675,116.28,103.53)`，标准差 `(58.395,57.12,57.375)`。裁剪 PNG 用于查看归一化前的图像，不能代替已准备的张量直接送入模型。
+当前预处理采用本地 rtmlib 0.0.15：OpenCV BGR 读取后显式转为 RGB 输入；手框扩展 1.25 倍并调整为正方形；双线性仿射、越界零填充；均值 `(123.675,116.28,103.53)`，标准差 `(58.395,57.12,57.375)`。裁剪 PNG 用于查看归一化前的图像，不能代替已准备的张量直接送入模型。
 
-当前用户认可的是数据划分、手框和裁剪内容。`split.json` 的 `frozen=true` 只确认这一范围；预处理参考验证尚未完成，未生成 TensorRT INT8 校准缓存。后续仍需验证真实样本参考输出，再执行 INT8 构建。预处理参数改变时必须重建张量和相关哈希。
+当前用户认可的是数据划分、手框和裁剪内容。`split.json` 的 `frozen=true` 只确认这一范围；预处理参考契约现已冻结，55 个开发样本已完成 ORT FP32 推理、解码和坐标还原核验，未生成 TensorRT INT8 校准缓存。详见 [Reference Freeze 核验记录](../docs/reference-freeze.md)。关键点可视化已通过用户人工评审。预处理参数改变时必须重建张量和相关哈希。
 
 44 张零检测图片已按用户意见跳过，不补框，也不将其当作无手真值；它们没有对应的张量。相似裁剪和重叠框继续保留。两个集合都没有标准 21 点人工真值，开发集主要用于推理后端之间的一致性检查，不应将结果称为有真值的真实精度。
 
@@ -159,3 +161,5 @@ development_tensor_order.txt → development_set/tensors/F0001-D000.npy  # 开�
 当前划分以本目录的 `split.json` 为准；模块 `data/manifest.jsonl` 是导入时清单，其中的候选集合字段不代表当前划分。图片、检测和张量在上次整理中仅移动，没有重新生成。数据资产按仓库忽略规则保存在本机，克隆 Git 仓库不会自动获得它们。
 
 更完整的准备过程和追溯约束见 [数据集说明](../docs/calibration-dataset.md)。
+
+2026-10-29 reference 修正：官方同哈希模型包确认要求 RGB。已重建 352 个校准和 55 个开发张量，更新清单与覆盖度哈希；原图、手框、裁剪、划分和两份顺序表未变。现用 `.npy` 是 RGB 通道语义，已经归一化。`crops/*.png` 仍是正常可显示图像，OpenCV 读取时返回 BGR。旧 BGR 张量仅留作历史备份，不得递归扫描 `provenance/` 作为校准输入。

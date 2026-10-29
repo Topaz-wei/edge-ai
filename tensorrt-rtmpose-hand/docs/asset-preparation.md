@@ -4,6 +4,8 @@
 
 当前数据已获用户认可并整理至 `calibration/`，详见 [校准数据集说明](calibration-dataset.md)。本文保留初次导入时的检查记录；当前划分以 `calibration/split.json` 为准。
 
+2026-10-29 更新：颜色契约已由官方同哈希模型包核实为 RGB；本地旧调用路径缺少转换，407 个张量已修正。本文中的旧 BGR 行为与待核验结论仅为历史记录，现行契约见 [Reference Freeze](reference-freeze.md)。
+
 ## 导入结果
 
 所有路径以 `tensorrt-rtmpose-hand/` 为基准；源绝对路径仅用于追溯。

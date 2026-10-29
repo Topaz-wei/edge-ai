@@ -2,13 +2,13 @@
 
 ## 0. 当前实施状态与已有产物
 
-2026-10-28 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
+2026-10-29 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
 
 | 阶段 | 当前状态 | 已有证据与剩余工作 |
 | --- | --- | --- |
-| Stage 1 环境与模型核验 | 部分完成，模型导入完成 | 两个原始 ONNX 已导入，SHA-256 与来源一致；已有 ONNX 检查和 ORT batch=1 零输入实跑记录。Python/ORT/rtmlib 版本及源码哈希已记录；头文件中可找到所需具名 API。实际 TensorRT 链接库、动态 batch 实跑和 reference 契约仍需核验 |
+| Stage 1 环境与模型核验 | 部分完成，模型导入完成 | 两个原始 ONNX 已导入，SHA-256 与来源一致；已有 ONNX 检查和 ORT batch=1 零输入实跑记录。Python/ORT/rtmlib 版本及源码哈希已记录；头文件中可找到所需具名 API。ORT 动态 batch 1/2/3/4 与 reference 契约已核验；实际 TensorRT 链接库及 TRT 动态 batch 实跑仍待验证 |
 | Stage 2 数据冻结 | 校准/开发数据划分、手框及裁剪已认可，覆盖度报告已生成 | 352 个校准张量、55 个开发张量已分目录保存；全部已检出手框保留，零检测不补框。`calibration/coverage.json` 已记录几何和亮度代理指标，未标注语义保持未知；validation 手框未准备，人物/采集场次独立性不作额外保证 |
-| Stage 3 Reference Freeze | 未完成 | 已有按本地 rtmlib 预处理的单手张量；尚无冻结的 reference config、真实手部输入的完整 ORT 输出/解码/可视化基线 |
+| Stage 3 Reference Freeze | 技术契约已冻结，人工关键点评审通过 | RGB 契约已核验；407 个张量已修正，55 个开发样本已保存 ORT FP32 输出、解码与原图坐标，10 个代表样本已生成可视化；详见 [核验记录](reference-freeze.md) |
 | Stage 4 Runtime vNext | 尚未扩展 | 现有 runtime 已使用具名 Tensor API 和 `enqueueV3()`，但仍限制固定 shape、单输入/单输出和 FP32 线性设备 I/O；动态 shape、多个输入/输出、profile 与容量管理待实现 |
 | Stage 5 TRT FP32 / FP16 | 未开始 | 未生成本模块 engine，也未做动态 batch 和后端一致性验证 |
 | Stage 6 INT8 PTQ | 未开始 | 无本模块 INT8 cache、engine 或 inspector 结果 |
@@ -22,7 +22,7 @@
 - [手框与张量清单](../calibration/hand_boxes.jsonl)、[校准顺序表](../calibration/calibration_tensor_order.txt)、[开发集顺序表](../calibration/development_tensor_order.txt)。
 - [逐帧报告](../calibration/index.html)、[总览报告](../calibration/overview.html)、[最近一次完整性检查](../calibration/verification.json)。
 
-这些数据无需重新导入或重新人工审核。Stage 2 的 crop coverage 已生成，下一步补 Stage 1 的剩余核验，再完成 Stage 3 的参考契约与真实样本基线。当前数据认可不等同于预处理配置或量化精度已验收；若后续核验需要修正预处理，保留已认可的原图划分和手框，重建张量、覆盖度报告及相关哈希。
+已认可的数据划分、手框和裁剪不需要重新审核。Reference 核验确认模型要求 RGB，已保留划分与裁剪并重建全部 407 个张量及相关哈希、覆盖度报告。55 个开发样本的参考链路已通过自动检查，关键点叠图已通过用户评审；此结果不代表量化或 GT 精度验收。
 
 v2 相比 v1 的技术范围变化仍按本文件执行：部署采用原始动态 batch ONNX、初始 profile 1/2/4、公共 runtime 动态及多 Tensor 扩展，不再以固定 batch=1 派生模型为正式路线。现有 `[1,3,256,256]` 单手张量可保留，后续按 batch 维组装动态输入，不需要仅因开放动态 batch 重做手部裁剪。
 
@@ -300,7 +300,7 @@ calibration / validation
 
 当前状态：校准集的 352 个已认可手框及对应单手张量已就绪，位于 `calibration/calibration_set/`。固定读取顺序见 `calibration/calibration_tensor_order.txt`；手框、变换矩阵、来源和张量哈希见 `calibration/hand_boxes.jsonl`。开发集的 55 个张量位于 `calibration/development_set/`，使用独立顺序表。
 
-用户已明确认可全部检测到的手部裁剪，保留 5 对重叠框；44 张零检测原图（校准 43、开发 1）不补框，记录为 `skip`。零检测不等于已确认无手，也不能直接统计为已证实的漏检。这里冻结的是原图归属与已审核手框；张量预处理还需通过 Stage 3 的参考冻结。
+用户已明确认可全部检测到的手部裁剪，保留 5 对重叠框；44 张零检测原图（校准 43、开发 1）不补框，记录为 `skip`。零检测不等于已确认无手，也不能直接统计为已证实的漏检。这里冻结的是原图归属与已审核手框；张量预处理已通过 Stage 3 的 RGB 参考契约核验。
 
 331 张只是：
 
@@ -414,7 +414,7 @@ decode rule
 
 这是本项目最重要的基线之一。
 
-当前状态：尚未生成并冻结。已有 `models/environment_check.json` 和 `calibration/summary.json` 记录本地 rtmlib 0.0.15、源码哈希及当前张量预处理参数，但它们不是本节契约的替代品；历史训练/导出配置与本地实现的匹配仍须核实。
+当前状态：`configs/rtmpose_hand_reference.json` 已冻结；官方同哈希模型包确认 RGB，几何与解码锁定本地 rtmlib 0.0.15。核验报告见 `configs/rtmpose_hand_reference.verification.json`，复现方式见 [Reference Freeze](reference-freeze.md)。
 
 新增：
 
@@ -1753,7 +1753,7 @@ raw images
 
 ## Stage 3 — Reference Freeze
 
-当前：尚未完成。优先使用 development 的 55 个真实手部张量验证参考链路，建立配置与输出基线；现有 batch=1 零输入形状检查不能替代此阶段。最终 validation 的模型输出评测应等待配置冻结；输入/手框准备与最终评测分别记录，不能混同。
+当前：技术契约已冻结，55 个 development 样本已完成真实 ORT 输出、解码及坐标还原；10 个代表样本已有叠图，已通过用户人工评审。最终 validation 的 258 张原图未参与本次模型推理，输入/手框准备与最终评测仍待实施。
 
 完成：
 

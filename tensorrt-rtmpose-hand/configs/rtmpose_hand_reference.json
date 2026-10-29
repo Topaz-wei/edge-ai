@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "reference_id": "rtmpose_hand_rgb_rtmlib_decode_v1",
+  "status": "frozen_verified",
+  "frozen": true,
+  "scope": "原始 ONNX 的 RGB 输入契约；几何和 SimCC 解码锁定本地 rtmlib 0.0.15，显式修正其缺少 BGR→RGB 转换的调用路径。不是原样复刻旧 BGR 流水线。",
+  "model": {
+    "path": "models/rtmpose_hand.onnx",
+    "sha256": "39e858936bca0f94c09847d4e70b68a51d6c0adac61f36b457fcadb54621cd29",
+    "opset": 11,
+    "input_name": "input",
+    "input_shape": [
+      -1,
+      3,
+      256,
+      256
+    ],
+    "input_dtype": "float32",
+    "input_layout": "NCHW",
+    "output_names": [
+      "simcc_x",
+      "simcc_y"
+    ],
+    "outputs": {
+      "simcc_x": {
+        "dtype": "float32",
+        "shape": [
+          -1,
+          21,
+          512
+        ]
+      },
+      "simcc_y": {
+        "dtype": "float32",
+        "shape": [
+          -1,
+          21,
+          512
+        ]
+      }
+    },
+    "keypoint_count": 21,
+    "shape_policy": "仅 batch 动态；H/W 固定。ORT 验证 N=1,2,3,4；TensorRT profile 尚未冻结。"
+  },
+  "preprocessing": {
+    "image_reader": "cv2.imread(path, cv2.IMREAD_COLOR)",
+    "source_color_order": "BGR",
+    "color_order": "RGB",
+    "color_conversion": "cv2.COLOR_BGR2RGB before RTMPose.preprocess",
+    "input_size_wh": [
+      256,
+      256
+    ],
+    "mean": [
+      123.675,
+      116.28,
+      103.53
+    ],
+    "std": [
+      58.395,
+      57.12,
+      57.375
+    ],
+    "normalization": "(affine_uint8_RGB - mean) / std; no /255",
+    "normalization_compute_dtype": "float64 (matches local NumPy rtmlib); cast once to contiguous float32 NCHW",
+    "bbox_format": "xyxy in source image pixels",
+    "bbox_clipping": false,
+    "bbox_scale_factor": 1.25,
+    "center_rule": "[(x1+x2)/2, (y1+y2)/2]",
+    "scale_rule": "1.25 * max(x2-x1, y2-y1) on both axes for square input",
+    "aspect_ratio": 1.0,
+    "rotation_degrees": 0,
+    "shift_xy": [
+      0,
+      0
+    ],
+    "affine_interpolation": "cv2.INTER_LINEAR",
+    "affine_points_dtype": "float32 passed to cv2.getAffineTransform",
+    "border_mode": "cv2.BORDER_CONSTANT",
+    "border_value": [
+      0,
+      0,
+      0
+    ],
+    "invalid_bbox_policy": "reject nonfinite, nonpositive width/height or no source-image intersection",
+    "zero_hand_policy": "return empty results, do not call RTMPose.__call__ with empty bboxes (its whole-image fallback is forbidden)",
+    "prepared_tensor_policy": "load current RGB NPY directly; no second normalization, color conversion, crop, or /255"
+  },
+  "simcc": {
+    "split_ratio": 2.0,
+    "bins_x": 512,
+    "bins_y": 512,
+    "argmax_rule": "argmax on final axis; first index wins ties",
+    "score_decode_rule": "0.5 * (max(simcc_x) + max(simcc_y))",
+    "score_dtype": "float32",
+    "softmax": false,
+    "dark_refinement": false,
+    "flip_test": false,
+    "to_openpose": false,
+    "invalid_keypoint_rule": {
+      "valid_mask": "score > 0; nonfinite input/output fails verification",
+      "simcc_coordinate_before_division": [
+        -1,
+        -1
+      ],
+      "input_coordinate_after_division": [
+        -0.5,
+        -0.5
+      ],
+      "source_coordinate_policy": "apply the same source-coordinate formula even for invalid points; output coordinates are not a -1 sentinel; consumers must use valid_mask"
+    },
+    "confidence_threshold_for_inference": null
+  },
+  "coordinate_transform": {
+    "reference_rule": "source_xy = (input_xy / [256,256]) * adjusted_scale_wh + center_xy - adjusted_scale_wh / 2",
+    "input_xy_rule": "argmax_or_invalid_simcc_xy / 2.0",
+    "inverse_affine_crosscheck": "compare with input_to_source_affine; float32 control-point rounding may give small differences",
+    "clipping": false,
+    "horizontal_mirroring": false,
+    "handedness_inferred": false
+  },
+  "reference_implementation": {
+    "package": "rtmlib",
+    "version": "0.0.15",
+    "source_hashes": {
+      "tools/pose_estimation/rtmpose.py": "98b37228b3ff2a705d856e139486992d2c1f2124d805cf5db5a97bf295ed4e97",
+      "tools/pose_estimation/pre_processings.py": "2bd84ad2300c3bb43a831e18aff30588c6f8e570d41d492826cf540cfe8c0fcb",
+      "tools/pose_estimation/post_processings.py": "4861fbed722f3894e4a5a28fdea2bc4537904f192319d520429234bb261ca3e7",
+      "tools/base.py": "f4e18ee0626e3e20f791954202dd6aecb5b3d8f5d5c43c668703b56d61f265c1",
+      "tools/solution/hand.py": "37810ca4a3a2106a4db3efc36ff5a651f572247ab49d0edecdec733fd1e41a27",
+      "visualization/skeleton/hand21.py": "9c227270686d5ac193b26d658b364ade072907a79864c51da30653b7f8c1220b"
+    },
+    "preprocess_entry": "rtmlib.tools.pose_estimation.rtmpose.RTMPose.preprocess (explicit RGB image)",
+    "decode_entries": [
+      "rtmlib.tools.pose_estimation.post_processings.get_simcc_maximum",
+      "rtmlib.tools.pose_estimation.rtmpose.RTMPose.postprocess"
+    ],
+    "normalization_and_decode_parameter_policy": "verify locked source hashes; load config parameters explicitly; no implicit downloads"
+  },
+  "color_evidence": {
+    "decision": "RGB",
+    "official_archive_url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-m_simcc-hand5_pt-aic-coco_210e-256x256-74fb594_20230320.zip",
+    "archive_sha256": "45c9e1aa21b8fe33859973c49bce4647645d312e7a226e398a42f9137d44a56d",
+    "official_onnx_matches_local": true,
+    "sdk_normalize_to_rgb": true,
+    "training_config_url": "https://raw.githubusercontent.com/open-mmlab/mmpose/v1.1.0/projects/rtmpose/rtmpose/hand_2d_keypoint/rtmpose-m_8xb32-210e_coco-wholebody-hand-256x256.py",
+    "training_config_bgr_to_rgb": true,
+    "training_config_sha256": "64ac82018ccd7cc5191a90068389f736af585e2d54a2f182ecf86517c6c1436d",
+    "sdk_metadata_sha256": {
+      "deploy.json": "42cdb5a0b67478b5650aa499a9c2ba7f852d5c168e1b482c330b57f4cc2c324e",
+      "pipeline.json": "86e6ee3d71e713abc454e44359e4c44a77da4514bcbff69307f7623239e9dc41",
+      "detail.json": "3d20869530eb9ab9499d8fca0b036d1103749e65c29c6d0b400923f19dd76a7e"
+    },
+    "sdk_metadata_conflict": "pipeline preprocess image_size and detail input_shape say 192x256; actual same-hash ONNX and training config require 256x256. Do not copy stale SDK shape metadata.",
+    "local_behavior": "installed rtmlib and vh3 copied pose class have no channel swap; historical input path is OpenCV BGR",
+    "basis": "exact model hash + same-archive color directive + versioned training config; not selected by confidence score or final validation performance"
+  },
+  "verification": {
+    "evidence_path": "validation/reference-freeze/report.json",
+    "development_only_for_model_outputs": true,
+    "full_calibration_and_development_preprocess_check": true,
+    "human_gt_accuracy_claimed": false,
+    "human_visual_review": "pending; technical contract frozen independently of GT accuracy"
+  },
+  "artifact_paths_relative_to": "tensorrt-rtmpose-hand/"
+}
