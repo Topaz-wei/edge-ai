@@ -184,3 +184,8 @@ tensorrt-rtmpose-hand/calibration/provenance/*
 !tensorrt-rtmpose-hand/configs/rtmpose_hand_reference.json
 !tensorrt-rtmpose-hand/configs/rtmpose_hand_reference.verification.json
 tensorrt-rtmpose-hand/validation/reference-freeze/
+
+# RTMPose FP32 实测输出本地保存，冻结配置及报告摘要纳入版本控制。
+tensorrt-rtmpose-hand/validation/trt-fp32/
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_fp32.json
+!tensorrt-rtmpose-hand/benchmarks/fp32-baseline.json

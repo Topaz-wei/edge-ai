@@ -18,3 +18,8 @@ endif()
 if(EDGE_BUILD_RESNET)
     add_subdirectory(tensorrt-resnet)
 endif()
+
+option(EDGE_BUILD_RTMPOSE "Build RTMPose-Hand offline verification" OFF)
+if(EDGE_BUILD_RTMPOSE)
+    add_subdirectory(tensorrt-rtmpose-hand)
+endif()

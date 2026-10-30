@@ -1,0 +1,12 @@
+# RTMPose 专用几何和离线验证入口，复用公共 runtime。
+find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)
+add_library(rtmpose_reference STATIC src/reference.cpp)
+target_compile_features(rtmpose_reference PUBLIC cxx_std_17)
+target_include_directories(rtmpose_reference PUBLIC include ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(rtmpose_reference PUBLIC ${OpenCV_LIBS})
+add_executable(rtmpose_reference_test tests/test_reference.cpp)
+target_link_libraries(rtmpose_reference_test PRIVATE rtmpose_reference)
+add_test(NAME rtmpose_reference COMMAND rtmpose_reference_test)
+find_package(OpenSSL REQUIRED COMPONENTS Crypto)
+add_executable(rtmpose_fp32 apps/verify_fp32.cpp)
+target_link_libraries(rtmpose_fp32 PRIVATE rtmpose_reference edge_trt_runtime OpenSSL::Crypto)
