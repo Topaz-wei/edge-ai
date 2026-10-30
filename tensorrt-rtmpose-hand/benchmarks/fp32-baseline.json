@@ -1,0 +1,372 @@
+{
+  "status": "passed",
+  "failures": [],
+  "reference_sha256": "3036459e1f6bc230c9059f34ea260070928669f54f9b1bfef3e031279aef0aec",
+  "model_sha256": "39e858936bca0f94c09847d4e70b68a51d6c0adac61f36b457fcadb54621cd29",
+  "engine_sha256": "c0b1e68fc38c4b2b46601fc7b14a5952232bd55b00d83b1395a6f32bc0b4087f",
+  "cases_sha256": "1f1d65cbcef5f7ab78493f7bf85b775de4a3b26c14e7fd391f872f927c1fea2c",
+  "profile": {
+    "min": [
+      1,
+      3,
+      256,
+      256
+    ],
+    "opt": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "max": [
+      4,
+      3,
+      256,
+      256
+    ]
+  },
+  "precision": "FP32; TF32/FP16/INT8 disabled",
+  "final_validation_used": 0,
+  "acceptance": {
+    "input_tensor_max_abs": 0.0,
+    "simcc_max_abs": 0.0001,
+    "score_max_abs": 0.0001,
+    "input_coordinate_mean_l2_px": 0.1,
+    "input_coordinate_p95_l2_px": 0.5,
+    "input_coordinate_max_l2_px": 1.0,
+    "valid_mask_flip_count": 0,
+    "cpp_decode_source_max_abs_px": 1e-09,
+    "scope": "development FP32 engineering gates, not GT accuracy or final validation"
+  },
+  "checks": [
+    {
+      "mode": "npy",
+      "requested_batch": 1,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.601478576660156e-05,
+          "mae": 2.0942866285622586e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.695487976074219e-05,
+          "mae": 2.145316557289334e-06
+        }
+      },
+      "batch_vs_single_max_abs": 0.0,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7821788787841797e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 2,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.095764784826315e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146791985069285e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 3,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.095764784826315e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146791985069285e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 4,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.0956895241397433e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146957058357657e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 6,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.095764784826315e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146791985069285e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "image",
+      "requested_batch": 1,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.601478576660156e-05,
+          "mae": 2.0942866285622586e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.695487976074219e-05,
+          "mae": 2.145316557289334e-06
+        }
+      },
+      "batch_vs_single_max_abs": 0.0,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7821788787841797e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "image",
+      "requested_batch": 2,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.095764784826315e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146791985069285e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "image",
+      "requested_batch": 3,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.095764784826315e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146791985069285e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "image",
+      "requested_batch": 4,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.0956895241397433e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146957058357657e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    },
+    {
+      "mode": "image",
+      "requested_batch": 6,
+      "samples": 55,
+      "input_tensor_max_abs": 0.0,
+      "simcc": {
+        "simcc_x": {
+          "max_abs": 4.553794860839844e-05,
+          "mae": 2.095764784826315e-06
+        },
+        "simcc_y": {
+          "max_abs": 3.707408905029297e-05,
+          "mae": 2.146791985069285e-06
+        }
+      },
+      "batch_vs_single_max_abs": 1.6689300537109375e-06,
+      "input_coordinate_mean_l2_px": 0.00043290044413879514,
+      "input_coordinate_p95_l2_px": 0.0,
+      "input_coordinate_max_l2_px": 0.5,
+      "source_coordinate_max_l2_px": 0.28410179540514946,
+      "score_max_abs": 1.7762184143066406e-05,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_source_max_abs_px": 0.0
+    }
+  ],
+  "runtime": {
+    "opencv": "4.5.4",
+    "profile": 0,
+    "tensors": [
+      {
+        "name": "input",
+        "engine_shape": "[-1x3x256x256]",
+        "capacity_bytes": 3145728.0
+      },
+      {
+        "name": "simcc_x",
+        "engine_shape": "[-1x21x512]",
+        "capacity_bytes": 172032.0
+      },
+      {
+        "name": "simcc_y",
+        "engine_shape": "[-1x21x512]",
+        "capacity_bytes": 172032.0
+      }
+    ]
+  },
+  "source_sha256": {
+    "trt-runtime/include/edge/trt/runner.hpp": "824fb890630fd1b0f096947a750d62d04ef21f5bd5ab7325f0aec64ad55e818c",
+    "trt-runtime/src/runner.cpp": "b9252f0aba936aad2d69bb8bab3e3e2aa0706f45d1235f7835e07fedcb691d8f",
+    "trt-runtime/src/tensor_io.cpp": "c347d7254e4ca1798e7fc1973651a09b77599e2796290c0f9469018e1ef9c1c5",
+    "tensorrt-rtmpose-hand/include/rtmpose/reference.hpp": "2ebf7bacc41b7f6989198cd6672acc132970d5167114e5f0d4105a0aadf7f912",
+    "tensorrt-rtmpose-hand/src/reference.cpp": "682447cf787fdb20dcbee9f01617f6c57998514e2067e1ed089c13f7a03c37f0",
+    "tensorrt-rtmpose-hand/apps/verify_fp32.cpp": "af5bf27775dcdd3ab06d2f21d038d3609c997d6bbda3a3b36a307e0ce4796f61",
+    "tensorrt-rtmpose-hand/scripts/verify_trt_fp32.py": "f36e41e0114b2de624715fbafa6a384924c46b53377dc1ae78627346b21062ed"
+  },
+  "executable_sha256": "7e324bb0676443365bc32f1092dc264a16041ffc31d0af337287d11119521685",
+  "completion_sha256": {
+    "npy": "44fb1d5dd5fb7e34f86b91a1ca213cb9ebc799fbfbf59548dd64da0295829f6b",
+    "image": "8ea32e330ebacd3a778eb390e76b30394500a54972471133a282e386f553073c"
+  },
+  "build_log_sha256": "399bc7c648f019350664fdabd72750895ec177fb83c3490349853475b994fe30",
+  "environment": {
+    "device": "Jetson AGX Orin",
+    "tensorrt": "8.5.2",
+    "cuda_runtime": "11.4",
+    "cpp_opencv": "4.5.4",
+    "python_reference_environment": {
+      "python": "3.8.20",
+      "numpy": "1.24.4",
+      "onnx": "1.17.0",
+      "onnxruntime": "1.19.2",
+      "opencv": "4.13.0",
+      "provider": "CPUExecutionProvider",
+      "intra_op_threads": 2,
+      "inter_op_threads": 1
+    }
+  },
+  "regression": {
+    "ctest": {
+      "passed": 11,
+      "failed": 0
+    },
+    "camera_analysis_offline_tests": 4,
+    "gpu_tests": {
+      "dynamic": {
+        "log": "logs/runtime-vnext/dynamic.log",
+        "sha256": "a2fa4b6c1c2ca61882852ae83a3868c7dece90b98f58bda90ada88ed833cfede",
+        "status": "passed"
+      },
+      "resnet": {
+        "log": "logs/runtime-vnext/resnet.log",
+        "sha256": "4a2d61bac58cbc59402f8a31246de3f3cba231485bf011fcf82bffe14791b109",
+        "status": "passed"
+      },
+      "yolo": {
+        "log": "logs/runtime-vnext/yolo.log",
+        "sha256": "4dc1c3746297097e0646ddfb8573c7e74c8e833563ddadd93fc0db1bb079e50b",
+        "status": "passed"
+      },
+      "yolo-graph": {
+        "log": "logs/runtime-vnext/yolo-graph.log",
+        "sha256": "b0c03ddf94e5e2dfcfa80a5d9fa909e01ec736850867271a1e96b7b4b97ec188",
+        "status": "passed"
+      }
+    },
+    "negative_provenance_tests": [
+      "stale_engine_identity_rejected",
+      "corrupted_output_rejected",
+      "prior_report_invalidated"
+    ]
+  },
+  "code_baseline": "e7ee5b5f23abc69e0b081ed1d421d4da445d2dac",
+  "scope": "development only; FP32 engineering consistency; no FP16/INT8 or final validation/performance claim",
+  "verification_capture_note": "本轮实测发生在代码提交前；已确认此提交中的相关源码与实测记录的 SHA-256 一致，未更改数值结果。"
+}

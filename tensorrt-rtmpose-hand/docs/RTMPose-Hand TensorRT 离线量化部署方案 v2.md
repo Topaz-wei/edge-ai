@@ -2,20 +2,22 @@
 
 ## 0. 当前实施状态与已有产物
 
-2026-10-29 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
+2026-10-30 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
 
 | 阶段 | 当前状态 | 已有证据与剩余工作 |
 | --- | --- | --- |
-| Stage 1 环境与模型核验 | 部分完成，模型导入完成 | 两个原始 ONNX 已导入，SHA-256 与来源一致；已有 ONNX 检查和 ORT batch=1 零输入实跑记录。Python/ORT/rtmlib 版本及源码哈希已记录；头文件中可找到所需具名 API。ORT 动态 batch 1/2/3/4 与 reference 契约已核验；实际 TensorRT 链接库及 TRT 动态 batch 实跑仍待验证 |
+| Stage 1 环境与模型核验 | 本阶段所需模型与实际推理环境已核验 | 两个原始 ONNX 已导入，SHA-256 与来源一致；已有 ONNX 检查和 ORT batch=1 零输入实跑记录。Python/ORT/rtmlib 版本及源码哈希已记录；头文件中可找到所需具名 API。ORT 动态 batch 1/2/3/4 与 reference 契约已核验；实际 TensorRT 8.5.2 链接与 TRT FP32 batch 1/2/3/4 实跑已验证 |
 | Stage 2 数据冻结 | 校准/开发数据划分、手框及裁剪已认可，覆盖度报告已生成 | 352 个校准张量、55 个开发张量已分目录保存；全部已检出手框保留，零检测不补框。`calibration/coverage.json` 已记录几何和亮度代理指标，未标注语义保持未知；validation 手框未准备，人物/采集场次独立性不作额外保证 |
 | Stage 3 Reference Freeze | 技术契约已冻结，人工关键点评审通过 | RGB 契约已核验；407 个张量已修正，55 个开发样本已保存 ORT FP32 输出、解码与原图坐标，10 个代表样本已生成可视化；详见 [核验记录](reference-freeze.md) |
-| Stage 4 Runtime vNext | 尚未扩展 | 现有 runtime 已使用具名 Tensor API 和 `enqueueV3()`，但仍限制固定 shape、单输入/单输出和 FP32 线性设备 I/O；动态 shape、多个输入/输出、profile 与容量管理待实现 |
-| Stage 5 TRT FP32 / FP16 | 未开始 | 未生成本模块 engine，也未做动态 batch 和后端一致性验证 |
+| Stage 4 Runtime vNext | 本次单输入、多输出范围完成 | 动态 shape、具名输出、profile 切换、持久 MAX 缓冲已实现；旧单输出 API、YOLO/ResNet 和静态 Graph 回归通过。多输入和非 FP32 I/O 仍明确不支持 |
+| Stage 5 TRT FP32 / FP16 | FP32 基线通过，FP16 未开始 | TF32 关闭，profile 1/2/4；55 个开发样本的 NPY 与 C++ 原图两条路径通过 ORT 对照，包含 batch 1/2/3/4 和超 MAX 分块；详见 [实测报告](trt-fp32-baseline.md) |
 | Stage 6 INT8 PTQ | 未开始 | 无本模块 INT8 cache、engine 或 inspector 结果 |
 | Stage 7 最终验证 | 未开始 | validation 的 258 张原图已导入并隔离，尚未生成手框及参考输出；GT 增强项尚未实施 |
 | Stage 8 Benchmark | 未开始 | 尚无本模块精度/批次性能报告 |
 
 当前资产入口：
+
+- [FP32 部署配置](../configs/rtmpose_hand_trt_fp32.json)、[Runtime 与 FP32 实测报告](trt-fp32-baseline.md)。
 
 - [模型清单](../models/manifest.json)、[环境与模型检查记录](../models/environment_check.json)。
 - [数据集使用说明](../calibration/README.md)、[已认可划分](../calibration/split.json)、[用户认可记录](../calibration/approval.json)。
@@ -1775,6 +1777,8 @@ rtmpose_hand_reference.json
 
 ## Stage 4 — Runtime vNext
 
+当前：单输入、具名多输出、动态 shape、profile 管理及持久 MAX 缓冲已实现，YOLO/ResNet 和静态 Graph 回归通过；多输入与非 FP32 I/O 不在本次实现范围。
+
 完成：
 
 ```text
@@ -1796,6 +1800,8 @@ ResNet
 ---
 
 ## Stage 5 — TRT FP32 / FP16
+
+当前：TF32 关闭的 TRT FP32 基线已通过开发集与 C++ 预后处理检查，详见 [实测报告](trt-fp32-baseline.md)。FP16 尚未开始。
 
 建立：
 
