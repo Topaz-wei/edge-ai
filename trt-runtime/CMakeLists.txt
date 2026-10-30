@@ -13,3 +13,9 @@ if(BUILD_TESTING)
     target_link_libraries(test_tensor_info PRIVATE edge_trt_runtime)
     add_test(NAME tensor_info COMMAND test_tensor_info)
 endif()
+
+# 真实 GPU 测试需要设备访问权限，单独执行，不混入默认 CPU CTest。
+if(BUILD_TESTING)
+    add_executable(test_dynamic_runner tests/test_dynamic_runner.cpp)
+    target_link_libraries(test_dynamic_runner PRIVATE edge_trt_runtime)
+endif()

@@ -1,3 +1,4 @@
+// 本文件实现通用张量体积校验、CUDA 错误检查及二进制文件读写。
 #include "edge/trt/tensor_io.hpp"
 #include <fstream>
 #include <limits>
@@ -123,8 +124,9 @@ std::string dimsToString(
 std::size_t getNumElements(
     const nvinfer1::Dims& dims
 ) {
-    if (dims.nbDims < 0)
+    if (dims.nbDims < 0 || dims.nbDims > nvinfer1::Dims::MAX_DIMS) {
         throw std::runtime_error("Invalid tensor rank");
+    }
 
     std::size_t elements = 1;
 
