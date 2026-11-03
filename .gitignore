@@ -205,3 +205,9 @@ tensorrt-rtmpose-hand/validation/simcc-margin/
 tensorrt-rtmpose-hand/validation/cpp-2g-performance/
 !tensorrt-rtmpose-hand/configs/rtmpose_hand_builder_fp32_2g.json
 !tensorrt-rtmpose-hand/benchmarks/cpp-2g-performance.json
+
+# RTMPose INT8准备记录；cache及原始检查产物本地保存。
+tensorrt-rtmpose-hand/validation/int8-preparation/
+tensorrt-rtmpose-hand/calibration/rtmpose_hand_int8.cache*
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_builder_int8.json
+!tensorrt-rtmpose-hand/benchmarks/int8-preparation.json

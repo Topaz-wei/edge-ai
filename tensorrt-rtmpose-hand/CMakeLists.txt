@@ -23,3 +23,12 @@ target_link_libraries(rtmpose_build PRIVATE edge_trt_builder ${OpenCV_LIBS} Open
 # 性能入口独立于冻结的数值验证程序，不改变历史可执行文件。
 add_executable(rtmpose_benchmark apps/benchmark.cpp)
 target_link_libraries(rtmpose_benchmark PRIVATE rtmpose_reference edge_trt_runtime)
+
+# INT8 数据策略与校准器保留在模型模块，不改变既有精度的入口。
+add_library(rtmpose_calibrator STATIC src/calibrator.cpp)
+target_link_libraries(rtmpose_calibrator PUBLIC rtmpose_reference edge_trt_builder OpenSSL::Crypto)
+add_executable(rtmpose_int8 apps/build_int8_engine.cpp)
+target_link_libraries(rtmpose_int8 PRIVATE rtmpose_calibrator)
+add_executable(test_hand_calibrator tests/test_hand_calibrator.cpp)
+target_link_libraries(test_hand_calibrator PRIVATE rtmpose_calibrator)
+add_test(NAME hand_calibrator COMMAND test_hand_calibrator)
