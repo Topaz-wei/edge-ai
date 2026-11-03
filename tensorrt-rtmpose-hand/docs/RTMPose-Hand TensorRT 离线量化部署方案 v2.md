@@ -2,7 +2,7 @@
 
 ## 0. 当前实施状态与已有产物
 
-2026-10-30 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
+2026-11-03 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
 
 | 阶段 | 当前状态 | 已有证据与剩余工作 |
 | --- | --- | --- |
@@ -10,10 +10,10 @@
 | Stage 2 数据冻结 | 校准/开发数据划分、手框及裁剪已认可，覆盖度报告已生成 | 352 个校准张量、55 个开发张量已分目录保存；全部已检出手框保留，零检测不补框。`calibration/coverage.json` 已记录几何和亮度代理指标，未标注语义保持未知；validation 手框未准备，人物/采集场次独立性不作额外保证 |
 | Stage 3 Reference Freeze | 技术契约已冻结，人工关键点评审通过 | RGB 契约已核验；407 个张量已修正，55 个开发样本已保存 ORT FP32 输出、解码与原图坐标，10 个代表样本已生成可视化；详见 [核验记录](reference-freeze.md) |
 | Stage 4 Runtime vNext | 本次单输入、多输出范围完成 | 动态 shape、具名输出、profile 切换、持久 MAX 缓冲已实现；旧单输出 API、YOLO/ResNet 和静态 Graph 回归通过。多输入和非 FP32 I/O 仍明确不支持 |
-| Stage 5 TRT FP32 / FP16 | FP32 基线通过，首次 FP16 实验未通过门槛 | TF32 关闭，profile 1/2/4；55 个开发样本的 NPY 与 C++ 原图两条路径通过 ORT 对照，包含 batch 1/2/3/4 和超 MAX 分块；详见 [实测报告](trt-fp32-baseline.md) |
-| Stage 6 INT8 PTQ | 未开始 | 无本模块 INT8 cache、engine 或 inspector 结果 |
+| Stage 5 TRT FP32 / FP16 | FP32 基线通过；FP16 两轮实验完成但精度未通过，根因分析暂缓 | TF32 关闭，profile 1/2/4；55 个开发样本的 NPY 与 C++ 原图两条路径通过 ORT 对照，包含 batch 1/2/3/4 和超 MAX 分块；详见 [实测报告](trt-fp32-baseline.md) |
+| Stage 6 INT8 PTQ | 独立实验准备完成，尚未执行校准构建 | 352张量完整性与GPU供给验证通过，EntropyCalibrator2及独立校准profile已接入；INT8 ON、FP16/TF32 OFF、2 GiB；尚无正式cache/engine/inspector，见[准备记录](int8-preparation.md) |
 | Stage 7 最终验证 | 未开始 | validation 的 258 张原图已导入并隔离，尚未生成手框及参考输出；GT 增强项尚未实施 |
-| Stage 8 Benchmark | 未开始 | 尚无本模块精度/批次性能报告 |
+| Stage 8 Benchmark | 开发阶段FP32/FP16性能对照完成，最终验收待定 | 同公共C++ builder、2 GiB的三轮对照已完成，见[性能报告](cpp-2g-performance.md)；FP16精度未通过，该性能结果不代表部署验收 |
 
 当前资产入口：
 
@@ -1803,7 +1803,7 @@ ResNet
 
 ## Stage 5 — TRT FP32 / FP16
 
-当前：TF32 关闭的 TRT FP32 基线已通过开发集与 C++ 预后处理检查，详见 [实测报告](trt-fp32-baseline.md)。首次 1 GiB FP16 实验未通过门槛；公共 C++ builder 与 2 GiB 新实验已完成，FP16 精度门槛仍未通过，详见 [构建与验证记录](cpp-builder-2g.md)。
+当前：TF32 关闭的 TRT FP32 基线已通过开发集与 C++ 预后处理检查，详见 [实测报告](trt-fp32-baseline.md)。FP16的1 GiB/trtexec和2 GiB/公共C++ builder两轮实验均完成，精度门槛均未通过；根因分析暂缓，INT8作为独立实验推进，详见 [构建与验证记录](cpp-builder-2g.md)。
 
 建立：
 

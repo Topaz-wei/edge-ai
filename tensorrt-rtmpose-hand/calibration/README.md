@@ -163,3 +163,11 @@ development_tensor_order.txt → development_set/tensors/F0001-D000.npy  # 开�
 更完整的准备过程和追溯约束见 [数据集说明](../docs/calibration-dataset.md)。
 
 2026-10-29 reference 修正：官方同哈希模型包确认要求 RGB。已重建 352 个校准和 55 个开发张量，更新清单与覆盖度哈希；原图、手框、裁剪、划分和两份顺序表未变。现用 `.npy` 是 RGB 通道语义，已经归一化。`crops/*.png` 仍是正常可显示图像，OpenCV 读取时返回 BGR。旧 BGR 张量仅留作历史备份，不得递归扫描 `provenance/` 作为校准输入。
+
+
+## INT8 校准器准备状态（2026-11-03）
+
+352个校准张量已通过C++完整性检查及GPU上传/回读验证，最大差为0。
+专用EntropyCalibrator2和独立校准profile已接入公共builder；本轮尚未执行TensorRT校准计算，未生成正式cache或INT8 engine。
+固定校准入口仍是 `calibration_tensor_order.txt`，直接使用已经归一化的NPY。
+实现与复现方法见 [INT8准备记录](../docs/int8-preparation.md)。
