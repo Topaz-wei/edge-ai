@@ -10,3 +10,12 @@ add_test(NAME rtmpose_reference COMMAND rtmpose_reference_test)
 find_package(OpenSSL REQUIRED COMPONENTS Crypto)
 add_executable(rtmpose_fp32 apps/verify_fp32.cpp)
 target_link_libraries(rtmpose_fp32 PRIVATE rtmpose_reference edge_trt_runtime OpenSSL::Crypto)
+
+# 模型构建入口复用公共 builder；OpenCV 仅用于读取本模块 JSON。
+if(NOT TARGET edge_trt_builder)
+    message(FATAL_ERROR "RTMPose build tool requires EDGE_TRT_BUILD_BUILDER=ON")
+endif()
+add_executable(rtmpose_build apps/build_engine.cpp)
+target_compile_features(rtmpose_build PRIVATE cxx_std_17)
+target_include_directories(rtmpose_build PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(rtmpose_build PRIVATE edge_trt_builder ${OpenCV_LIBS} OpenSSL::Crypto)

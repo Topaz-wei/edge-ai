@@ -189,3 +189,14 @@ tensorrt-rtmpose-hand/validation/reference-freeze/
 tensorrt-rtmpose-hand/validation/trt-fp32/
 !tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_fp32.json
 !tensorrt-rtmpose-hand/benchmarks/fp32-baseline.json
+
+# RTMPose FP16 配置与精简报告；原始输出留在本地。
+tensorrt-rtmpose-hand/validation/trt-fp16/
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_fp16.json
+!tensorrt-rtmpose-hand/benchmarks/fp16-baseline.json
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_builder.json
+tensorrt-rtmpose-hand/validation/trt-fp16-cpp-2g/
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_fp16_cpp_2g.json
+!tensorrt-rtmpose-hand/benchmarks/fp16-cpp-2g.json
+tensorrt-rtmpose-hand/validation/simcc-margin/
+!tensorrt-rtmpose-hand/benchmarks/simcc-margin.json
