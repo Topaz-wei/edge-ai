@@ -11,7 +11,7 @@
 
 | 目录 | 职责与边界 |
 | --- | --- |
-| `trt-runtime/` | 与模型无关的 TensorRT engine 加载、Tensor 信息、设备缓冲、CUDA stream、推理执行和 CUDA Graph；不依赖 OpenCV，不包含模型专用预后处理。 |
+| `trt-runtime/` | 与模型无关的 TensorRT engine 构建与执行；独立的 edge_trt_builder 负责 ONNX 构建，edge_trt_runtime 负责加载、Tensor 信息、设备缓冲、CUDA stream、推理执行和 CUDA Graph；不依赖 OpenCV，不包含模型专用预后处理或校准数据策略。 |
 | `video-pipeline/` | 公共视频配置、采集、双缓冲调度、模型接口、绘图、录像和计时；不硬编码 YOLO 等模型的算法与业务几何。 |
 | `tensorrt-yolo/` | YOLO 量化、引擎构建、CPU 业务预处理、GPU 检测流水线、后处理、视频适配器及模型验证。 |
 | `tensorrt-resnet/` | ResNet 量化、推理和验证；复用公共 runtime，模型相关逻辑留在本目录。 |

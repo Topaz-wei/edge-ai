@@ -1,7 +1,7 @@
 # TensorRT runtime
 
 `edge_trt_runtime` 是 C++17 公共库，仅依赖 TensorRT runtime 和 CUDA runtime。
-`edge::trt::Runner` 拥有一个 engine/context/stream，不可并发调用；模型预后处理和 builder/parser 不属于本库。
+`edge::trt::Runner` 拥有一个 engine/context/stream，不可并发调用；模型预后处理不属于本库。ONNX 构建由本目录独立的 `edge_trt_builder` 提供，推理目标不链接 parser。
 
 支持显式 batch、一个输入、一个或多个具名输出，以及 FP32 linear device I/O。
 内部 FP16/INT8 计算仍可使用，但非 FP32 I/O、host I/O、shape tensor、隐式 batch、多输入及数据依赖输出明确拒绝。
@@ -42,3 +42,29 @@ build-shared/trt-runtime/test_dynamic_runner /tmp/edge-dynamic-fixture.plan
 覆盖双输出名称和值、两个 profile、batch 切换、容量/地址稳定、错误输入、非法 rank、旧 API 误用、动态 Graph 拒绝、非 FP32 I/O 拒绝及实例重复创建/销毁。TensorRT 8.5 的 `getProfileShape(name, 1, ...)` 会输出内部 binding 索引修正警告；本库未用 binding 顺序推断输出语义。
 
 已有模型回归通过 `bash scripts/test_runtime_legacy_gpu.sh` 执行，使用历史固定 engine、输入与输出基线，验证 ResNet/YOLO raw 逐字节一致及 YOLO 静态 Graph 开关一致性。RTMPose 实测见 [FP32 阶段报告](../tensorrt-rtmpose-hand/docs/trt-fp32-baseline.md)。
+
+
+## 公共 C++ engine 构建
+
+`edge_trt_builder` 与 `edge_trt_runtime` 分开链接，通过
+`edge/trt/builder.hpp` 的 `BuildOptions` / `buildEngine()` 提供 ONNX 解析、
+具名 FP32 I/O 契约检查、一个 optimization profile、workspace、精度开关和 engine 序列化。
+默认 workspace 为 2 GiB；输出已存在时拒绝覆盖。输出 I/O 限定为 FP32 linear，内部允许低精度计算。
+
+精度选项为 `FP32`、`FP16`、`INT8`。FP16 允许 TensorRT 使用 FP32 fallback。
+INT8 必须提供非空 `IInt8Calibrator*` 以及每个输入的 calibration shape；校准器由调用方持有，
+生命周期必须覆盖整个构建。公共库不负责图片、裁剪、归一化或校准 cache 的数据身份策略。
+本轮仅验证 FP16 实际构建；INT8 校准器接入和真实 INT8 构建留到相应阶段。
+
+仅部署推理程序时可配置 `-DEDGE_TRT_BUILD_BUILDER=OFF`，避免依赖 ONNX parser。
+RTMPose 构建入口要求该选项为 ON。现有 YOLO/ResNet 构建入口未在本轮迁移。
+RTMPose 的调用示例：
+
+```bash
+cmake --build build-shared --target rtmpose_build -j4
+bash tensorrt-rtmpose-hand/scripts/build_fp16_engine.sh
+```
+
+构建参数检查由 `test_builder_options` / CTest `builder_options` 验证；
+真实 RTMPose 验证运行 `bash tensorrt-rtmpose-hand/scripts/run_fp16_validation.sh`。
+精度门槛未通过时验证脚本返回非零，同时保留详细报告。
