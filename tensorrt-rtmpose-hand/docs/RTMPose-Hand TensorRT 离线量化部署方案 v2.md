@@ -10,7 +10,7 @@
 | Stage 2 数据冻结 | 校准/开发数据划分、手框及裁剪已认可，覆盖度报告已生成 | 352 个校准张量、55 个开发张量已分目录保存；全部已检出手框保留，零检测不补框。`calibration/coverage.json` 已记录几何和亮度代理指标，未标注语义保持未知；validation 手框未准备，人物/采集场次独立性不作额外保证 |
 | Stage 3 Reference Freeze | 技术契约已冻结，人工关键点评审通过 | RGB 契约已核验；407 个张量已修正，55 个开发样本已保存 ORT FP32 输出、解码与原图坐标，10 个代表样本已生成可视化；详见 [核验记录](reference-freeze.md) |
 | Stage 4 Runtime vNext | 本次单输入、多输出范围完成 | 动态 shape、具名输出、profile 切换、持久 MAX 缓冲已实现；旧单输出 API、YOLO/ResNet 和静态 Graph 回归通过。多输入和非 FP32 I/O 仍明确不支持 |
-| Stage 5 TRT FP32 / FP16 | FP32 基线通过，FP16 未开始 | TF32 关闭，profile 1/2/4；55 个开发样本的 NPY 与 C++ 原图两条路径通过 ORT 对照，包含 batch 1/2/3/4 和超 MAX 分块；详见 [实测报告](trt-fp32-baseline.md) |
+| Stage 5 TRT FP32 / FP16 | FP32 基线通过，首次 FP16 实验未通过门槛 | TF32 关闭，profile 1/2/4；55 个开发样本的 NPY 与 C++ 原图两条路径通过 ORT 对照，包含 batch 1/2/3/4 和超 MAX 分块；详见 [实测报告](trt-fp32-baseline.md) |
 | Stage 6 INT8 PTQ | 未开始 | 无本模块 INT8 cache、engine 或 inspector 结果 |
 | Stage 7 最终验证 | 未开始 | validation 的 258 张原图已导入并隔离，尚未生成手框及参考输出；GT 增强项尚未实施 |
 | Stage 8 Benchmark | 未开始 | 尚无本模块精度/批次性能报告 |
@@ -60,21 +60,23 @@ TensorRT INT8 PTQ
 /home/ssd/projects/edge-ai/trt-runtime
 ```
 
-使其从目前面向固定 shape、单输出模型的 runtime，升级为：
+本项目实际实现并验收的 runtime 边界为：
 
 ```text
 name-based Tensor API
 +
 static / dynamic shape
 +
-single / multiple inputs
+single named input
 +
-single / multiple outputs
+one or multiple named outputs
 +
 Optimization Profile
 +
 enqueueV3
 ```
+
+runtime 架构可继续扩展多输入，但本项目不为早期目标措辞额外实现多输入、shape tensor 或 non-FP32 I/O。
 
 本阶段重点不是实时视频，而是：
 
@@ -1801,7 +1803,7 @@ ResNet
 
 ## Stage 5 — TRT FP32 / FP16
 
-当前：TF32 关闭的 TRT FP32 基线已通过开发集与 C++ 预后处理检查，详见 [实测报告](trt-fp32-baseline.md)。FP16 尚未开始。
+当前：TF32 关闭的 TRT FP32 基线已通过开发集与 C++ 预后处理检查，详见 [实测报告](trt-fp32-baseline.md)。首次 1 GiB FP16 实验未通过门槛；公共 C++ builder 与 2 GiB 新实验已完成，FP16 精度门槛仍未通过，详见 [构建与验证记录](cpp-builder-2g.md)。
 
 建立：
 

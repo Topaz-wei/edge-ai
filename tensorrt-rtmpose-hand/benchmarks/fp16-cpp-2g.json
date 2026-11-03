@@ -1,0 +1,3005 @@
+{
+  "status": "failed",
+  "failures": [
+    "npy b1 vs ort_fp32: simcc_x_mae",
+    "npy b1 vs ort_fp32: simcc_y_mae",
+    "npy b1 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b1 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b1 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b1 vs trt_fp32_same_batch: simcc_x_mae",
+    "npy b1 vs trt_fp32_same_batch: simcc_y_mae",
+    "npy b1 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "npy b1 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "npy b1 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "npy b2 vs ort_fp32: simcc_x_mae",
+    "npy b2 vs ort_fp32: simcc_y_mae",
+    "npy b2 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b2 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b2 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b2 vs trt_fp32_same_batch: simcc_x_mae",
+    "npy b2 vs trt_fp32_same_batch: simcc_y_mae",
+    "npy b2 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "npy b2 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "npy b2 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "npy b3 vs ort_fp32: simcc_x_mae",
+    "npy b3 vs ort_fp32: simcc_y_mae",
+    "npy b3 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b3 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b3 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b3 vs trt_fp32_same_batch: simcc_x_mae",
+    "npy b3 vs trt_fp32_same_batch: simcc_y_mae",
+    "npy b3 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "npy b3 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "npy b3 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "npy b4 vs ort_fp32: simcc_x_mae",
+    "npy b4 vs ort_fp32: simcc_y_mae",
+    "npy b4 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b4 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b4 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b4 vs trt_fp32_same_batch: simcc_x_mae",
+    "npy b4 vs trt_fp32_same_batch: simcc_y_mae",
+    "npy b4 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "npy b4 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "npy b4 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "npy b6 vs ort_fp32: simcc_x_mae",
+    "npy b6 vs ort_fp32: simcc_y_mae",
+    "npy b6 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b6 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b6 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b6 vs trt_fp32_same_batch: simcc_x_mae",
+    "npy b6 vs trt_fp32_same_batch: simcc_y_mae",
+    "npy b6 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "npy b6 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "npy b6 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "image b1 vs ort_fp32: simcc_x_mae",
+    "image b1 vs ort_fp32: simcc_y_mae",
+    "image b1 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b1 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b1 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b1 vs trt_fp32_same_batch: simcc_x_mae",
+    "image b1 vs trt_fp32_same_batch: simcc_y_mae",
+    "image b1 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "image b1 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "image b1 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "image b2 vs ort_fp32: simcc_x_mae",
+    "image b2 vs ort_fp32: simcc_y_mae",
+    "image b2 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b2 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b2 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b2 vs trt_fp32_same_batch: simcc_x_mae",
+    "image b2 vs trt_fp32_same_batch: simcc_y_mae",
+    "image b2 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "image b2 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "image b2 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "image b3 vs ort_fp32: simcc_x_mae",
+    "image b3 vs ort_fp32: simcc_y_mae",
+    "image b3 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b3 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b3 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b3 vs trt_fp32_same_batch: simcc_x_mae",
+    "image b3 vs trt_fp32_same_batch: simcc_y_mae",
+    "image b3 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "image b3 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "image b3 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "image b4 vs ort_fp32: simcc_x_mae",
+    "image b4 vs ort_fp32: simcc_y_mae",
+    "image b4 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b4 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b4 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b4 vs trt_fp32_same_batch: simcc_x_mae",
+    "image b4 vs trt_fp32_same_batch: simcc_y_mae",
+    "image b4 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "image b4 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "image b4 vs trt_fp32_same_batch: input_coordinate_max_l2_px",
+    "image b6 vs ort_fp32: simcc_x_mae",
+    "image b6 vs ort_fp32: simcc_y_mae",
+    "image b6 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b6 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b6 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b6 vs trt_fp32_same_batch: simcc_x_mae",
+    "image b6 vs trt_fp32_same_batch: simcc_y_mae",
+    "image b6 vs trt_fp32_same_batch: input_coordinate_mean_l2_px",
+    "image b6 vs trt_fp32_same_batch: input_coordinate_p95_l2_px",
+    "image b6 vs trt_fp32_same_batch: input_coordinate_max_l2_px"
+  ],
+  "reference_sha256": "3036459e1f6bc230c9059f34ea260070928669f54f9b1bfef3e031279aef0aec",
+  "engine_sha256": "18a95f59220a896918a085119f2c3916ac69ab609d2cf0ff9491fdf0adc3f57a",
+  "fp32_engine_sha256": "c0b1e68fc38c4b2b46601fc7b14a5952232bd55b00d83b1395a6f32bc0b4087f",
+  "config": {
+    "schema_version": 1,
+    "reference_sha256": "3036459e1f6bc230c9059f34ea260070928669f54f9b1bfef3e031279aef0aec",
+    "model_sha256": "39e858936bca0f94c09847d4e70b68a51d6c0adac61f36b457fcadb54621cd29",
+    "input": "input",
+    "outputs": [
+      "simcc_x",
+      "simcc_y"
+    ],
+    "profile_index": 0,
+    "min": [
+      1,
+      3,
+      256,
+      256
+    ],
+    "opt": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "max": [
+      4,
+      3,
+      256,
+      256
+    ],
+    "precision": "FP16 enabled with TensorRT FP32 fallback",
+    "tf32": false,
+    "fp16": true,
+    "int8": false,
+    "workspace_mib": 2048,
+    "dynamic_cuda_graph": false,
+    "over_max_policy": "chunk_in_order_without_dropping_samples",
+    "builder": "edge_trt_builder via rtmpose_build",
+    "engine": "engines/rtmpose_hand_fp16_cpp_2g.engine",
+    "acceptance": {
+      "input_tensor_max_abs": 0.0,
+      "simcc_mae": 0.001,
+      "simcc_max_abs": 0.05,
+      "input_coordinate_mean_l2_px": 0.25,
+      "input_coordinate_p95_l2_px": 0.5,
+      "input_coordinate_max_l2_px": 2.0,
+      "score_max_abs": 0.02,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_max_abs": 1e-09
+    },
+    "acceptance_scope": "Development engineering gates fixed before inspecting FP16 outputs; same gates for ORT/TRT-FP32/batched-vs-single; all points included, no GT accuracy claim.",
+    "build_config": "configs/rtmpose_hand_builder.json"
+  },
+  "config_sha256": "01de86230f3e4532d4904984d36128166e4fdd5afbbad8edb0d2353f049f2bdb",
+  "cases_sha256": "1f1d65cbcef5f7ab78493f7bf85b775de4a3b26c14e7fd391f872f927c1fea2c",
+  "input_lock_sha256": "e1ceb42771135a6b0e454bfd8a114c5e2c39b1acb46aeef40767983481cc4bc3",
+  "executable_sha256": "7e324bb0676443365bc32f1092dc264a16041ffc31d0af337287d11119521685",
+  "comparison_script_sha256": "0a951559b9c2cd10e20dd8554acf395d95d6d25c29856fad5c1bd6b6429295c2",
+  "completion_sha256": {
+    "npy": "fc3089cc7cc1b488a59c56944a69467a5f21216dcb5fee9e96c5f00522fad140",
+    "image": "02aa5452ad006038553aa28a30907e8cf2e87f7ec23f3ebb113313c01c82636c"
+  },
+  "build_log_sha256": "cde85c82bd59cb5d33504ded7cc105906902d783dedd763417eda2f8dde841f6",
+  "context_inspector_sha256": "3d136bc89042aea4d4baaad9c7e6a51282d07676346b8252ca6f0880bbc5f9ad",
+  "checks": [
+    {
+      "mode": "npy",
+      "requested_batch": 1,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.001604223158210516,
+              "max_abs": 0.0359494686126709
+            },
+            "simcc_y": {
+              "mae": 0.0017152322689071298,
+              "max_abs": 0.029370427131652832
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182401657104492,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 2,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152304062619805,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 3,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152304062619805,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 4,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152306390926242,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "requested_batch": 6,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152304062619805,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "requested_batch": 1,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.001604223158210516,
+              "max_abs": 0.0359494686126709
+            },
+            "simcc_y": {
+              "mae": 0.0017152322689071298,
+              "max_abs": 0.029370427131652832
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182401657104492,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "requested_batch": 2,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152304062619805,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "requested_batch": 3,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152304062619805,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "requested_batch": 4,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152306390926242,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "requested_batch": 6,
+      "sample_count": 55,
+      "input_tensor_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016041609924286604,
+              "max_abs": 0.03595590591430664
+            },
+            "simcc_y": {
+              "mae": 0.0017152184154838324,
+              "max_abs": 0.029339194297790527
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.34366682171821594,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.16425524349406576,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013190746307373047,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_same_batch": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0016042225761339068,
+              "max_abs": 0.035950660705566406
+            },
+            "simcc_y": {
+              "mae": 0.0017152304062619805,
+              "max_abs": 0.029370009899139404
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.3438461124897003,
+          "input_coordinate_p95_l2_px": 0.794974738359438,
+          "input_coordinate_max_l2_px": 23.58495330810547,
+          "source_coordinate_mean_l2_px": 0.1643571299154955,
+          "source_coordinate_p95_l2_px": 0.4690435528755188,
+          "source_coordinate_max_l2_px": 12.912170181566292,
+          "changed_keypoint_count": 562,
+          "score_max_abs": 0.013182640075683594,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "fp16_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    }
+  ],
+  "layer_summary": {
+    "layer_count": 193,
+    "io_precision_counts": {
+      "fp16": 183,
+      "mixed_fp16_fp32": 5,
+      "fp32": 5
+    },
+    "reformat_layers": [
+      "Reformatting CopyNode for Input Tensor 0 to Conv_0",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_22), Mul_23)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_24",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_32), Mul_33)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_34",
+      "412 copy",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_59), Mul_60)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_61",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_62), Mul_63), Add_64)",
+      "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(Sigmoid_62), Mul_63), Add_64)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_65 + PWN(PWN(Sigmoid_66), Mul_67)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_69), Mul_70)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_71",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_72), Mul_73), Add_74)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_75 + PWN(PWN(Sigmoid_76), Mul_77)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_79), Mul_80)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_81",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_82), Mul_83), Add_84)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_85 + PWN(PWN(Sigmoid_86), Mul_87)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_89), Mul_90)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_91",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_92), Mul_93), Add_94)",
+      "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(PWN(Sigmoid_92), Mul_93), Add_94)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_116), Mul_117)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_118",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_119), Mul_120), Add_121)",
+      "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(Sigmoid_119), Mul_120), Add_121)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_122 + PWN(PWN(Sigmoid_123), Mul_124)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_126), Mul_127)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_128",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_129), Mul_130), Add_131)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_132 + PWN(PWN(Sigmoid_133), Mul_134)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_136), Mul_137)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_138",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_139), Mul_140), Add_141)",
+      "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(PWN(Sigmoid_139), Mul_140), Add_141)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_146), Mul_147)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_148",
+      "Reformatting CopyNode for Output Tensor 0 to Conv_163 + PWN(PWN(Sigmoid_164), Mul_165)",
+      "Reformatting CopyNode for Input Tensor 0 to MaxPool_166",
+      "Reformatting CopyNode for Input Tensor 0 to MaxPool_167",
+      "Reformatting CopyNode for Input Tensor 0 to MaxPool_168",
+      "575 copy",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_183), Mul_184)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_185 + PWN(PWN(Sigmoid_186), Mul_187)",
+      "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_192), Mul_193)",
+      "Reformatting CopyNode for Input Tensor 0 to Conv_194 + PWN(PWN(Sigmoid_195), Mul_196)",
+      "Reformatting CopyNode for Input Tensor 0 to Reshape_212",
+      "Reformatting CopyNode for Input Tensor 0 to reshape_before_MatMul_221",
+      "Reformatting CopyNode for Input Tensor 0 to MatMul_221",
+      "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_221",
+      "Reformatting CopyNode for Input Tensor 0 to MatMul_230",
+      "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_230",
+      "Split_233_7",
+      "Unsqueeze_234_copy_input",
+      "Squeeze_238_copy_input",
+      "Reformatting CopyNode for Input Tensor 0 to MatMul_248",
+      "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_248",
+      "Reformatting CopyNode for Input Tensor 0 to MatMul_251 || MatMul_252",
+      "Reformatting CopyNode for Output Tensor 0 to MatMul_251 || MatMul_252",
+      "reshape_after_MatMul_251_copy_input",
+      "reshape_after_MatMul_252_copy_input"
+    ],
+    "layers": [
+      {
+        "name": "870",
+        "type": "Constant",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "head.gau.beta + (Unnamed Layer* 273) [Shuffle]",
+        "type": "Constant",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_0",
+        "type": "Reformat",
+        "io_precision": "mixed_fp16_fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Channel major FP16 format where channel % 4 == 0"
+        ],
+        "tactic": "0x00000000000003ea"
+      },
+      {
+        "name": "Conv_0",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 4 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x16_aligna8_alignc8"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_1), Mul_2)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Conv_3 + PWN(PWN(Sigmoid_4), Mul_5)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x16_alignc4"
+      },
+      {
+        "name": "Conv_6 + PWN(PWN(Sigmoid_7), Mul_8)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "ampere_h1688cudnn_256x64_ldg8_relu_exp_small_nhwc_linkable_tn_v1"
+      },
+      {
+        "name": "Conv_9 + PWN(PWN(Sigmoid_10), Mul_11)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x128x32_stage4_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_12 || Conv_15",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x128x32_stage4_warpsize2x2x1_g1_tensor16x8x16_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_13), Mul_14)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001d"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_16), Mul_17)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "Conv_18 + PWN(PWN(Sigmoid_19), Mul_20)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_21",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_22), Mul_23)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_22), Mul_23)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000d"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_24",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_24",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x64x32_stage3_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_25), Mul_26), Add_27)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000000b"
+      },
+      {
+        "name": "Conv_28 + PWN(PWN(Sigmoid_29), Mul_30)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_31",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_32), Mul_33)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_32), Mul_33)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000d"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_34",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_34",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x64x32_stage3_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_35), Mul_36), Add_37)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000000b"
+      },
+      {
+        "name": "412 copy",
+        "type": "Reformat",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x00000000000003ea"
+      },
+      {
+        "name": "GlobalAveragePool_39",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_fw_4d_FP16FP32NHWC_Average_FastDiv_CAlign4"
+      },
+      {
+        "name": "Conv_40",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x32x64_stage5_warpsize2x2x1_g1_tensor16x8x16_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_41), Mul_42)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "Conv_43 + PWN(PWN(Sigmoid_44), Mul_45)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Conv_46 + PWN(PWN(Sigmoid_47), Mul_48)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x64x32_stage3_warpsize4x1x1_g1_tensor16x8x16_linkable"
+      },
+      {
+        "name": "Conv_49 || Conv_52",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x64x32_stage3_warpsize4x1x1_g1_tensor16x8x16_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_50), Mul_51)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001d"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_53), Mul_54)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "Conv_55 + PWN(PWN(Sigmoid_56), Mul_57)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_58",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_59), Mul_60)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_59), Mul_60)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000c"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_61",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_61",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_62), Mul_63), Add_64)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(Sigmoid_62), Mul_63), Add_64)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_62), Mul_63), Add_64)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000001d"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_65 + PWN(PWN(Sigmoid_66), Mul_67)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_65 + PWN(PWN(Sigmoid_66), Mul_67)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_68",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_69), Mul_70)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_69), Mul_70)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000c"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_71",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_71",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_72), Mul_73), Add_74)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_72), Mul_73), Add_74)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000001d"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_75 + PWN(PWN(Sigmoid_76), Mul_77)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_75 + PWN(PWN(Sigmoid_76), Mul_77)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_78",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_79), Mul_80)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_79), Mul_80)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000c"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_81",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_81",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_82), Mul_83), Add_84)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_82), Mul_83), Add_84)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000001d"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_85 + PWN(PWN(Sigmoid_86), Mul_87)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_85 + PWN(PWN(Sigmoid_86), Mul_87)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_88",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_89), Mul_90)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_89), Mul_90)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000c"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_91",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_91",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_92), Mul_93), Add_94)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_92), Mul_93), Add_94)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000001d"
+      },
+      {
+        "name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(PWN(Sigmoid_92), Mul_93), Add_94)",
+        "type": "Reformat",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x00000000000003ea"
+      },
+      {
+        "name": "GlobalAveragePool_96",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_fw_4d_FP16FP32NHWC_Average_FastDiv_CAlign4"
+      },
+      {
+        "name": "Conv_97",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_gemm_f16f16_f16f16_f16_tn_n_tilesize32x32x64_stage6_warpsize2x2x1_tensor16x8x16"
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_98), Mul_99)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "Conv_100 + PWN(PWN(Sigmoid_101), Mul_102)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize256x64x32_stage3_warpsize4x1x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Conv_103 + PWN(PWN(Sigmoid_104), Mul_105)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x128x32_stage4_warpsize2x2x1_g1_tensor16x8x16_linkable"
+      },
+      {
+        "name": "Conv_106 || Conv_109",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x128x32_stage4_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_107), Mul_108)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_110), Mul_111)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "Conv_112 + PWN(PWN(Sigmoid_113), Mul_114)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_115",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_116), Mul_117)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_116), Mul_117)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_118",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_118",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_119), Mul_120), Add_121)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(Sigmoid_119), Mul_120), Add_121)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_119), Mul_120), Add_121)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_122 + PWN(PWN(Sigmoid_123), Mul_124)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_122 + PWN(PWN(Sigmoid_123), Mul_124)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_125",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_126), Mul_127)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_126), Mul_127)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_128",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_128",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_129), Mul_130), Add_131)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_129), Mul_130), Add_131)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_132 + PWN(PWN(Sigmoid_133), Mul_134)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_132 + PWN(PWN(Sigmoid_133), Mul_134)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_135",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_136), Mul_137)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_136), Mul_137)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_138",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_138",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(Sigmoid_139), Mul_140), Add_141)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_139), Mul_140), Add_141)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(PWN(Sigmoid_139), Mul_140), Add_141)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_142 + PWN(PWN(Sigmoid_143), Mul_144)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_145",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_146), Mul_147)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_146), Mul_147)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_148",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_148",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1"
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_149), Mul_150), Add_151)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "GlobalAveragePool_153",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_fw_4d_FP16FP32NHWC_Average_FastDiv_CAlign8"
+      },
+      {
+        "name": "Conv_154",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_gemm_f16f16_f16f16_f16_tn_n_tilesize64x32x64_stage5_warpsize2x2x1_tensor16x8x16"
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_155), Mul_156)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "Conv_157 + PWN(PWN(Sigmoid_158), Mul_159)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Conv_160 + PWN(PWN(Sigmoid_161), Mul_162)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x64x64_stage4_warpsize2x2x1_g1_tensor16x8x16_linkable"
+      },
+      {
+        "name": "Conv_163 + PWN(PWN(Sigmoid_164), Mul_165)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x64x64_stage4_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Reformatting CopyNode for Output Tensor 0 to Conv_163 + PWN(PWN(Sigmoid_164), Mul_165)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 4 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MaxPool_166",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 4 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MaxPool_166",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_coalescedC_NHWC_kMAX_3_False"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MaxPool_167",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 4 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MaxPool_167",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_coalescedC_NHWC_kMAX_3_False"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MaxPool_168",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 4 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MaxPool_168",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_coalescedC_NHWC_kMAX_3_False"
+      },
+      {
+        "name": "575 copy",
+        "type": "Reformat",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 4 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_170 + PWN(PWN(Sigmoid_171), Mul_172)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Conv_173 || Conv_176",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "ampere_h16816cudnn_64x128_ldg8_relu_exp_stages_64x3_interior_nhwc_tn_v1"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_174), Mul_175)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000015"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_177), Mul_178)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x000000000000000f"
+      },
+      {
+        "name": "Conv_179 + PWN(PWN(Sigmoid_180), Mul_181)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x64x64_stage4_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_182",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_183), Mul_184)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_183), Mul_184)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_185 + PWN(PWN(Sigmoid_186), Mul_187)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_185 + PWN(PWN(Sigmoid_186), Mul_187)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x64x64_stage4_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Conv_188 + PWN(PWN(Sigmoid_189), Mul_190)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x64x64_stage4_warpsize2x2x1_g1_tensor16x8x16_t1r3s3_linkable"
+      },
+      {
+        "name": "Conv_191",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0xfffffffffffffffe"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(Sigmoid_192), Mul_193)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_192), Mul_193)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 16 == 0"
+        ],
+        "tactic": "0x000000000000000a"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_194 + PWN(PWN(Sigmoid_195), Mul_196)",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 16 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_194 + PWN(PWN(Sigmoid_195), Mul_196)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x32x32_stage4_warpsize4x1x1_g1_tensor16x8x16_t1r1s1_linkable"
+      },
+      {
+        "name": "GlobalAveragePool_198",
+        "type": "CaskPooling",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm50_xmma_pooling_fw_4d_FP16FP32NHWC_Average_FastDiv_CAlign4"
+      },
+      {
+        "name": "Conv_199",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_gemm_f16f16_f16f16_f16_tn_n_tilesize32x32x64_stage6_warpsize2x2x1_tensor16x8x16"
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_200), Mul_201)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Conv_202 + PWN(PWN(Sigmoid_203), Mul_204)",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x64x64_stage3_warpsize2x2x1_g1_tensor16x8x16_simple_t1r1s1_linkable"
+      },
+      {
+        "name": "Conv_205",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_indexed_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x32x64_stage5_warpsize2x2x1_g1_tensor16x8x16"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Reshape_212",
+        "type": "Reformat",
+        "io_precision": "mixed_fp16_fp32",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x00000000000003e8"
+      },
+      {
+        "name": "Reshape_212",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Mul_213 + ReduceSum_214 + Sqrt_215",
+        "type": "Reduce",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000001"
+      },
+      {
+        "name": "PWN(PWN(PWN(PWN(PWN(637 + (Unnamed Layer* 215) [Shuffle], Mul_217), PWN(864 + (Unnamed Layer* 219) [Shuffle], (Unnamed Layer* 221) [ElementWise])), PWN((Unnamed Layer* 218) [Constant] + (Unnamed Layer* 220) [Shuffle], (Unnamed Layer* 222) [ElementWise])), Div_219), PWN(head.mlp.0.g + (Unnamed Layer* 225) [Shuffle], Mul_220))",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_before_MatMul_221",
+        "type": "Reformat",
+        "io_precision": "mixed_fp16_fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x00000000000003e8"
+      },
+      {
+        "name": "reshape_before_MatMul_221",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_221",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MatMul_221",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x32x64_stage5_warpsize2x2x1_g1_tensor16x8x16_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_221",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_221",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Mul_222 + ReduceSum_223 + Sqrt_224",
+        "type": "Reduce",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000002"
+      },
+      {
+        "name": "PWN(PWN(PWN(PWN(PWN(651 + (Unnamed Layer* 234) [Shuffle], Mul_226), PWN(864_clone_1 + (Unnamed Layer* 237) [Shuffle], (Unnamed Layer* 239) [ElementWise])), PWN((Unnamed Layer* 236) [Constant] + (Unnamed Layer* 238) [Shuffle], (Unnamed Layer* 240) [ElementWise])), Div_228), PWN(head.gau.ln.g + (Unnamed Layer* 243) [Shuffle], Mul_229))",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "reshape_before_MatMul_230",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_230",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MatMul_230",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "ampere_h16816gemm_128x64_ldg8_stages_64x4_nn_v1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_230",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_230",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_231), Mul_232)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000008"
+      },
+      {
+        "name": "Split_233_7",
+        "type": "Reformat",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x00000000000003e8"
+      },
+      {
+        "name": "Unsqueeze_234_copy_input",
+        "type": "Reformat",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x00000000000003e8"
+      },
+      {
+        "name": "Unsqueeze_234",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(Mul_235, Add_236)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000005"
+      },
+      {
+        "name": "Squeeze_238_copy_input",
+        "type": "Reformat",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Squeeze_238",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Squeeze_239 + Transpose_240",
+        "type": "Shuffle",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MatMul_241",
+        "type": "MatrixMultiply",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000001"
+      },
+      {
+        "name": "PWN(PWN(678 + (Unnamed Layer* 296) [Shuffle], Div_243 + Relu_244), Mul_245)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x000000000000001c"
+      },
+      {
+        "name": "MatMul_246",
+        "type": "CaskGemmMatrixMultiply",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "sm80_xmma_gemm_f16f16_f32f32_f32_nn_n_tilesize32x32x8_stage3_warpsize1x2x1_ffma_aligna2_alignc2"
+      },
+      {
+        "name": "Mul_247",
+        "type": "ElementWise",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000001"
+      },
+      {
+        "name": "reshape_before_MatMul_248",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_248",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MatMul_248",
+        "type": "CaskConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize64x32x64_stage5_warpsize2x2x1_g1_tensor16x8x16_t1r1s1"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_248",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_248",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "head.gau.res_scale.scale + (Unnamed Layer* 306) [Shuffle]",
+        "type": "Constant",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "PWN(Mul_249, Add_250)",
+        "type": "PointWiseV2",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000002"
+      },
+      {
+        "name": "reshape_before_MatMul_251",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Row major linear FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_251 || MatMul_252",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Row major linear FP16 format",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "MatMul_251 || MatMul_252",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Channel major FP16 format where channel % 8 == 0"
+        ],
+        "tactic": "ampere_h16816gemm_128x64_ldg8_stages_32x6_nn_v1"
+      },
+      {
+        "name": "Reformatting CopyNode for Output Tensor 0 to MatMul_251 || MatMul_252",
+        "type": "NoOp",
+        "io_precision": "fp16",
+        "formats": [
+          "Channel major FP16 format where channel % 8 == 0",
+          "Two wide channel vectorized row major FP16 format"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_251_copy_input",
+        "type": "Reformat",
+        "io_precision": "mixed_fp16_fp32",
+        "formats": [
+          "Two wide channel vectorized row major FP16 format",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_251",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_252_copy_input",
+        "type": "Reformat",
+        "io_precision": "mixed_fp16_fp32",
+        "formats": [
+          "Two wide channel vectorized row major FP16 format",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000"
+      },
+      {
+        "name": "reshape_after_MatMul_252",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000"
+      }
+    ],
+    "interpretation": "Classified from inspector layer tensor formats, not a claim about accumulator precision or every fused operator."
+  },
+  "final_validation_images_used": 0,
+  "calibration_tensors_used": 0,
+  "scope": "Development consistency only, no GT accuracy or performance claim.",
+  "build_provenance": {
+    "builder": "edge_trt_builder",
+    "workspace_mib": 2048,
+    "precision": "fp16",
+    "files_sha256": {
+      "trt-runtime/include/edge/trt/builder.hpp": "d58b8292b50c15c59502f541fa6d54be2db8662c96662ace1ec2610fd4ae10b6",
+      "trt-runtime/src/builder.cpp": "6170b636dfd6592bd4b0a811044c54f2246e8b350eb7ac3cdaf0f72a30587eb6",
+      "trt-runtime/CMakeLists.txt": "0ecdc0f965fe00d422cc4002070e48462e175ee1ee2530bf8fe5f8534efe1ef4",
+      "tensorrt-rtmpose-hand/apps/build_engine.cpp": "8cf1464ecbb3d36d311855807bc3f15cda811b19521e77804f23d963007b3a02",
+      "tensorrt-rtmpose-hand/CMakeLists.txt": "e09a8e1b553f5db856e9310d1a942099accc83ac5ddb5e7835882a4f252d21fd",
+      "tensorrt-rtmpose-hand/configs/rtmpose_hand_builder.json": "a1187f73e05d69fa1f5e891442f2ea20ea17c599f7389cd8a028f2d1e7335c46",
+      "tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_fp16_cpp_2g.json": "01de86230f3e4532d4904984d36128166e4fdd5afbbad8edb0d2353f049f2bdb",
+      "tensorrt-rtmpose-hand/models/rtmpose_hand.onnx": "39e858936bca0f94c09847d4e70b68a51d6c0adac61f36b457fcadb54621cd29",
+      "tensorrt-rtmpose-hand/configs/rtmpose_hand_reference.json": "3036459e1f6bc230c9059f34ea260070928669f54f9b1bfef3e031279aef0aec",
+      "build-shared/tensorrt-rtmpose-hand/rtmpose_build": "a793d381995039ea5a1dd6a05d293a7fa2da2310f675bfec3ec7e3811f2b3118"
+    }
+  },
+  "build_completion": {
+    "engine_sha256": "18a95f59220a896918a085119f2c3916ac69ab609d2cf0ff9491fdf0adc3f57a",
+    "provenance_sha256": "ea31fca4c37d40d4762ce128d4122a017e389816d2ac3d5d6872e9cd664d4a32",
+    "log_sha256": "cde85c82bd59cb5d33504ded7cc105906902d783dedd763417eda2f8dde841f6"
+  },
+  "raw_report_sha256": "369a705473e9a21f2417941e833de3065c41ad35c8b00520ea9aa8c2d96eef68",
+  "raw_directory": "validation/trt-fp16-cpp-2g",
+  "task_scope_status": "C++ builder and 2 GiB experiment completed; FP16 accuracy gates failed; no precision tuning performed"
+}
