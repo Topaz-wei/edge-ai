@@ -200,3 +200,8 @@ tensorrt-rtmpose-hand/validation/trt-fp16-cpp-2g/
 !tensorrt-rtmpose-hand/benchmarks/fp16-cpp-2g.json
 tensorrt-rtmpose-hand/validation/simcc-margin/
 !tensorrt-rtmpose-hand/benchmarks/simcc-margin.json
+
+# 同公共 builder、2 GiB 的性能对照；保留配置和摘要，原始采样本地保存。
+tensorrt-rtmpose-hand/validation/cpp-2g-performance/
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_builder_fp32_2g.json
+!tensorrt-rtmpose-hand/benchmarks/cpp-2g-performance.json

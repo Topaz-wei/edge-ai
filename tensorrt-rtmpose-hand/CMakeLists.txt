@@ -19,3 +19,7 @@ add_executable(rtmpose_build apps/build_engine.cpp)
 target_compile_features(rtmpose_build PRIVATE cxx_std_17)
 target_include_directories(rtmpose_build PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(rtmpose_build PRIVATE edge_trt_builder ${OpenCV_LIBS} OpenSSL::Crypto)
+
+# 性能入口独立于冻结的数值验证程序，不改变历史可执行文件。
+add_executable(rtmpose_benchmark apps/benchmark.cpp)
+target_link_libraries(rtmpose_benchmark PRIVATE rtmpose_reference edge_trt_runtime)
