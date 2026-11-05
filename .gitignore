@@ -211,3 +211,8 @@ tensorrt-rtmpose-hand/validation/int8-preparation/
 tensorrt-rtmpose-hand/calibration/rtmpose_hand_int8.cache*
 !tensorrt-rtmpose-hand/configs/rtmpose_hand_builder_int8.json
 !tensorrt-rtmpose-hand/benchmarks/int8-preparation.json
+
+# INT8首轮实验：原始输出留本地，配置与摘要纳入版本控制。
+tensorrt-rtmpose-hand/validation/trt-int8/
+!tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_int8.json
+!tensorrt-rtmpose-hand/benchmarks/int8-baseline.json
