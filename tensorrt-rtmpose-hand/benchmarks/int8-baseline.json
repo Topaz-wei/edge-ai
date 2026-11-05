@@ -1,0 +1,4748 @@
+{
+  "status": "failed",
+  "failures": [
+    "npy b1 vs ort_fp32: simcc_x_mae",
+    "npy b1 vs ort_fp32: simcc_x_max_abs",
+    "npy b1 vs ort_fp32: simcc_y_mae",
+    "npy b1 vs ort_fp32: simcc_y_max_abs",
+    "npy b1 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b1 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b1 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b1 vs ort_fp32: score_max_abs",
+    "npy b1 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "npy b1 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "npy b1 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "npy b1 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "npy b1 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "npy b1 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "npy b1 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "npy b1 vs trt_fp32_cpp_2g: score_max_abs",
+    "npy b2 vs ort_fp32: simcc_x_mae",
+    "npy b2 vs ort_fp32: simcc_x_max_abs",
+    "npy b2 vs ort_fp32: simcc_y_mae",
+    "npy b2 vs ort_fp32: simcc_y_max_abs",
+    "npy b2 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b2 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b2 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b2 vs ort_fp32: score_max_abs",
+    "npy b2 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "npy b2 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "npy b2 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "npy b2 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "npy b2 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "npy b2 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "npy b2 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "npy b2 vs trt_fp32_cpp_2g: score_max_abs",
+    "npy b3 vs ort_fp32: simcc_x_mae",
+    "npy b3 vs ort_fp32: simcc_x_max_abs",
+    "npy b3 vs ort_fp32: simcc_y_mae",
+    "npy b3 vs ort_fp32: simcc_y_max_abs",
+    "npy b3 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b3 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b3 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b3 vs ort_fp32: score_max_abs",
+    "npy b3 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "npy b3 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "npy b3 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "npy b3 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "npy b3 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "npy b3 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "npy b3 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "npy b3 vs trt_fp32_cpp_2g: score_max_abs",
+    "npy b4 vs ort_fp32: simcc_x_mae",
+    "npy b4 vs ort_fp32: simcc_x_max_abs",
+    "npy b4 vs ort_fp32: simcc_y_mae",
+    "npy b4 vs ort_fp32: simcc_y_max_abs",
+    "npy b4 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b4 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b4 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b4 vs ort_fp32: score_max_abs",
+    "npy b4 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "npy b4 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "npy b4 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "npy b4 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "npy b4 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "npy b4 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "npy b4 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "npy b4 vs trt_fp32_cpp_2g: score_max_abs",
+    "npy b6 vs ort_fp32: simcc_x_mae",
+    "npy b6 vs ort_fp32: simcc_x_max_abs",
+    "npy b6 vs ort_fp32: simcc_y_mae",
+    "npy b6 vs ort_fp32: simcc_y_max_abs",
+    "npy b6 vs ort_fp32: input_coordinate_mean_l2_px",
+    "npy b6 vs ort_fp32: input_coordinate_p95_l2_px",
+    "npy b6 vs ort_fp32: input_coordinate_max_l2_px",
+    "npy b6 vs ort_fp32: score_max_abs",
+    "npy b6 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "npy b6 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "npy b6 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "npy b6 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "npy b6 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "npy b6 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "npy b6 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "npy b6 vs trt_fp32_cpp_2g: score_max_abs",
+    "image b1 vs ort_fp32: simcc_x_mae",
+    "image b1 vs ort_fp32: simcc_x_max_abs",
+    "image b1 vs ort_fp32: simcc_y_mae",
+    "image b1 vs ort_fp32: simcc_y_max_abs",
+    "image b1 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b1 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b1 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b1 vs ort_fp32: score_max_abs",
+    "image b1 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "image b1 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "image b1 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "image b1 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "image b1 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "image b1 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "image b1 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "image b1 vs trt_fp32_cpp_2g: score_max_abs",
+    "image b2 vs ort_fp32: simcc_x_mae",
+    "image b2 vs ort_fp32: simcc_x_max_abs",
+    "image b2 vs ort_fp32: simcc_y_mae",
+    "image b2 vs ort_fp32: simcc_y_max_abs",
+    "image b2 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b2 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b2 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b2 vs ort_fp32: score_max_abs",
+    "image b2 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "image b2 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "image b2 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "image b2 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "image b2 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "image b2 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "image b2 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "image b2 vs trt_fp32_cpp_2g: score_max_abs",
+    "image b3 vs ort_fp32: simcc_x_mae",
+    "image b3 vs ort_fp32: simcc_x_max_abs",
+    "image b3 vs ort_fp32: simcc_y_mae",
+    "image b3 vs ort_fp32: simcc_y_max_abs",
+    "image b3 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b3 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b3 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b3 vs ort_fp32: score_max_abs",
+    "image b3 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "image b3 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "image b3 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "image b3 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "image b3 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "image b3 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "image b3 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "image b3 vs trt_fp32_cpp_2g: score_max_abs",
+    "image b4 vs ort_fp32: simcc_x_mae",
+    "image b4 vs ort_fp32: simcc_x_max_abs",
+    "image b4 vs ort_fp32: simcc_y_mae",
+    "image b4 vs ort_fp32: simcc_y_max_abs",
+    "image b4 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b4 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b4 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b4 vs ort_fp32: score_max_abs",
+    "image b4 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "image b4 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "image b4 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "image b4 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "image b4 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "image b4 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "image b4 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "image b4 vs trt_fp32_cpp_2g: score_max_abs",
+    "image b6 vs ort_fp32: simcc_x_mae",
+    "image b6 vs ort_fp32: simcc_x_max_abs",
+    "image b6 vs ort_fp32: simcc_y_mae",
+    "image b6 vs ort_fp32: simcc_y_max_abs",
+    "image b6 vs ort_fp32: input_coordinate_mean_l2_px",
+    "image b6 vs ort_fp32: input_coordinate_p95_l2_px",
+    "image b6 vs ort_fp32: input_coordinate_max_l2_px",
+    "image b6 vs ort_fp32: score_max_abs",
+    "image b6 vs trt_fp32_cpp_2g: simcc_x_mae",
+    "image b6 vs trt_fp32_cpp_2g: simcc_x_max_abs",
+    "image b6 vs trt_fp32_cpp_2g: simcc_y_mae",
+    "image b6 vs trt_fp32_cpp_2g: simcc_y_max_abs",
+    "image b6 vs trt_fp32_cpp_2g: input_coordinate_mean_l2_px",
+    "image b6 vs trt_fp32_cpp_2g: input_coordinate_p95_l2_px",
+    "image b6 vs trt_fp32_cpp_2g: input_coordinate_max_l2_px",
+    "image b6 vs trt_fp32_cpp_2g: score_max_abs"
+  ],
+  "build": {
+    "engine_sha256": "ae9f9d058ba1d59d4c4e022b9cd0b86afe9b976b1a770e035769dbdb9e4b8c2a",
+    "cache_sha256": "eebe4f11433790161edf23fe708200b18c97cce7f853f5d9a900c70fd0699410",
+    "cache_meta_sha256": "52067dda6444cd3581c23864fcb34824d74c7d82a3e373ea33a768c500ab6785",
+    "build_log_sha256": "7a8875b56c9d536d4804a0823ab9708e1d9d345c153bfc4b791551f733ed3448",
+    "build_inputs_sha256": "5abc6e73daa0c605304d73fd2451a2038beb730ef9e385bbc390727789e682fa",
+    "warnings": [
+      "onnx2trt_utils.cpp:375: Your ONNX model has been generated with INT64 weights, while TensorRT does not natively support INT64. Attempting to cast down to INT32.",
+      "Missing scale and zero-point for tensor (Unnamed Layer* 214) [Constant]_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor",
+      "Missing scale and zero-point for tensor (Unnamed Layer* 217) [Constant]_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor",
+      "Missing scale and zero-point for tensor (Unnamed Layer* 218) [Constant]_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor",
+      "Missing scale and zero-point for tensor (Unnamed Layer* 233) [Constant]_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor",
+      "Missing scale and zero-point for tensor (Unnamed Layer* 236) [Constant]_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor",
+      "Missing scale and zero-point for tensor (Unnamed Layer* 295) [Constant]_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor",
+      "[GpuLayer] CONSTANT: head.gau.res_scale.scale + (Unnamed Layer* 306) [Shuffle]"
+    ]
+  },
+  "config": {
+    "schema_version": 1,
+    "reference_sha256": "3036459e1f6bc230c9059f34ea260070928669f54f9b1bfef3e031279aef0aec",
+    "model_sha256": "39e858936bca0f94c09847d4e70b68a51d6c0adac61f36b457fcadb54621cd29",
+    "input": "input",
+    "outputs": [
+      "simcc_x",
+      "simcc_y"
+    ],
+    "profile_index": 0,
+    "min": [
+      1,
+      3,
+      256,
+      256
+    ],
+    "opt": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "max": [
+      4,
+      3,
+      256,
+      256
+    ],
+    "precision": "INT8 enabled with FP32 fallback; FP16 disabled",
+    "tf32": false,
+    "fp16": false,
+    "int8": true,
+    "workspace_mib": 2048,
+    "dynamic_cuda_graph": false,
+    "over_max_policy": "chunk_in_order_without_dropping_samples",
+    "builder": "edge_trt_builder via rtmpose_int8",
+    "engine": "engines/rtmpose_hand_int8.engine",
+    "acceptance": {
+      "input_tensor_max_abs": 0.0,
+      "simcc_mae": 0.001,
+      "simcc_max_abs": 0.05,
+      "input_coordinate_mean_l2_px": 0.25,
+      "input_coordinate_p95_l2_px": 0.5,
+      "input_coordinate_max_l2_px": 2.0,
+      "score_max_abs": 0.02,
+      "valid_mask_flip_count": 0,
+      "cpp_decode_max_abs": 1e-09
+    },
+    "acceptance_scope": "Same pre-existing low-precision development gates as FP16; fixed before INT8 outputs. RMSE and raw argmax shifts are reporting-only.",
+    "build_config": "configs/rtmpose_hand_builder_int8.json"
+  },
+  "config_sha256": "a8558b5bef273c6eaeba65d76c6a6805312a13d39b4ce2f85ab3cae2b268841f",
+  "checks": [
+    {
+      "mode": "npy",
+      "batch": 1,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268715113401413,
+              "max_abs": 1.3700859546661377,
+              "rmse": 0.09607891053324348,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.061163388192653656,
+              "max_abs": 1.1833502054214478,
+              "rmse": 0.09317219288975044,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071566343307495,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "batch": 2,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.09607891086492405,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219661672656,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "batch": 3,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.09607891086492405,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219661672656,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "batch": 4,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.0960789104753097,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219701073814,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "npy",
+      "batch": 6,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.09607891086492405,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219661672656,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "batch": 1,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268715113401413,
+              "max_abs": 1.3700859546661377,
+              "rmse": 0.09607891053324348,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.061163388192653656,
+              "max_abs": 1.1833502054214478,
+              "rmse": 0.09317219288975044,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071566343307495,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "batch": 2,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.09607891086492405,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219661672656,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "batch": 3,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.09607891086492405,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219661672656,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "batch": 4,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.0960789104753097,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219701073814,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    },
+    {
+      "mode": "image",
+      "batch": 6,
+      "sample_count": 55,
+      "input_max_abs": 0.0,
+      "cpp_decode_max_abs": 0.0,
+      "comparisons": {
+        "ort_fp32": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0626882016658783,
+              "max_abs": 1.3700909614562988,
+              "rmse": 0.09608078961201409,
+              "argmax_changed_count": 936,
+              "argmax_shift_mean_abs_bins": 3.916017316017316,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116446107625961,
+              "max_abs": 1.1833754777908325,
+              "rmse": 0.09317402398778768,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.9298954010009766,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3918915805346743,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1123,
+          "score_max_abs": 0.6071596145629883,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "trt_fp32_cpp_2g": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.06268713623285294,
+              "max_abs": 1.3700847625732422,
+              "rmse": 0.09607891086492405,
+              "argmax_changed_count": 937,
+              "argmax_shift_mean_abs_bins": 3.916883116883117,
+              "argmax_shift_p95_abs_bins": 12.0,
+              "argmax_shift_max_abs_bins": 208
+            },
+            "simcc_y": {
+              "mae": 0.06116339564323425,
+              "max_abs": 1.183349847793579,
+              "rmse": 0.09317219661672656,
+              "argmax_changed_count": 1000,
+              "argmax_shift_mean_abs_bins": 3.3064935064935064,
+              "argmax_shift_p95_abs_bins": 9.0,
+              "argmax_shift_max_abs_bins": 55
+            }
+          },
+          "input_coordinate_mean_l2_px": 2.930328369140625,
+          "input_coordinate_p95_l2_px": 7.82623815536499,
+          "input_coordinate_max_l2_px": 104.0,
+          "source_coordinate_mean_l2_px": 1.3921375561151117,
+          "source_coordinate_p95_l2_px": 2.9370052084629448,
+          "source_coordinate_max_l2_px": 54.80081580219955,
+          "changed_keypoint_count": 1124,
+          "score_max_abs": 0.6071571111679077,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        },
+        "int8_single": {
+          "simcc": {
+            "simcc_x": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            },
+            "simcc_y": {
+              "mae": 0.0,
+              "max_abs": 0.0,
+              "rmse": 0.0,
+              "argmax_changed_count": 0,
+              "argmax_shift_mean_abs_bins": 0.0,
+              "argmax_shift_p95_abs_bins": 0.0,
+              "argmax_shift_max_abs_bins": 0
+            }
+          },
+          "input_coordinate_mean_l2_px": 0.0,
+          "input_coordinate_p95_l2_px": 0.0,
+          "input_coordinate_max_l2_px": 0.0,
+          "source_coordinate_mean_l2_px": 0.0,
+          "source_coordinate_p95_l2_px": 0.0,
+          "source_coordinate_max_l2_px": 0.0,
+          "changed_keypoint_count": 0,
+          "score_max_abs": 0.0,
+          "valid_mask_flip_count": 0,
+          "actual_valid_count": 1155,
+          "reference_valid_count": 1155
+        }
+      }
+    }
+  ],
+  "layer_summary": {
+    "layer_count": 136,
+    "io_precision_counts": {
+      "fp32": 34,
+      "mixed_int8_fp32": 8,
+      "int8": 94
+    },
+    "fp16_tensor_layers": 0,
+    "layers": [
+      {
+        "name": "870",
+        "type": "Constant",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [],
+        "outputs": [
+          "(Unnamed Layer* 270) [Constant]_output"
+        ]
+      },
+      {
+        "name": "head.gau.beta + (Unnamed Layer* 273) [Shuffle]",
+        "type": "Constant",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [],
+        "outputs": [
+          "(Unnamed Layer* 273) [Shuffle]_output"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Conv_0 + PWN(PWN(Sigmoid_1), Mul_2)",
+        "type": "Reformat",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x00000000000003e8",
+        "inputs": [
+          "input"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to Conv_0 + PWN(PWN(Sigmoid_1), Mul_2)"
+        ]
+      },
+      {
+        "name": "Conv_0 + PWN(PWN(Sigmoid_1), Mul_2)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "ampere_first_layer_filter3x3_imma_fwd_swish",
+        "inputs": [
+          "Reformatted Input Tensor 0 to Conv_0 + PWN(PWN(Sigmoid_1), Mul_2)"
+        ],
+        "outputs": [
+          "366"
+        ]
+      },
+      {
+        "name": "Conv_3",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3",
+        "inputs": [
+          "366"
+        ],
+        "outputs": [
+          "695"
+        ]
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_4), Mul_5)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "695"
+        ],
+        "outputs": [
+          "370"
+        ]
+      },
+      {
+        "name": "Conv_6 + PWN(PWN(Sigmoid_7), Mul_8)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "370"
+        ],
+        "outputs": [
+          "374"
+        ]
+      },
+      {
+        "name": "Conv_9 + PWN(PWN(Sigmoid_10), Mul_11)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "374"
+        ],
+        "outputs": [
+          "378"
+        ]
+      },
+      {
+        "name": "Conv_12 + PWN(PWN(Sigmoid_13), Mul_14)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "378"
+        ],
+        "outputs": [
+          "Reformatted Output Tensor 0 to Conv_12 + PWN(PWN(Sigmoid_13), Mul_14)"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Output Tensor 0 to Conv_12 + PWN(PWN(Sigmoid_13), Mul_14)",
+        "type": "Reformat",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x00000000000003ea",
+        "inputs": [
+          "Reformatted Output Tensor 0 to Conv_12 + PWN(PWN(Sigmoid_13), Mul_14)"
+        ],
+        "outputs": [
+          "413"
+        ]
+      },
+      {
+        "name": "Conv_15 + PWN(PWN(Sigmoid_16), Mul_17)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "378"
+        ],
+        "outputs": [
+          "386"
+        ]
+      },
+      {
+        "name": "Conv_18 + PWN(PWN(Sigmoid_19), Mul_20)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "386"
+        ],
+        "outputs": [
+          "390"
+        ]
+      },
+      {
+        "name": "Conv_21 + PWN(PWN(Sigmoid_22), Mul_23)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "390"
+        ],
+        "outputs": [
+          "394"
+        ]
+      },
+      {
+        "name": "Conv_24",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize96x64x64_stage3_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "394"
+        ],
+        "outputs": [
+          "716"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_25), Mul_26), Add_27)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "716",
+          "386"
+        ],
+        "outputs": [
+          "399"
+        ]
+      },
+      {
+        "name": "Conv_28 + PWN(PWN(Sigmoid_29), Mul_30)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "399"
+        ],
+        "outputs": [
+          "403"
+        ]
+      },
+      {
+        "name": "Conv_31 + PWN(PWN(Sigmoid_32), Mul_33)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "403"
+        ],
+        "outputs": [
+          "407"
+        ]
+      },
+      {
+        "name": "Conv_34",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize96x64x64_stage3_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "407"
+        ],
+        "outputs": [
+          "725"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_35), Mul_36), Add_37)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "725",
+          "399"
+        ],
+        "outputs": [
+          "412"
+        ]
+      },
+      {
+        "name": "412 copy",
+        "type": "Reformat",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x00000000000003ea",
+        "inputs": [
+          "412"
+        ],
+        "outputs": [
+          "413"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to GlobalAveragePool_39",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "413"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to GlobalAveragePool_39"
+        ]
+      },
+      {
+        "name": "GlobalAveragePool_39",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_gapSyncCta",
+        "inputs": [
+          "Reformatted Input Tensor 0 to GlobalAveragePool_39"
+        ],
+        "outputs": [
+          "414"
+        ]
+      },
+      {
+        "name": "Conv_40",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "414"
+        ],
+        "outputs": [
+          "415"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(HardSigmoid_41), Mul_42)",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "413"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 1 to PWN(PWN(HardSigmoid_41), Mul_42)"
+        ]
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_41), Mul_42)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000016",
+        "inputs": [
+          "415",
+          "Reformatted Input Tensor 1 to PWN(PWN(HardSigmoid_41), Mul_42)"
+        ],
+        "outputs": [
+          "417"
+        ]
+      },
+      {
+        "name": "Conv_43 + PWN(PWN(Sigmoid_44), Mul_45)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "417"
+        ],
+        "outputs": [
+          "421"
+        ]
+      },
+      {
+        "name": "Conv_46 + PWN(PWN(Sigmoid_47), Mul_48)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "421"
+        ],
+        "outputs": [
+          "425"
+        ]
+      },
+      {
+        "name": "Conv_49 + PWN(PWN(Sigmoid_50), Mul_51)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "425"
+        ],
+        "outputs": [
+          "486"
+        ]
+      },
+      {
+        "name": "Conv_52 + PWN(PWN(Sigmoid_53), Mul_54)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "425"
+        ],
+        "outputs": [
+          "433"
+        ]
+      },
+      {
+        "name": "Conv_55 + PWN(PWN(Sigmoid_56), Mul_57)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "433"
+        ],
+        "outputs": [
+          "437"
+        ]
+      },
+      {
+        "name": "Conv_58 + PWN(PWN(Sigmoid_59), Mul_60)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "437"
+        ],
+        "outputs": [
+          "441"
+        ]
+      },
+      {
+        "name": "Conv_61",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "441"
+        ],
+        "outputs": [
+          "746"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_62), Mul_63), Add_64)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000019",
+        "inputs": [
+          "746",
+          "433"
+        ],
+        "outputs": [
+          "446"
+        ]
+      },
+      {
+        "name": "Conv_65 + PWN(PWN(Sigmoid_66), Mul_67)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "446"
+        ],
+        "outputs": [
+          "450"
+        ]
+      },
+      {
+        "name": "Conv_68 + PWN(PWN(Sigmoid_69), Mul_70)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "450"
+        ],
+        "outputs": [
+          "454"
+        ]
+      },
+      {
+        "name": "Conv_71",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "454"
+        ],
+        "outputs": [
+          "755"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_72), Mul_73), Add_74)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000019",
+        "inputs": [
+          "755",
+          "446"
+        ],
+        "outputs": [
+          "459"
+        ]
+      },
+      {
+        "name": "Conv_75 + PWN(PWN(Sigmoid_76), Mul_77)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "459"
+        ],
+        "outputs": [
+          "463"
+        ]
+      },
+      {
+        "name": "Conv_78 + PWN(PWN(Sigmoid_79), Mul_80)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "463"
+        ],
+        "outputs": [
+          "467"
+        ]
+      },
+      {
+        "name": "Conv_81",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "467"
+        ],
+        "outputs": [
+          "764"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_82), Mul_83), Add_84)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000019",
+        "inputs": [
+          "764",
+          "459"
+        ],
+        "outputs": [
+          "472"
+        ]
+      },
+      {
+        "name": "Conv_85 + PWN(PWN(Sigmoid_86), Mul_87)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "472"
+        ],
+        "outputs": [
+          "476"
+        ]
+      },
+      {
+        "name": "Conv_88 + PWN(PWN(Sigmoid_89), Mul_90)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "476"
+        ],
+        "outputs": [
+          "480"
+        ]
+      },
+      {
+        "name": "Conv_91",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "480"
+        ],
+        "outputs": [
+          "773"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_92), Mul_93), Add_94)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "773",
+          "472"
+        ],
+        "outputs": [
+          "486"
+        ]
+      },
+      {
+        "name": "GlobalAveragePool_96",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_gap",
+        "inputs": [
+          "486"
+        ],
+        "outputs": [
+          "487"
+        ]
+      },
+      {
+        "name": "Conv_97",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "487"
+        ],
+        "outputs": [
+          "488"
+        ]
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_98), Mul_99)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "488",
+          "486"
+        ],
+        "outputs": [
+          "490"
+        ]
+      },
+      {
+        "name": "Conv_100 + PWN(PWN(Sigmoid_101), Mul_102)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "490"
+        ],
+        "outputs": [
+          "494"
+        ]
+      },
+      {
+        "name": "Conv_103 + PWN(PWN(Sigmoid_104), Mul_105)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "494"
+        ],
+        "outputs": [
+          "498"
+        ]
+      },
+      {
+        "name": "Conv_106 + PWN(PWN(Sigmoid_107), Mul_108)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "498"
+        ],
+        "outputs": [
+          "559"
+        ]
+      },
+      {
+        "name": "Conv_109 + PWN(PWN(Sigmoid_110), Mul_111)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "498"
+        ],
+        "outputs": [
+          "506"
+        ]
+      },
+      {
+        "name": "Conv_112 + PWN(PWN(Sigmoid_113), Mul_114)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "506"
+        ],
+        "outputs": [
+          "510"
+        ]
+      },
+      {
+        "name": "Conv_115 + PWN(PWN(Sigmoid_116), Mul_117)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "510"
+        ],
+        "outputs": [
+          "514"
+        ]
+      },
+      {
+        "name": "Conv_118",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "514"
+        ],
+        "outputs": [
+          "794"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_119), Mul_120), Add_121)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000014",
+        "inputs": [
+          "794",
+          "506"
+        ],
+        "outputs": [
+          "519"
+        ]
+      },
+      {
+        "name": "Conv_122 + PWN(PWN(Sigmoid_123), Mul_124)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "519"
+        ],
+        "outputs": [
+          "523"
+        ]
+      },
+      {
+        "name": "Conv_125 + PWN(PWN(Sigmoid_126), Mul_127)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "523"
+        ],
+        "outputs": [
+          "527"
+        ]
+      },
+      {
+        "name": "Conv_128",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "527"
+        ],
+        "outputs": [
+          "803"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_129), Mul_130), Add_131)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000014",
+        "inputs": [
+          "803",
+          "519"
+        ],
+        "outputs": [
+          "532"
+        ]
+      },
+      {
+        "name": "Conv_132 + PWN(PWN(Sigmoid_133), Mul_134)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "532"
+        ],
+        "outputs": [
+          "536"
+        ]
+      },
+      {
+        "name": "Conv_135 + PWN(PWN(Sigmoid_136), Mul_137)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "536"
+        ],
+        "outputs": [
+          "540"
+        ]
+      },
+      {
+        "name": "Conv_138",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "540"
+        ],
+        "outputs": [
+          "812"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_139), Mul_140), Add_141)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000014",
+        "inputs": [
+          "812",
+          "532"
+        ],
+        "outputs": [
+          "545"
+        ]
+      },
+      {
+        "name": "Conv_142 + PWN(PWN(Sigmoid_143), Mul_144)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "545"
+        ],
+        "outputs": [
+          "549"
+        ]
+      },
+      {
+        "name": "Conv_145 + PWN(PWN(Sigmoid_146), Mul_147)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "549"
+        ],
+        "outputs": [
+          "553"
+        ]
+      },
+      {
+        "name": "Conv_148",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "553"
+        ],
+        "outputs": [
+          "821"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(Sigmoid_149), Mul_150), Add_151)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000014",
+        "inputs": [
+          "821",
+          "545"
+        ],
+        "outputs": [
+          "559"
+        ]
+      },
+      {
+        "name": "GlobalAveragePool_153",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_gapSyncCta",
+        "inputs": [
+          "559"
+        ],
+        "outputs": [
+          "560"
+        ]
+      },
+      {
+        "name": "Conv_154",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "560"
+        ],
+        "outputs": [
+          "561"
+        ]
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_155), Mul_156)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "561",
+          "559"
+        ],
+        "outputs": [
+          "563"
+        ]
+      },
+      {
+        "name": "Conv_157 + PWN(PWN(Sigmoid_158), Mul_159)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "563"
+        ],
+        "outputs": [
+          "567"
+        ]
+      },
+      {
+        "name": "Conv_160 + PWN(PWN(Sigmoid_161), Mul_162)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "567"
+        ],
+        "outputs": [
+          "571"
+        ]
+      },
+      {
+        "name": "Conv_163 + PWN(PWN(Sigmoid_164), Mul_165)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "571"
+        ],
+        "outputs": [
+          "575"
+        ]
+      },
+      {
+        "name": "MaxPool_166",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_generic_kMAX",
+        "inputs": [
+          "575"
+        ],
+        "outputs": [
+          "579"
+        ]
+      },
+      {
+        "name": "MaxPool_167",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_generic_kMAX",
+        "inputs": [
+          "575"
+        ],
+        "outputs": [
+          "579"
+        ]
+      },
+      {
+        "name": "MaxPool_168",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_generic_kMAX",
+        "inputs": [
+          "575"
+        ],
+        "outputs": [
+          "579"
+        ]
+      },
+      {
+        "name": "575 copy",
+        "type": "Reformat",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "575"
+        ],
+        "outputs": [
+          "579"
+        ]
+      },
+      {
+        "name": "Conv_170 + PWN(PWN(Sigmoid_171), Mul_172)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "579"
+        ],
+        "outputs": [
+          "583"
+        ]
+      },
+      {
+        "name": "Conv_173 + PWN(PWN(Sigmoid_174), Mul_175)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "583"
+        ],
+        "outputs": [
+          "616"
+        ]
+      },
+      {
+        "name": "Conv_176 + PWN(PWN(Sigmoid_177), Mul_178)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "583"
+        ],
+        "outputs": [
+          "591"
+        ]
+      },
+      {
+        "name": "Conv_179 + PWN(PWN(Sigmoid_180), Mul_181)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "591"
+        ],
+        "outputs": [
+          "595"
+        ]
+      },
+      {
+        "name": "Conv_182 + PWN(PWN(Sigmoid_183), Mul_184)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000001",
+        "inputs": [
+          "595"
+        ],
+        "outputs": [
+          "599"
+        ]
+      },
+      {
+        "name": "Conv_185 + PWN(PWN(Sigmoid_186), Mul_187)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "599"
+        ],
+        "outputs": [
+          "603"
+        ]
+      },
+      {
+        "name": "Conv_188 + PWN(PWN(Sigmoid_189), Mul_190)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "603"
+        ],
+        "outputs": [
+          "607"
+        ]
+      },
+      {
+        "name": "Conv_191 + PWN(PWN(Sigmoid_192), Mul_193)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000001",
+        "inputs": [
+          "607"
+        ],
+        "outputs": [
+          "611"
+        ]
+      },
+      {
+        "name": "Conv_194 + PWN(PWN(Sigmoid_195), Mul_196)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "611"
+        ],
+        "outputs": [
+          "616"
+        ]
+      },
+      {
+        "name": "GlobalAveragePool_198",
+        "type": "CaskPooling",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm72_xmma_pooling_IMMA_NCxHW32_gapSyncCta",
+        "inputs": [
+          "616"
+        ],
+        "outputs": [
+          "617"
+        ]
+      },
+      {
+        "name": "Conv_199",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "617"
+        ],
+        "outputs": [
+          "618"
+        ]
+      },
+      {
+        "name": "PWN(PWN(HardSigmoid_200), Mul_201)",
+        "type": "PointWiseV2",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000014",
+        "inputs": [
+          "618",
+          "616"
+        ],
+        "outputs": [
+          "620"
+        ]
+      },
+      {
+        "name": "Conv_202 + PWN(PWN(Sigmoid_203), Mul_204)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "620"
+        ],
+        "outputs": [
+          "624"
+        ]
+      },
+      {
+        "name": "Conv_205",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_indexed_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32",
+        "inputs": [
+          "624"
+        ],
+        "outputs": [
+          "625"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to Reshape_212",
+        "type": "Reformat",
+        "io_precision": "fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major FP32 format",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "625"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to Reshape_212"
+        ]
+      },
+      {
+        "name": "Reshape_212",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Input Tensor 0 to Reshape_212"
+        ],
+        "outputs": [
+          "633"
+        ]
+      },
+      {
+        "name": "Mul_213 + ReduceSum_214 + Sqrt_215",
+        "type": "Reduce",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000001",
+        "inputs": [
+          "633"
+        ],
+        "outputs": [
+          "636"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(PWN(PWN(637 + (Unnamed Layer* 215) [Shuffle], Mul_217), PWN(864 + (Unnamed Layer* 219) [Shuffle], (Unnamed Layer* 221) [ElementWise])), PWN((Unnamed Layer* 218) [Constant] + (Unnamed Layer* 220) [Shuffle], (Unnamed Layer* 222) [ElementWise])), Div_219), PWN(head.mlp.0.g + (Unnamed Layer* 225) [Shuffle], Mul_220))",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x000000000000001c",
+        "inputs": [
+          "636",
+          "633"
+        ],
+        "outputs": [
+          "645"
+        ]
+      },
+      {
+        "name": "reshape_before_MatMul_221",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "645"
+        ],
+        "outputs": [
+          "reshape_before_MatMul_221_out_tensor"
+        ]
+      },
+      {
+        "name": "MatMul_221",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "sm80_xmma_gemm_f32f32_f32f32_f32_tn_n_tilesize32x32x8_stage3_warpsize1x2x1_ffma_aligna4_alignc4",
+        "inputs": [
+          "reshape_before_MatMul_221_out_tensor"
+        ],
+        "outputs": [
+          "MatMul_221_out_tensor"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_221",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "MatMul_221_out_tensor"
+        ],
+        "outputs": [
+          "647"
+        ]
+      },
+      {
+        "name": "Mul_222 + ReduceSum_223 + Sqrt_224",
+        "type": "Reduce",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000002",
+        "inputs": [
+          "647"
+        ],
+        "outputs": [
+          "650"
+        ]
+      },
+      {
+        "name": "PWN(PWN(PWN(PWN(PWN(651 + (Unnamed Layer* 234) [Shuffle], Mul_226), PWN(864_clone_1 + (Unnamed Layer* 237) [Shuffle], (Unnamed Layer* 239) [ElementWise])), PWN((Unnamed Layer* 236) [Constant] + (Unnamed Layer* 238) [Shuffle], (Unnamed Layer* 240) [ElementWise])), Div_228), PWN(head.gau.ln.g + (Unnamed Layer* 243) [Shuffle], Mul_229))",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x000000000000001c",
+        "inputs": [
+          "650",
+          "647"
+        ],
+        "outputs": [
+          "659"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_before_MatMul_230",
+        "type": "Reformat",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x00000000000003e8",
+        "inputs": [
+          "659"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to reshape_before_MatMul_230"
+        ]
+      },
+      {
+        "name": "reshape_before_MatMul_230",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Input Tensor 0 to reshape_before_MatMul_230"
+        ],
+        "outputs": [
+          "reshape_before_MatMul_230_out_tensor"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_230",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "reshape_before_MatMul_230_out_tensor"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to MatMul_230"
+        ]
+      },
+      {
+        "name": "MatMul_230",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r1s1",
+        "inputs": [
+          "Reformatted Input Tensor 0 to MatMul_230"
+        ],
+        "outputs": [
+          "MatMul_230_out_tensor"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_230",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major FP32 format",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "MatMul_230_out_tensor"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to reshape_after_MatMul_230"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_230",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Input Tensor 0 to reshape_after_MatMul_230"
+        ],
+        "outputs": [
+          "661"
+        ]
+      },
+      {
+        "name": "PWN(PWN(Sigmoid_231), Mul_232)",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000002",
+        "inputs": [
+          "661"
+        ],
+        "outputs": [
+          "663"
+        ]
+      },
+      {
+        "name": "Split_233_7",
+        "type": "Reformat",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "663"
+        ],
+        "outputs": [
+          "665"
+        ]
+      },
+      {
+        "name": "Unsqueeze_234_copy_input",
+        "type": "Reformat",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x00000000000003e8",
+        "inputs": [
+          "663"
+        ],
+        "outputs": [
+          "Unsqueeze_234_copy_input"
+        ]
+      },
+      {
+        "name": "Unsqueeze_234",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Unsqueeze_234_copy_input"
+        ],
+        "outputs": [
+          "667"
+        ]
+      },
+      {
+        "name": "PWN(Mul_235, Add_236)",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000005",
+        "inputs": [
+          "667",
+          "(Unnamed Layer* 270) [Constant]_output",
+          "(Unnamed Layer* 273) [Shuffle]_output"
+        ],
+        "outputs": [
+          "671"
+        ]
+      },
+      {
+        "name": "Squeeze_238_copy_input",
+        "type": "Reformat",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "671"
+        ],
+        "outputs": [
+          "Squeeze_238_copy_input"
+        ]
+      },
+      {
+        "name": "Squeeze_238",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Squeeze_238_copy_input"
+        ],
+        "outputs": [
+          "674"
+        ]
+      },
+      {
+        "name": "Squeeze_239 + Transpose_240",
+        "type": "Shuffle",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "671"
+        ],
+        "outputs": [
+          "676"
+        ]
+      },
+      {
+        "name": "MatMul_241",
+        "type": "CaskGemmMatrixMultiply",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "ampere_sgemm_32x32_sliced1x4_nn_v1",
+        "inputs": [
+          "674",
+          "676"
+        ],
+        "outputs": [
+          "677"
+        ]
+      },
+      {
+        "name": "PWN(PWN(678 + (Unnamed Layer* 296) [Shuffle], Div_243 + Relu_244), Mul_245)",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x000000000000001c",
+        "inputs": [
+          "677"
+        ],
+        "outputs": [
+          "681"
+        ]
+      },
+      {
+        "name": "MatMul_246",
+        "type": "CaskGemmMatrixMultiply",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "sm80_xmma_gemm_f32f32_f32f32_f32_nn_n_tilesize32x32x8_stage3_warpsize1x2x1_ffma_aligna4_alignc4",
+        "inputs": [
+          "681",
+          "665"
+        ],
+        "outputs": [
+          "682"
+        ]
+      },
+      {
+        "name": "Mul_247",
+        "type": "ElementWise",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000001",
+        "inputs": [
+          "663",
+          "682"
+        ],
+        "outputs": [
+          "683"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_before_MatMul_248",
+        "type": "Reformat",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "683"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to reshape_before_MatMul_248"
+        ]
+      },
+      {
+        "name": "reshape_before_MatMul_248",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Input Tensor 0 to reshape_before_MatMul_248"
+        ],
+        "outputs": [
+          "reshape_before_MatMul_248_out_tensor"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_248",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "reshape_before_MatMul_248_out_tensor"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to MatMul_248"
+        ]
+      },
+      {
+        "name": "MatMul_248",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "Reformatted Input Tensor 0 to MatMul_248"
+        ],
+        "outputs": [
+          "MatMul_248_out_tensor"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_after_MatMul_248",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major FP32 format",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "MatMul_248_out_tensor"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to reshape_after_MatMul_248"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_248",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Input Tensor 0 to reshape_after_MatMul_248"
+        ],
+        "outputs": [
+          "685"
+        ]
+      },
+      {
+        "name": "head.gau.res_scale.scale + (Unnamed Layer* 306) [Shuffle]",
+        "type": "Constant",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [],
+        "outputs": [
+          "(Unnamed Layer* 306) [Shuffle]_output"
+        ]
+      },
+      {
+        "name": "PWN(Mul_249, Add_250)",
+        "type": "PointWiseV2",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000005",
+        "inputs": [
+          "647",
+          "(Unnamed Layer* 306) [Shuffle]_output",
+          "685"
+        ],
+        "outputs": [
+          "687"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to reshape_before_MatMul_251",
+        "type": "Reformat",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x00000000000003e8",
+        "inputs": [
+          "687"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to reshape_before_MatMul_251"
+        ]
+      },
+      {
+        "name": "reshape_before_MatMul_251",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Input Tensor 0 to reshape_before_MatMul_251"
+        ],
+        "outputs": [
+          "reshape_before_MatMul_251_out_tensor"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Input Tensor 0 to MatMul_251 || MatMul_252",
+        "type": "NoOp",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "reshape_before_MatMul_251_out_tensor"
+        ],
+        "outputs": [
+          "Reformatted Input Tensor 0 to MatMul_251 || MatMul_252"
+        ]
+      },
+      {
+        "name": "MatMul_251 || MatMul_252",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "Reformatted Input Tensor 0 to MatMul_251 || MatMul_252"
+        ],
+        "outputs": [
+          "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+        ]
+      },
+      {
+        "name": "Reformatting CopyNode for Output Tensor 0 to MatMul_251 || MatMul_252",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major FP32 format",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+        ],
+        "outputs": [
+          "MatMul_251 || MatMul_252"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_251_copy_input",
+        "type": "Reformat",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x00000000000003e8",
+        "inputs": [
+          "MatMul_251 || MatMul_252"
+        ],
+        "outputs": [
+          "reshape_after_MatMul_251_copy_input"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_251",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "reshape_after_MatMul_251_copy_input"
+        ],
+        "outputs": [
+          "simcc_x"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_252_copy_input",
+        "type": "Reformat",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x00000000000003e8",
+        "inputs": [
+          "MatMul_251 || MatMul_252"
+        ],
+        "outputs": [
+          "reshape_after_MatMul_252_copy_input"
+        ]
+      },
+      {
+        "name": "reshape_after_MatMul_252",
+        "type": "NoOp",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "0x0000000000000000",
+        "inputs": [
+          "reshape_after_MatMul_252_copy_input"
+        ],
+        "outputs": [
+          "simcc_y"
+        ]
+      }
+    ],
+    "output_branches": {
+      "simcc_x": [
+        {
+          "name": "reshape_after_MatMul_251",
+          "type": "NoOp",
+          "io_precision": "fp32",
+          "formats": [
+            "Row major linear FP32",
+            "Row major linear FP32"
+          ],
+          "tactic": "0x0000000000000000",
+          "inputs": [
+            "reshape_after_MatMul_251_copy_input"
+          ],
+          "outputs": [
+            "simcc_x"
+          ]
+        },
+        {
+          "name": "reshape_after_MatMul_251_copy_input",
+          "type": "Reformat",
+          "io_precision": "fp32",
+          "formats": [
+            "Row major linear FP32",
+            "Row major linear FP32"
+          ],
+          "tactic": "0x00000000000003e8",
+          "inputs": [
+            "MatMul_251 || MatMul_252"
+          ],
+          "outputs": [
+            "reshape_after_MatMul_251_copy_input"
+          ]
+        },
+        {
+          "name": "Reformatting CopyNode for Output Tensor 0 to MatMul_251 || MatMul_252",
+          "type": "NoOp",
+          "io_precision": "fp32",
+          "formats": [
+            "Thirty-two wide channel vectorized row major FP32 format",
+            "Row major linear FP32"
+          ],
+          "tactic": "0x0000000000000000",
+          "inputs": [
+            "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+          ],
+          "outputs": [
+            "MatMul_251 || MatMul_252"
+          ]
+        },
+        {
+          "name": "MatMul_251 || MatMul_252",
+          "type": "CaskConvolution",
+          "io_precision": "mixed_int8_fp32",
+          "formats": [
+            "Thirty-two wide channel vectorized row major Int8 format",
+            "Thirty-two wide channel vectorized row major FP32 format"
+          ],
+          "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+          "inputs": [
+            "Reformatted Input Tensor 0 to MatMul_251 || MatMul_252"
+          ],
+          "outputs": [
+            "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+          ]
+        }
+      ],
+      "simcc_y": [
+        {
+          "name": "reshape_after_MatMul_252",
+          "type": "NoOp",
+          "io_precision": "fp32",
+          "formats": [
+            "Row major linear FP32",
+            "Row major linear FP32"
+          ],
+          "tactic": "0x0000000000000000",
+          "inputs": [
+            "reshape_after_MatMul_252_copy_input"
+          ],
+          "outputs": [
+            "simcc_y"
+          ]
+        },
+        {
+          "name": "reshape_after_MatMul_252_copy_input",
+          "type": "Reformat",
+          "io_precision": "fp32",
+          "formats": [
+            "Row major linear FP32",
+            "Row major linear FP32"
+          ],
+          "tactic": "0x00000000000003e8",
+          "inputs": [
+            "MatMul_251 || MatMul_252"
+          ],
+          "outputs": [
+            "reshape_after_MatMul_252_copy_input"
+          ]
+        },
+        {
+          "name": "Reformatting CopyNode for Output Tensor 0 to MatMul_251 || MatMul_252",
+          "type": "NoOp",
+          "io_precision": "fp32",
+          "formats": [
+            "Thirty-two wide channel vectorized row major FP32 format",
+            "Row major linear FP32"
+          ],
+          "tactic": "0x0000000000000000",
+          "inputs": [
+            "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+          ],
+          "outputs": [
+            "MatMul_251 || MatMul_252"
+          ]
+        },
+        {
+          "name": "MatMul_251 || MatMul_252",
+          "type": "CaskConvolution",
+          "io_precision": "mixed_int8_fp32",
+          "formats": [
+            "Thirty-two wide channel vectorized row major Int8 format",
+            "Thirty-two wide channel vectorized row major FP32 format"
+          ],
+          "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+          "inputs": [
+            "Reformatted Input Tensor 0 to MatMul_251 || MatMul_252"
+          ],
+          "outputs": [
+            "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+          ]
+        }
+      ]
+    },
+    "convolution_layers": [
+      {
+        "name": "Conv_0 + PWN(PWN(Sigmoid_1), Mul_2)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "ampere_first_layer_filter3x3_imma_fwd_swish",
+        "inputs": [
+          "Reformatted Input Tensor 0 to Conv_0 + PWN(PWN(Sigmoid_1), Mul_2)"
+        ],
+        "outputs": [
+          "366"
+        ]
+      },
+      {
+        "name": "Conv_3",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3",
+        "inputs": [
+          "366"
+        ],
+        "outputs": [
+          "695"
+        ]
+      },
+      {
+        "name": "Conv_6 + PWN(PWN(Sigmoid_7), Mul_8)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "370"
+        ],
+        "outputs": [
+          "374"
+        ]
+      },
+      {
+        "name": "Conv_9 + PWN(PWN(Sigmoid_10), Mul_11)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "374"
+        ],
+        "outputs": [
+          "378"
+        ]
+      },
+      {
+        "name": "Conv_12 + PWN(PWN(Sigmoid_13), Mul_14)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "378"
+        ],
+        "outputs": [
+          "Reformatted Output Tensor 0 to Conv_12 + PWN(PWN(Sigmoid_13), Mul_14)"
+        ]
+      },
+      {
+        "name": "Conv_15 + PWN(PWN(Sigmoid_16), Mul_17)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "378"
+        ],
+        "outputs": [
+          "386"
+        ]
+      },
+      {
+        "name": "Conv_18 + PWN(PWN(Sigmoid_19), Mul_20)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "386"
+        ],
+        "outputs": [
+          "390"
+        ]
+      },
+      {
+        "name": "Conv_21 + PWN(PWN(Sigmoid_22), Mul_23)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "390"
+        ],
+        "outputs": [
+          "394"
+        ]
+      },
+      {
+        "name": "Conv_24",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize96x64x64_stage3_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "394"
+        ],
+        "outputs": [
+          "716"
+        ]
+      },
+      {
+        "name": "Conv_28 + PWN(PWN(Sigmoid_29), Mul_30)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "399"
+        ],
+        "outputs": [
+          "403"
+        ]
+      },
+      {
+        "name": "Conv_31 + PWN(PWN(Sigmoid_32), Mul_33)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000015",
+        "inputs": [
+          "403"
+        ],
+        "outputs": [
+          "407"
+        ]
+      },
+      {
+        "name": "Conv_34",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize96x64x64_stage3_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "407"
+        ],
+        "outputs": [
+          "725"
+        ]
+      },
+      {
+        "name": "Conv_40",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "414"
+        ],
+        "outputs": [
+          "415"
+        ]
+      },
+      {
+        "name": "Conv_43 + PWN(PWN(Sigmoid_44), Mul_45)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "417"
+        ],
+        "outputs": [
+          "421"
+        ]
+      },
+      {
+        "name": "Conv_46 + PWN(PWN(Sigmoid_47), Mul_48)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "421"
+        ],
+        "outputs": [
+          "425"
+        ]
+      },
+      {
+        "name": "Conv_49 + PWN(PWN(Sigmoid_50), Mul_51)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "425"
+        ],
+        "outputs": [
+          "486"
+        ]
+      },
+      {
+        "name": "Conv_52 + PWN(PWN(Sigmoid_53), Mul_54)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "425"
+        ],
+        "outputs": [
+          "433"
+        ]
+      },
+      {
+        "name": "Conv_55 + PWN(PWN(Sigmoid_56), Mul_57)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "433"
+        ],
+        "outputs": [
+          "437"
+        ]
+      },
+      {
+        "name": "Conv_58 + PWN(PWN(Sigmoid_59), Mul_60)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "437"
+        ],
+        "outputs": [
+          "441"
+        ]
+      },
+      {
+        "name": "Conv_61",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "441"
+        ],
+        "outputs": [
+          "746"
+        ]
+      },
+      {
+        "name": "Conv_65 + PWN(PWN(Sigmoid_66), Mul_67)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "446"
+        ],
+        "outputs": [
+          "450"
+        ]
+      },
+      {
+        "name": "Conv_68 + PWN(PWN(Sigmoid_69), Mul_70)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "450"
+        ],
+        "outputs": [
+          "454"
+        ]
+      },
+      {
+        "name": "Conv_71",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "454"
+        ],
+        "outputs": [
+          "755"
+        ]
+      },
+      {
+        "name": "Conv_75 + PWN(PWN(Sigmoid_76), Mul_77)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "459"
+        ],
+        "outputs": [
+          "463"
+        ]
+      },
+      {
+        "name": "Conv_78 + PWN(PWN(Sigmoid_79), Mul_80)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "463"
+        ],
+        "outputs": [
+          "467"
+        ]
+      },
+      {
+        "name": "Conv_81",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "467"
+        ],
+        "outputs": [
+          "764"
+        ]
+      },
+      {
+        "name": "Conv_85 + PWN(PWN(Sigmoid_86), Mul_87)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x32x64_stage4_warpsize4x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "472"
+        ],
+        "outputs": [
+          "476"
+        ]
+      },
+      {
+        "name": "Conv_88 + PWN(PWN(Sigmoid_89), Mul_90)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "476"
+        ],
+        "outputs": [
+          "480"
+        ]
+      },
+      {
+        "name": "Conv_91",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize192x96x64_stage4_warpsize4x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "480"
+        ],
+        "outputs": [
+          "773"
+        ]
+      },
+      {
+        "name": "Conv_97",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "487"
+        ],
+        "outputs": [
+          "488"
+        ]
+      },
+      {
+        "name": "Conv_100 + PWN(PWN(Sigmoid_101), Mul_102)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize256x64x64_stage4_warpsize4x1x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "490"
+        ],
+        "outputs": [
+          "494"
+        ]
+      },
+      {
+        "name": "Conv_103 + PWN(PWN(Sigmoid_104), Mul_105)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "494"
+        ],
+        "outputs": [
+          "498"
+        ]
+      },
+      {
+        "name": "Conv_106 + PWN(PWN(Sigmoid_107), Mul_108)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "498"
+        ],
+        "outputs": [
+          "559"
+        ]
+      },
+      {
+        "name": "Conv_109 + PWN(PWN(Sigmoid_110), Mul_111)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "498"
+        ],
+        "outputs": [
+          "506"
+        ]
+      },
+      {
+        "name": "Conv_112 + PWN(PWN(Sigmoid_113), Mul_114)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "506"
+        ],
+        "outputs": [
+          "510"
+        ]
+      },
+      {
+        "name": "Conv_115 + PWN(PWN(Sigmoid_116), Mul_117)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "510"
+        ],
+        "outputs": [
+          "514"
+        ]
+      },
+      {
+        "name": "Conv_118",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "514"
+        ],
+        "outputs": [
+          "794"
+        ]
+      },
+      {
+        "name": "Conv_122 + PWN(PWN(Sigmoid_123), Mul_124)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "519"
+        ],
+        "outputs": [
+          "523"
+        ]
+      },
+      {
+        "name": "Conv_125 + PWN(PWN(Sigmoid_126), Mul_127)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "523"
+        ],
+        "outputs": [
+          "527"
+        ]
+      },
+      {
+        "name": "Conv_128",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "527"
+        ],
+        "outputs": [
+          "803"
+        ]
+      },
+      {
+        "name": "Conv_132 + PWN(PWN(Sigmoid_133), Mul_134)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "532"
+        ],
+        "outputs": [
+          "536"
+        ]
+      },
+      {
+        "name": "Conv_135 + PWN(PWN(Sigmoid_136), Mul_137)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "536"
+        ],
+        "outputs": [
+          "540"
+        ]
+      },
+      {
+        "name": "Conv_138",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "540"
+        ],
+        "outputs": [
+          "812"
+        ]
+      },
+      {
+        "name": "Conv_142 + PWN(PWN(Sigmoid_143), Mul_144)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "545"
+        ],
+        "outputs": [
+          "549"
+        ]
+      },
+      {
+        "name": "Conv_145 + PWN(PWN(Sigmoid_146), Mul_147)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x000000000000000b",
+        "inputs": [
+          "549"
+        ],
+        "outputs": [
+          "553"
+        ]
+      },
+      {
+        "name": "Conv_148",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "553"
+        ],
+        "outputs": [
+          "821"
+        ]
+      },
+      {
+        "name": "Conv_154",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "560"
+        ],
+        "outputs": [
+          "561"
+        ]
+      },
+      {
+        "name": "Conv_157 + PWN(PWN(Sigmoid_158), Mul_159)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x128x64_stage4_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "563"
+        ],
+        "outputs": [
+          "567"
+        ]
+      },
+      {
+        "name": "Conv_160 + PWN(PWN(Sigmoid_161), Mul_162)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "567"
+        ],
+        "outputs": [
+          "571"
+        ]
+      },
+      {
+        "name": "Conv_163 + PWN(PWN(Sigmoid_164), Mul_165)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "571"
+        ],
+        "outputs": [
+          "575"
+        ]
+      },
+      {
+        "name": "Conv_170 + PWN(PWN(Sigmoid_171), Mul_172)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize128x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "579"
+        ],
+        "outputs": [
+          "583"
+        ]
+      },
+      {
+        "name": "Conv_173 + PWN(PWN(Sigmoid_174), Mul_175)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "583"
+        ],
+        "outputs": [
+          "616"
+        ]
+      },
+      {
+        "name": "Conv_176 + PWN(PWN(Sigmoid_177), Mul_178)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "583"
+        ],
+        "outputs": [
+          "591"
+        ]
+      },
+      {
+        "name": "Conv_179 + PWN(PWN(Sigmoid_180), Mul_181)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "591"
+        ],
+        "outputs": [
+          "595"
+        ]
+      },
+      {
+        "name": "Conv_182 + PWN(PWN(Sigmoid_183), Mul_184)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000001",
+        "inputs": [
+          "595"
+        ],
+        "outputs": [
+          "599"
+        ]
+      },
+      {
+        "name": "Conv_185 + PWN(PWN(Sigmoid_186), Mul_187)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "599"
+        ],
+        "outputs": [
+          "603"
+        ]
+      },
+      {
+        "name": "Conv_188 + PWN(PWN(Sigmoid_189), Mul_190)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_t1r3s3_swish",
+        "inputs": [
+          "603"
+        ],
+        "outputs": [
+          "607"
+        ]
+      },
+      {
+        "name": "Conv_191 + PWN(PWN(Sigmoid_192), Mul_193)",
+        "type": "CudaDepthwiseConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "0x0000000000000001",
+        "inputs": [
+          "607"
+        ],
+        "outputs": [
+          "611"
+        ]
+      },
+      {
+        "name": "Conv_194 + PWN(PWN(Sigmoid_195), Mul_196)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x64x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "611"
+        ],
+        "outputs": [
+          "616"
+        ]
+      },
+      {
+        "name": "Conv_199",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "617"
+        ],
+        "outputs": [
+          "618"
+        ]
+      },
+      {
+        "name": "Conv_202 + PWN(PWN(Sigmoid_203), Mul_204)",
+        "type": "CaskConvolution",
+        "io_precision": "int8",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major Int8 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8i8_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1_swish",
+        "inputs": [
+          "620"
+        ],
+        "outputs": [
+          "624"
+        ]
+      },
+      {
+        "name": "Conv_205",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_indexed_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32",
+        "inputs": [
+          "624"
+        ],
+        "outputs": [
+          "625"
+        ]
+      },
+      {
+        "name": "MatMul_221",
+        "type": "CaskGemmConvolution",
+        "io_precision": "fp32",
+        "formats": [
+          "Row major linear FP32",
+          "Row major linear FP32"
+        ],
+        "tactic": "sm80_xmma_gemm_f32f32_f32f32_f32_tn_n_tilesize32x32x8_stage3_warpsize1x2x1_ffma_aligna4_alignc4",
+        "inputs": [
+          "reshape_before_MatMul_221_out_tensor"
+        ],
+        "outputs": [
+          "MatMul_221_out_tensor"
+        ]
+      },
+      {
+        "name": "MatMul_230",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_t1r1s1",
+        "inputs": [
+          "Reformatted Input Tensor 0 to MatMul_230"
+        ],
+        "outputs": [
+          "MatMul_230_out_tensor"
+        ]
+      },
+      {
+        "name": "MatMul_248",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x32x64_stage6_warpsize2x1x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "Reformatted Input Tensor 0 to MatMul_248"
+        ],
+        "outputs": [
+          "MatMul_248_out_tensor"
+        ]
+      },
+      {
+        "name": "MatMul_251 || MatMul_252",
+        "type": "CaskConvolution",
+        "io_precision": "mixed_int8_fp32",
+        "formats": [
+          "Thirty-two wide channel vectorized row major Int8 format",
+          "Thirty-two wide channel vectorized row major FP32 format"
+        ],
+        "tactic": "sm80_xmma_fprop_implicit_gemm_interleaved_i8f32_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize64x128x64_stage6_warpsize2x2x1_g1_tensor16x8x32_simple_t1r1s1",
+        "inputs": [
+          "Reformatted Input Tensor 0 to MatMul_251 || MatMul_252"
+        ],
+        "outputs": [
+          "Reformatted Output Tensor 0 to MatMul_251 || MatMul_252"
+        ]
+      }
+    ],
+    "interpretation": "Layer tensor formats only, not fused operator accumulator precision; branches trace up to four producer hops."
+  },
+  "input_lock_sha256": "5a276996ff98e36e7a385e5bc2c002e4871a5f0e2af906e21f8697dd7b382a2c",
+  "comparison_script_sha256": "e0fec0c4cca42d2341125fba860cf90dcf6c7189d31f2349605101961b5a6d03",
+  "inspector_sha256": "5ba38fd7999359267e9527dac27795a6ab3c5bcbe626ea1ac5f0e5750547c250",
+  "argmax_shifts_sha256": "79a475479e6db7e20f543f7149e5110991ef7297388f85560833ac700493dcc4",
+  "fp32_reference_engine_sha256": "4a926a062a05307923d3d39548d29bdba51dac9caac72e26f9c9653980af324d",
+  "completion_sha256": {
+    "npy": "0514cb0c345533a5e3fb79b1b9f5c8fe88eb438e1a961cf2d176f17fdafe16d1",
+    "image": "701c19f86d733b8a9dc1cd7ace86a9b8ac736221446de47f6f75cdc4d8b6e425"
+  },
+  "calibration_tensors": 352,
+  "development_tensors": 55,
+  "final_validation_images_used": 0,
+  "scope": "First INT8 baseline; FP16 disabled; development consistency only; no performance or mixed precision tuning",
+  "raw_artifact_directory": "validation/trt-int8",
+  "metadata_format_note": "Legacy FileStorage nested fields preserved and strictly verified; producer not changed in this experiment."
+}

@@ -2,7 +2,7 @@
 
 ## 0. 当前实施状态与已有产物
 
-2026-11-03 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 校准尚未执行。** 下文的工程目标和最终验收项不代表已经实现。
+2026-11-05 对齐：本文件作为后续实施基线。**模型导入、校准/开发集手框审核、裁剪和单手输入张量准备已完成；TensorRT INT8 首轮校准、构建与开发集验证已完成，精度验收未通过。** 下文的工程目标和最终验收项不代表已经实现。
 
 | 阶段 | 当前状态 | 已有证据与剩余工作 |
 | --- | --- | --- |
@@ -11,7 +11,7 @@
 | Stage 3 Reference Freeze | 技术契约已冻结，人工关键点评审通过 | RGB 契约已核验；407 个张量已修正，55 个开发样本已保存 ORT FP32 输出、解码与原图坐标，10 个代表样本已生成可视化；详见 [核验记录](reference-freeze.md) |
 | Stage 4 Runtime vNext | 本次单输入、多输出范围完成 | 动态 shape、具名输出、profile 切换、持久 MAX 缓冲已实现；旧单输出 API、YOLO/ResNet 和静态 Graph 回归通过。多输入和非 FP32 I/O 仍明确不支持 |
 | Stage 5 TRT FP32 / FP16 | FP32 基线通过；FP16 两轮实验完成但精度未通过，根因分析暂缓 | TF32 关闭，profile 1/2/4；55 个开发样本的 NPY 与 C++ 原图两条路径通过 ORT 对照，包含 batch 1/2/3/4 和超 MAX 分块；详见 [实测报告](trt-fp32-baseline.md) |
-| Stage 6 INT8 PTQ | 独立实验准备完成，尚未执行校准构建 | 352张量完整性与GPU供给验证通过，EntropyCalibrator2及独立校准profile已接入；INT8 ON、FP16/TF32 OFF、2 GiB；尚无正式cache/engine/inspector，见[准备记录](int8-preparation.md) |
+| Stage 6 INT8 PTQ | 首轮构建与开发集验证完成，精度未通过 | 352 个校准张量全部消费，cache/engine/inspector 已保存；55 个开发样本双路径与 batch 1/2/3/4/6 验证完成；INT8 ON、FP16/TF32 OFF、2 GiB，见[实测报告](trt-int8-baseline.md) |
 | Stage 7 最终验证 | 未开始 | validation 的 258 张原图已导入并隔离，尚未生成手框及参考输出；GT 增强项尚未实施 |
 | Stage 8 Benchmark | 开发阶段FP32/FP16性能对照完成，最终验收待定 | 同公共C++ builder、2 GiB的三轮对照已完成，见[性能报告](cpp-2g-performance.md)；FP16精度未通过，该性能结果不代表部署验收 |
 

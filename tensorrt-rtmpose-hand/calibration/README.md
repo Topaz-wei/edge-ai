@@ -150,7 +150,7 @@ development_tensor_order.txt → development_set/tensors/F0001-D000.npy  # 开�
 
 当前预处理采用本地 rtmlib 0.0.15：OpenCV BGR 读取后显式转为 RGB 输入；手框扩展 1.25 倍并调整为正方形；双线性仿射、越界零填充；均值 `(123.675,116.28,103.53)`，标准差 `(58.395,57.12,57.375)`。裁剪 PNG 用于查看归一化前的图像，不能代替已准备的张量直接送入模型。
 
-当前用户认可的是数据划分、手框和裁剪内容。`split.json` 的 `frozen=true` 只确认这一范围；预处理参考契约现已冻结，55 个开发样本已完成 ORT FP32 推理、解码和坐标还原核验，未生成 TensorRT INT8 校准缓存。详见 [Reference Freeze 核验记录](../docs/reference-freeze.md)。关键点可视化已通过用户人工评审。预处理参数改变时必须重建张量和相关哈希。
+当前用户认可的是数据划分、手框和裁剪内容。`split.json` 的 `frozen=true` 只确认这一范围；预处理参考契约现已冻结，55 个开发样本已完成 ORT FP32 推理、解码和坐标还原核验，后续已生成 TensorRT INT8 校准缓存（首轮开发集精度未通过）。详见 [Reference Freeze 核验记录](../docs/reference-freeze.md)。关键点可视化已通过用户人工评审。预处理参数改变时必须重建张量和相关哈希。
 
 44 张零检测图片已按用户意见跳过，不补框，也不将其当作无手真值；它们没有对应的张量。相似裁剪和重叠框继续保留。两个集合都没有标准 21 点人工真值，开发集主要用于推理后端之间的一致性检查，不应将结果称为有真值的真实精度。
 
@@ -171,3 +171,8 @@ development_tensor_order.txt → development_set/tensors/F0001-D000.npy  # 开�
 专用EntropyCalibrator2和独立校准profile已接入公共builder；本轮尚未执行TensorRT校准计算，未生成正式cache或INT8 engine。
 固定校准入口仍是 `calibration_tensor_order.txt`，直接使用已经归一化的NPY。
 实现与复现方法见 [INT8准备记录](../docs/int8-preparation.md)。
+
+## INT8 首轮构建与验证（2026-11-05）
+
+352 个校准张量已完成实际校准，当前目录的 `rtmpose_hand_int8.cache` 和 `.cache.meta.json` 已生成。55 个开发张量仅用于比较，未参与校准；最终 validation 未使用。
+engine 构建完成，开发集精度验收失败，见[INT8 基线报告](../docs/trt-int8-baseline.md)。原始 meta 的旧版嵌套格式及核验方式也在报告中说明。
