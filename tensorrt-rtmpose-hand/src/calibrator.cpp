@@ -168,12 +168,23 @@ CalibrationData auditCalibration(const fs::path& module) {
             throw std::runtime_error("Development order split mismatch");
         }
     }
+    cv::FileStorage settings(
+        (module / "configs/rtmpose_hand_builder_int8.json").string(),
+        cv::FileStorage::READ
+    );
+    if (!settings.isOpened() || settings["fp16"].empty()) {
+        throw std::runtime_error("Missing INT8 FP16 fallback configuration");
+    }
+    const int fp16Fallback = static_cast<int>(settings["fp16"]);
+    if (fp16Fallback != 0 && fp16Fallback != 1) {
+        throw std::runtime_error("FP16 fallback must be boolean");
+    }
     CalibrationData result;
     cv::FileStorage identity(
         "identity.json",
         cv::FileStorage::WRITE | cv::FileStorage::MEMORY | cv::FileStorage::FORMAT_JSON
     );
-    identity << "schema_version" << 1 << "model_sha256" << modelHash << "reference_sha256" << referenceHash;
+    identity << "schema_version" << 2 << "model_sha256" << modelHash << "reference_sha256" << referenceHash;
     identity << "hand_boxes_sha256" << calibrationFileHash(root / "hand_boxes.jsonl");
     identity << "tensor_order_sha256" << calibrationFileHash(root / "calibration_tensor_order.txt");
     identity << "development_order_sha256" << calibrationFileHash(root / "development_tensor_order.txt");
@@ -191,8 +202,10 @@ CalibrationData auditCalibration(const fs::path& module) {
     identity << "coverage_sha256" << calibrationFileHash(root / "coverage.json");
     identity << "int8_config_sha256" << calibrationFileHash(module / "configs/rtmpose_hand_builder_int8.json");
     identity << "algorithm" << "IInt8EntropyCalibrator2" << "calibration_batch" << 1;
-    identity << "calibration_shape" << "[1,3,256,256]" << "inference_profile" << "1/2/4";
-    identity << "workspace_mib" << 2048 << "fp16" << 0 << "tf32" << 0;
+    // 显式写入数值数组，避免 '[' 开头的字符串被 FileStorage 解释为未闭合序列。
+    identity << "calibration_shape" << "[" << 1 << 3 << 256 << 256 << "]";
+    identity << "inference_profile" << "1/2/4";
+    identity << "workspace_mib" << 2048 << "fp16" << fp16Fallback << "tf32" << 0;
     identity << "input_name" << "input" << "input_dtype" << "FP32";
     identity << "ordered_tensors" << "[";
     std::set<fs::path> canonical;

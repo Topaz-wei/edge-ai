@@ -1,6 +1,6 @@
 {
   "selected_precision": "int8",
-  "fp16": false,
+  "fp16": true,
   "tf32": false,
   "workspace_mib": 2048,
   "profile": {
@@ -31,6 +31,6 @@
   ],
   "calibration_algorithm": "IInt8EntropyCalibrator2",
   "calibration_order": "calibration/calibration_tensor_order.txt",
-  "cache": "calibration/rtmpose_hand_int8.cache",
-  "cache_meta": "calibration/rtmpose_hand_int8.cache.meta.json"
+  "cache": "calibration/rtmpose_hand_int8_fp16.cache",
+  "cache_meta": "calibration/rtmpose_hand_int8_fp16.cache.meta.json"
 }

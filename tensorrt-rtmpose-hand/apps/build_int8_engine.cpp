@@ -52,10 +52,10 @@ int main(
             cv::FileStorage::READ
         );
         if (!settings.isOpened() || static_cast<std::string>(settings["selected_precision"]) != "int8" ||
-            settings["fp16"].empty() || static_cast<int>(settings["fp16"]) != 0 ||
+            settings["fp16"].empty() || (static_cast<int>(settings["fp16"]) != 0 && static_cast<int>(settings["fp16"]) != 1) ||
             settings["tf32"].empty() || static_cast<int>(settings["tf32"]) != 0 ||
             static_cast<int>(settings["workspace_mib"]) != 2048) {
-            throw std::runtime_error("Expected INT8 on, FP16/TF32 off, workspace 2048 MiB");
+            throw std::runtime_error("Expected INT8 on, boolean FP16 fallback, TF32 off, workspace 2048 MiB");
         }
         edge::trt::BuildInput input;
         input.name = "input";
@@ -95,7 +95,7 @@ int main(
         options.onnxPath = (module / "models/rtmpose_hand.onnx").string();
         options.enginePath = output.string() + ".building";
         options.precision = edge::trt::Precision::INT8;
-        options.int8Fp16Fallback = false;
+        options.int8Fp16Fallback = static_cast<int>(settings["fp16"]) != 0;
         options.tf32 = false;
         options.workspaceBytes = 2ULL * 1024 * 1024 * 1024;
         options.calibrator = &calibrator;
