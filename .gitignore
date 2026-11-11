@@ -223,3 +223,11 @@ tensorrt-rtmpose-hand/validation/calibration-ranges-*/
 tensorrt-rtmpose-hand/validation/trt-int8-fp16/
 !tensorrt-rtmpose-hand/configs/rtmpose_hand_trt_int8_fp16.json
 !tensorrt-rtmpose-hand/benchmarks/int8-fp16-fallback.json
+# FP16 激活诊断的派生模型、engine 和中间输出留在本机。
+tensorrt-rtmpose-hand/validation/fp16-activations*/
+!tensorrt-rtmpose-hand/benchmarks/fp16-activations.json
+# 关键点人工对照图、原图裁剪及本地HTML报告。
+tensorrt-rtmpose-hand/validation/fp16-visual-review*/
+tensorrt-rtmpose-hand/validation/fp16-keypoint-review*/
+tensorrt-rtmpose-hand/validation/precision-keypoint-review*/
+tensorrt-rtmpose-hand/validation/corrected-bbox-review*/

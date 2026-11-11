@@ -32,3 +32,7 @@ target_link_libraries(rtmpose_int8 PRIVATE rtmpose_calibrator)
 add_executable(test_hand_calibrator tests/test_hand_calibrator.cpp)
 target_link_libraries(test_hand_calibrator PRIVATE rtmpose_calibrator)
 add_test(NAME hand_calibrator COMMAND test_hand_calibrator)
+
+# 中间激活探针与正式模型入口隔离，仍复用公共构建与执行实现。
+add_executable(rtmpose_probe apps/activation_probe.cpp)
+target_link_libraries(rtmpose_probe PRIVATE rtmpose_reference edge_trt_builder edge_trt_runtime)
