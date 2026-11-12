@@ -231,3 +231,13 @@ tensorrt-rtmpose-hand/validation/fp16-visual-review*/
 tensorrt-rtmpose-hand/validation/fp16-keypoint-review*/
 tensorrt-rtmpose-hand/validation/precision-keypoint-review*/
 tensorrt-rtmpose-hand/validation/corrected-bbox-review*/
+# RTMDet-Hand 本地资产链接；可追溯清单保留在版本控制中。
+tensorrt-rtmdet-hand/models/*.onnx
+tensorrt-rtmdet-hand/datasets/*_set/images/
+!tensorrt-rtmdet-hand/models/manifest.json
+!tensorrt-rtmdet-hand/datasets/split.json
+!tensorrt-rtmdet-hand/datasets/verification.json
+!tensorrt-rtmdet-hand/datasets/*_set/manifest.jsonl
+!tensorrt-rtmdet-hand/datasets/*_set/image_order.txt
+!tensorrt-rtmdet-hand/models/
+!tensorrt-rtmdet-hand/datasets/

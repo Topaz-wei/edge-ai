@@ -1,0 +1,47 @@
+{
+  "total_images": 589,
+  "unique_sha256": 589,
+  "image_id_overlap": 0,
+  "sha256_overlap": 0,
+  "all_images_decodable": true,
+  "sets": {
+    "calibration": {
+      "raw_images": 285,
+      "source_groups": {
+        "comfort_sensing_air_conditioner/camera/calibration/v2/rgb": 16,
+        "comfort_sensing_air_conditioner/data_collect/10/images": 66,
+        "comfort_sensing_air_conditioner/data_collect/czq/images": 203
+      },
+      "manifest_sha256": "e4037eab75c8ad503f401f5a7c7e61bb2824e3adf39060255487d5ea35bf0820",
+      "order_sha256": "ee8e0cf391d22e94ffee80d1ae41928372a2b4ad12cd43fabf178630a408ecef"
+    },
+    "development": {
+      "raw_images": 46,
+      "source_groups": {
+        "comfort_sensing_air_conditioner/camera/calibration/rgb": 46
+      },
+      "manifest_sha256": "85699f853ec7862943725b27e80c34ab64eb8c2aa1c6f8edc24b93a3c56c9349",
+      "order_sha256": "c52b7a9d618d44fc68ee4150747910fc83e423ddfe334f9d49916c5b84da1cd1"
+    },
+    "validation": {
+      "raw_images": 258,
+      "source_groups": {
+        "comfort_sensing_air_conditioner/data_collect/zbx/images": 203,
+        "comfort_sensing_air_conditioner/camera/calibration/v1/rgb": 25,
+        "Thermal_Comfort_Algorithm/camera/calibration/rgb": 10,
+        "Thermal_Comfort_Algorithm/camera/calibration/v1_H/rgb": 4,
+        "Thermal_Comfort_Algorithm/camera/calibration/v2_H/rgb": 7,
+        "Thermal_Comfort_Algorithm/camera/calibration/v3_H/rgb": 7,
+        "Thermal_Comfort_Algorithm/camera/calibration/v1_H/t": 2
+      },
+      "manifest_sha256": "21d1efdafc1e9e3c62c50ea8bb5e5d11e082b971f64dfe68ae28ccfb7d0c1d4b",
+      "order_sha256": "36382dd5fb82474df970bda80f97a435dbaad0bd9482c16c61baa3627c2d0e07"
+    }
+  },
+  "tensors_generated": false,
+  "ground_truth_available": false,
+  "onnx_version": "1.17.0",
+  "onnxruntime_version": "1.19.2",
+  "opencv_version": "4.13.0",
+  "script_sha256": "4256515872faa696b72aa69c8f3bef8870b2feaaa140f406d2254f16aae1088e"
+}

@@ -1,0 +1,62 @@
+{
+  "path": "models/rtmdet_hand.onnx",
+  "sha256": "568d3ea97a5b142488366b67e036b6a5cb0a1fef9087a710cb8e66b6979fbac2",
+  "size_bytes": 4010667,
+  "source_path": "tensorrt-rtmpose-hand/models/rtmdet_hand.onnx",
+  "original_source_path": "/home/ssd/code/vh3/src/py_algorithm/comfort_sensing_air_conditioner/data/weights/rtmdet_hand.onnx",
+  "upstream_official_identity": "not_yet_verified",
+  "inputs": [
+    {
+      "name": "input",
+      "shape": [
+        1,
+        3,
+        320,
+        320
+      ],
+      "type": "tensor(float)"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "dets",
+      "shape": [
+        1,
+        "Gatherdets_dim_1",
+        5
+      ],
+      "type": "tensor(float)"
+    },
+    {
+      "name": "labels",
+      "shape": [
+        1,
+        "Gatherlabels_dim_1"
+      ],
+      "type": "tensor(int64)"
+    }
+  ],
+  "opsets": [
+    {
+      "domain": "",
+      "version": 11
+    }
+  ],
+  "smoke_test": {
+    "provider": "CPUExecutionProvider",
+    "input": "zeros, batch=1",
+    "output_shapes": [
+      [
+        1,
+        41,
+        5
+      ],
+      [
+        1,
+        41
+      ]
+    ],
+    "all_finite": true
+  },
+  "preprocessing_contract": "not_frozen"
+}
